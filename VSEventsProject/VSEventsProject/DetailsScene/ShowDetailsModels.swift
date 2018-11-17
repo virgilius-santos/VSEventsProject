@@ -65,6 +65,8 @@ class DetailViewModel {
     }
     let cells = BehaviorRelay<[PersonCellViewModel]>(value: [])
 
+    let onShowError = PublishSubject<SingleButtonAlert>()
+    
     let disposeBag = DisposeBag()
 
     init() {

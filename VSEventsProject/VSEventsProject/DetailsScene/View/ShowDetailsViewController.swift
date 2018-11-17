@@ -22,7 +22,7 @@ protocol ShowDetailsDisplayLogic: class {
     var viewModel: DetailViewModel { get }
 }
 
-class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic {
+class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic, SingleButtonDialogPresenter {
 
     var interactor: ShowDetailsBusinessLogic?
 

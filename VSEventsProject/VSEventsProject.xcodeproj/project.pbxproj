@@ -10,6 +10,8 @@
 		1801C6B121A04AD70066EC81 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1801C6B021A04AD70066EC81 /* Date.swift */; };
 		1801C6B621A04CB10066EC81 /* PersonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1801C6B421A04CB10066EC81 /* PersonCollectionViewCell.swift */; };
 		1801C6B721A04CB10066EC81 /* PersonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1801C6B521A04CB10066EC81 /* PersonCollectionViewCell.xib */; };
+		187E334B21A077A80010CCE1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E334A21A077A80010CCE1 /* User.swift */; };
+		187E334D21A083150010CCE1 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E334C21A083150010CCE1 /* UIViewController.swift */; };
 		18D40270219F75B8002A3BC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D4026F219F75B8002A3BC2 /* AppDelegate.swift */; };
 		18D40277219F75BB002A3BC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D40276219F75BB002A3BC2 /* Assets.xcassets */; };
 		18D4027A219F75BB002A3BC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D40278219F75BB002A3BC2 /* LaunchScreen.storyboard */; };
@@ -55,6 +57,8 @@
 		1801C6B021A04AD70066EC81 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		1801C6B421A04CB10066EC81 /* PersonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCollectionViewCell.swift; sourceTree = "<group>"; };
 		1801C6B521A04CB10066EC81 /* PersonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonCollectionViewCell.xib; sourceTree = "<group>"; };
+		187E334A21A077A80010CCE1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		187E334C21A083150010CCE1 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		18D4026C219F75B8002A3BC2 /* VSEventsProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VSEventsProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D4026F219F75B8002A3BC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18D40276219F75BB002A3BC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -231,6 +235,7 @@
 				18D402C9219FA6E8002A3BC2 /* Person.swift */,
 				18D402CB219FA700002A3BC2 /* Cupom.swift */,
 				18D402DD219FE638002A3BC2 /* SingleButtonAlert.swift */,
+				187E334A21A077A80010CCE1 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 			children = (
 				18D402E821A02BD4002A3BC2 /* UIView.swift */,
 				1801C6B021A04AD70066EC81 /* Date.swift */,
+				187E334C21A083150010CCE1 /* UIViewController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -491,6 +497,7 @@
 				18D402C5219F8E45002A3BC2 /* EventAPI.swift in Sources */,
 				18D402CC219FA700002A3BC2 /* Cupom.swift in Sources */,
 				1801C6B621A04CB10066EC81 /* PersonCollectionViewCell.swift in Sources */,
+				187E334D21A083150010CCE1 /* UIViewController.swift in Sources */,
 				18D402B0219F7ED5002A3BC2 /* ShowEventsPresenter.swift in Sources */,
 				18D402CE219FA89D002A3BC2 /* ImageAPI.swift in Sources */,
 				18D402BF219F7F96002A3BC2 /* ShowDetailsRouter.swift in Sources */,
@@ -507,6 +514,7 @@
 				18D40270219F75B8002A3BC2 /* AppDelegate.swift in Sources */,
 				18D402DC219FE12A002A3BC2 /* ShowEventsModels.swift in Sources */,
 				18D402B5219F7ED5002A3BC2 /* ShowEventsInteractor.swift in Sources */,
+				187E334B21A077A80010CCE1 /* User.swift in Sources */,
 				1801C6B121A04AD70066EC81 /* Date.swift in Sources */,
 				18D402CA219FA6E8002A3BC2 /* Person.swift in Sources */,
 				18D402C2219F7F96002A3BC2 /* ShowDetailsInteractor.swift in Sources */,
