@@ -12,20 +12,10 @@
 
 import UIKit
 
-enum ShowDetails
-{
-  // MARK: Use cases
-  
-  enum Something
-  {
-    struct Request
-    {
-    }
-    struct Response
-    {
-    }
-    struct ViewModel
-    {
-    }
-  }
+protocol DetailViewModel {
+    var title: String { get }
+}
+
+extension Event: DetailViewModel {
+    
 }

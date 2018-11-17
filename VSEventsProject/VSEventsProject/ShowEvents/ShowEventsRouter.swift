@@ -24,41 +24,30 @@ class ShowEventsRouter: ShowEventsDataPassing {
     weak var viewController: ShowEventsViewController?
     var dataStore: ShowEventsDataStore?
 
-    // MARK: Routing
-
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
-    //{
-    //  if let segue = segue {
-    //    let destinationVC = segue.destination as! SomewhereViewController
-    //    var destinationDS = destinationVC.router!.dataStore!
-    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-    //  } else {
-    //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-    //    var destinationDS = destinationVC.router!.dataStore!
-    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-    //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-    //  }
-    //}
-
     // MARK: Navigation
 
-    //func navigateToSomewhere(source: ShowEventsViewController, destination: SomewhereViewController)
-    //{
-    //  source.show(destination, sender: nil)
-    //}
+    func navigateToDetails(source: ShowEventsViewController, destination: ShowDetailsViewController) {
+        source.show(destination, sender: nil)
+    }
 
     // MARK: Passing data
 
-    //func passDataToSomewhere(source: ShowEventsDataStore, destination: inout SomewhereDataStore)
-    //{
-    //  destination.name = source.name
-    //}
+    func passDataToDetail(source: ShowEventsDataStore, destination: inout ShowDetailsDataStore) {
+        destination.event = source.event
+    }
 }
 
 extension ShowEventsRouter: ShowEventsRoutingLogic {
+
+    // MARK: Routing
+
     func routeToDetail(_ viewModel: EventCellViewModel) {
-        
+        dataStore?.event = viewModel.eventItem
+        let detailsConf = ShowDetailsConfigurator()
+        var destinationDS = detailsConf.viewController.router!.dataStore!
+        passDataToDetail(source: dataStore!, destination: &destinationDS)
+        navigateToDetails(source: viewController!, destination: detailsConf.viewController)
     }
+    
 }
 

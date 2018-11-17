@@ -42,4 +42,8 @@ class EventTableViewCell: UITableViewCell {
     private func bindViewModel() {
         textLabel?.text = viewModel?.title
     }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
 }

@@ -12,30 +12,37 @@
 
 import UIKit
 
-protocol ShowDetailsBusinessLogic
-{
-  func doSomething(request: ShowDetails.Something.Request)
+protocol ShowDetailsBusinessLogic {
+    func fetchDetail()
 }
 
-protocol ShowDetailsDataStore
-{
-  //var name: String { get set }
+protocol ShowDetailsDataStore {
+    var event: Event? { get set }
 }
 
-class ShowDetailsInteractor: ShowDetailsBusinessLogic, ShowDetailsDataStore
-{
-  var presenter: ShowDetailsPresentationLogic?
-  var worker: ShowDetailsWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: ShowDetails.Something.Request)
-  {
-    worker = ShowDetailsWorker()
-    worker?.doSomeWork()
-    
-    let response = ShowDetails.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+class ShowDetailsInteractor: ShowDetailsDataStore {
+    var presenter: ShowDetailsPresentationLogic?
+    var eventAPI: EventAPI?
+    var event: Event?
+
+    // MARK: Do something
+
+//    func doSomething(request: ShowDetails.Something.Request)
+//    {
+//        worker = ShowDetailsWorker()
+//        worker?.doSomeWork()
+//
+//        let response = ShowDetails.Something.Response()
+//        presenter?.presentSomething(response: response)
+//    }
+}
+
+extension ShowDetailsInteractor: ShowDetailsBusinessLogic {
+    func fetchDetail() {
+        eventAPI = EventAPI()
+        eventAPI?.fetch(source: event!) { [weak self] (result: Result<Event, Error>) in
+
+            self?.presenter?.presentDetail(result)
+        }
+    }
 }

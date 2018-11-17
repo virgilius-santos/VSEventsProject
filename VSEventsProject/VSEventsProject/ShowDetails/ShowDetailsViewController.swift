@@ -12,78 +12,36 @@
 
 import UIKit
 
-protocol ShowDetailsDisplayLogic: class
-{
-  func displaySomething(viewModel: ShowDetails.Something.ViewModel)
+protocol ShowDetailsDisplayLogic: class {
+    func displayDetail(viewModel: DetailViewModel)
 }
 
-class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic
-{
-  var interactor: ShowDetailsBusinessLogic?
-  var router: (NSObjectProtocol & ShowDetailsRoutingLogic & ShowDetailsDataPassing)?
+class ShowDetailsViewController: UIViewController {
 
-  // MARK: Object lifecycle
-  
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-  {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder)
-  {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
-  // MARK: Setup
-  
-  private func setup()
-  {
-    let viewController = self
-    let interactor = ShowDetailsInteractor()
-    let presenter = ShowDetailsPresenter()
-    let router = ShowDetailsRouter()
-    viewController.interactor = interactor
-    viewController.router = router
-    interactor.presenter = presenter
-    presenter.viewController = viewController
-    router.viewController = viewController
-    router.dataStore = interactor
-  }
-  
-  // MARK: Routing
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-  {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
+    var interactor: ShowDetailsBusinessLogic?
+
+    var router: (ShowDetailsRoutingLogic & ShowDetailsDataPassing)?
+
+    // MARK: View lifecycle
+
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        interactor?.fetchDetail()
     }
-  }
-  
-  // MARK: View lifecycle
-  
-  override func viewDidLoad()
-  {
-    super.viewDidLoad()
-    doSomething()
-  }
-  
-  // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doSomething()
-  {
-    let request = ShowDetails.Something.Request()
-    interactor?.doSomething(request: request)
-  }
-  
-  func displaySomething(viewModel: ShowDetails.Something.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
-  }
+
+    @IBOutlet weak var titleLabel: UILabel!
+
+    func checkin() {
+    }
+
+    func share() {
+    }
+
+}
+
+extension ShowDetailsViewController: ShowDetailsDisplayLogic {
+    func displayDetail(viewModel: DetailViewModel) {
+        titleLabel.text = viewModel.title
+    }
 }

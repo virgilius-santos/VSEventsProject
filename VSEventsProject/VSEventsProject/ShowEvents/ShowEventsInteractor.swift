@@ -17,14 +17,14 @@ protocol ShowEventsBusinessLogic {
 }
 
 protocol ShowEventsDataStore {
-    //var name: String { get set }
+    var event: Event? { get set }
 }
 
 class ShowEventsInteractor: ShowEventsDataStore {
 
     var presenter: ShowEventsPresentationLogic?
     var eventAPI: EventAPI?
-    //var name: String = ""
+    var event: Event?
 
 }
 

@@ -12,20 +12,27 @@
 
 import UIKit
 
-protocol ShowDetailsPresentationLogic
-{
-  func presentSomething(response: ShowDetails.Something.Response)
+protocol ShowDetailsPresentationLogic {
+    func presentDetail(_ result: Result<Event, Error>)
 }
 
-class ShowDetailsPresenter: ShowDetailsPresentationLogic
-{
-  weak var viewController: ShowDetailsDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: ShowDetails.Something.Response)
-  {
-    let viewModel = ShowDetails.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+class ShowDetailsPresenter {
+
+    weak var viewController: ShowDetailsDisplayLogic?
+
 }
+
+extension ShowDetailsPresenter: ShowDetailsPresentationLogic {
+
+    func presentDetail(_ result: Result<Event, Error>) {
+        switch result {
+            
+        case .success(let event):
+            viewController?.displayDetail(viewModel: event)
+
+        case .error(_):
+            break
+        }
+    }
+}
+
