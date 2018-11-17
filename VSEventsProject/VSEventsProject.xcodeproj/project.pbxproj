@@ -27,6 +27,7 @@
 		18D402C8219F9A72002A3BC2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402C7219F9A72002A3BC2 /* Event.swift */; };
 		18D402CA219FA6E8002A3BC2 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402C9219FA6E8002A3BC2 /* Person.swift */; };
 		18D402CC219FA700002A3BC2 /* Cupom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402CB219FA700002A3BC2 /* Cupom.swift */; };
+		18D402CE219FA89D002A3BC2 /* ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402CD219FA89D002A3BC2 /* ImageAPI.swift */; };
 		77EFDCCACFEECBF060213FA6 /* Pods_VSEventsProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFFC2D0718B90B4D669D054A /* Pods_VSEventsProjectTests.framework */; };
 		E9E05BF83A8998A19E1FEA91 /* Pods_VSEventsProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98DDF11B927AB6609B23927C /* Pods_VSEventsProject.framework */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,7 @@
 		18D402C7219F9A72002A3BC2 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		18D402C9219FA6E8002A3BC2 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		18D402CB219FA700002A3BC2 /* Cupom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cupom.swift; sourceTree = "<group>"; };
+		18D402CD219FA89D002A3BC2 /* ImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPI.swift; sourceTree = "<group>"; };
 		23CA9628188772BAEC29AD9B /* Pods-VSEventsProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VSEventsProjectTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VSEventsProjectTests/Pods-VSEventsProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		2FEB70A15CB63A9E7FFEDF82 /* Pods-VSEventsProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VSEventsProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VSEventsProject/Pods-VSEventsProject.debug.xcconfig"; sourceTree = "<group>"; };
 		3C7CCD94C222F17A6EC34739 /* Pods-VSEventsProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VSEventsProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-VSEventsProject/Pods-VSEventsProject.release.xcconfig"; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				18D402C4219F8E45002A3BC2 /* EventAPI.swift */,
+				18D402CD219FA89D002A3BC2 /* ImageAPI.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				18D402C5219F8E45002A3BC2 /* EventAPI.swift in Sources */,
 				18D402CC219FA700002A3BC2 /* Cupom.swift in Sources */,
 				18D402B0219F7ED5002A3BC2 /* ShowEventsPresenter.swift in Sources */,
+				18D402CE219FA89D002A3BC2 /* ImageAPI.swift in Sources */,
 				18D402BF219F7F96002A3BC2 /* ShowDetailsRouter.swift in Sources */,
 				18D402C8219F9A72002A3BC2 /* Event.swift in Sources */,
 				18D402B3219F7ED5002A3BC2 /* ShowEventsModels.swift in Sources */,
