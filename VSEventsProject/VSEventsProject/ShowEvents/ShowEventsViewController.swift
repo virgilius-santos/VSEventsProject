@@ -56,8 +56,8 @@ class ShowEventsViewController: UIViewController, ShowEventsDisplayLogic {
     }
 
     func setupTableView() {
-
-        tableView.register(EventTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        let nib = UINib(nibName: cellIdentifier, bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: cellIdentifier)
 
         tableView.rx
             .modelSelected(EventCellViewModel.self)

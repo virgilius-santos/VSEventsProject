@@ -22,7 +22,7 @@ class ShowEventsPresenter {
 
     weak var viewController: ShowEventsDisplayLogic? {
         didSet {
-            viewController?.title = "Events List"
+            viewController?.title = "Lista de Eventos"
         }
     }
     
