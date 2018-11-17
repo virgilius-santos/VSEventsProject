@@ -144,21 +144,13 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VrS-uJ-KWV" userLabel="MapView">
                                     <rect key="frame" x="8" y="522.5" width="359" height="219.5"/>
                                     <subviews>
-                                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gGi-8H-tYi">
+                                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGi-8H-tYi">
                                             <rect key="frame" x="0.0" y="0.0" width="359" height="219.5"/>
                                         </mapView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Localização Indisponivel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmT-SR-mfJ">
-                                            <rect key="frame" x="87" y="99.5" width="185" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="gGi-8H-tYi" firstAttribute="leading" secondItem="VrS-uJ-KWV" secondAttribute="leading" id="05a-yC-Uhf"/>
-                                        <constraint firstItem="fmT-SR-mfJ" firstAttribute="centerY" secondItem="VrS-uJ-KWV" secondAttribute="centerY" id="P16-tU-t4v"/>
-                                        <constraint firstItem="fmT-SR-mfJ" firstAttribute="centerX" secondItem="VrS-uJ-KWV" secondAttribute="centerX" id="Si6-77-yoO"/>
                                         <constraint firstItem="gGi-8H-tYi" firstAttribute="top" secondItem="VrS-uJ-KWV" secondAttribute="top" id="e1D-aY-7yz"/>
                                         <constraint firstAttribute="trailing" secondItem="gGi-8H-tYi" secondAttribute="trailing" id="wPK-K9-2by"/>
                                         <constraint firstAttribute="bottom" secondItem="gGi-8H-tYi" secondAttribute="bottom" id="wwN-ZD-Ip9"/>

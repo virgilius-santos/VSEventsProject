@@ -18,6 +18,9 @@ PODS:
     - Differentiator (~> 3.0)
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
+  - RxMapKit (1.2.0):
+    - RxCocoa (~> 4.2)
+    - RxSwift (~> 4.2)
   - RxSwift (4.4.0):
     - RxAtomic (~> 4.4)
   - RxSwiftExt (3.4.0):
@@ -39,6 +42,7 @@ DEPENDENCIES:
   - RxBlocking (~> 4.0)
   - RxCocoa (~> 4.0)
   - RxDataSources
+  - RxMapKit
   - RxSwift (~> 4.0)
   - RxSwiftExt
   - RxTest (~> 4.0)
@@ -53,6 +57,7 @@ SPEC REPOS:
     - RxBlocking
     - RxCocoa
     - RxDataSources
+    - RxMapKit
     - RxSwift
     - RxSwiftExt
     - RxTest
@@ -66,10 +71,11 @@ SPEC CHECKSUMS:
   RxBlocking: 138ad53217434444d6eeeb4fb406a45431d92e31
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
+  RxMapKit: 5c8cc66f231fc8b75a2e58eb37f6c6420787585b
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
   RxSwiftExt: 01f8ecbeeb355698e9c75365ebe908b00dacf45d
   RxTest: 19d03286bdc0a3aaea5d61d4cde31fdf4bb8a5ba
 
-PODFILE CHECKSUM: 63299e560d1b5ba24054074d01539ebd7f881e8a
+PODFILE CHECKSUM: 1d00db3d80b36d242a340211280cf24d82403d61
 
 COCOAPODS: 1.5.3

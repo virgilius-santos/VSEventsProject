@@ -19,7 +19,9 @@ protocol DetailInfo {
     var title: String { get }
     var imageUrl: URL { get }
     var price: Double { get }
+    var region: MKCoordinateRegion { get }
     var coordinate: CLLocationCoordinate2D { get }
+    var annotation: MKAnnotation { get }
     var description: String { get }
     var dateString: String { get }
     var people: [Person] { get }
@@ -33,6 +35,21 @@ extension Event: DetailInfo {
 
     var coordinate: CLLocationCoordinate2D {
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
+
+    var region: MKCoordinateRegion {
+        let regionRadius: CLLocationDistance = 1000
+        let coordinateRegion
+            = MKCoordinateRegion(center: coordinate,
+                                 latitudinalMeters: regionRadius * 2.0,
+                                 longitudinalMeters: regionRadius * 2.0)
+        return coordinateRegion
+    }
+
+    var annotation: MKAnnotation {
+        let anot = MKPointAnnotation()
+        anot.coordinate = coordinate
+        return anot
     }
 }
 

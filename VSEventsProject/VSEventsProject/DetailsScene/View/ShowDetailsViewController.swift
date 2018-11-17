@@ -14,6 +14,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxAlamofire
+import RxMapKit
 import AlamofireImage
 import MapKit
 
@@ -105,6 +106,18 @@ class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic {
             .eventDetail
             .map({$0.dateString})
             .bind(to: dateLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        viewModel
+            .eventDetail
+            .map({$0.region})
+            .bind(to: mapView.rx.region)
+            .disposed(by: disposeBag)
+
+        viewModel
+            .eventDetail
+            .map({[$0.annotation]})
+            .bind(to: mapView.rx.annotationsToShowToAnimate)
             .disposed(by: disposeBag)
 
     }

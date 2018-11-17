@@ -8,6 +8,7 @@ def rx_pods
     pod 'RxAlamofire','~> 4.0'
     pod 'RxDataSources'
     pod 'RxSwiftExt'
+    pod 'RxMapKit'
 end
 
 target 'VSEventsProject' do

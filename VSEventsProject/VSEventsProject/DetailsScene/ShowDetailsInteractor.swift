@@ -25,16 +25,6 @@ class ShowDetailsInteractor: ShowDetailsDataStore {
     var eventAPI: EventAPI?
     var event: Event?
 
-    // MARK: Do something
-
-//    func doSomething(request: ShowDetails.Something.Request)
-//    {
-//        worker = ShowDetailsWorker()
-//        worker?.doSomeWork()
-//
-//        let response = ShowDetails.Something.Response()
-//        presenter?.presentSomething(response: response)
-//    }
 }
 
 extension ShowDetailsInteractor: ShowDetailsBusinessLogic {
