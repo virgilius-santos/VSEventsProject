@@ -13,7 +13,8 @@
 import UIKit
 
 protocol ShowDetailsPresentationLogic {
-    func presentDetail(_ result: Result<Event, Error>)
+    func presentDetail(_ result: Result<Event, SingleButtonAlert>)
+    func presentCheckIn(_ buttonAlert: SingleButtonAlert)
 }
 
 class ShowDetailsPresenter {
@@ -24,15 +25,20 @@ class ShowDetailsPresenter {
 
 extension ShowDetailsPresenter: ShowDetailsPresentationLogic {
 
-    func presentDetail(_ result: Result<Event, Error>) {
+    func presentDetail(_ result: Result<Event, SingleButtonAlert>) {
         switch result {
             
         case .success(let event):
             viewController?.viewModel.event.accept(event)
             break
-        case .error(_):
+        case .error(let error):
+            viewController?.viewModel.onShowError.on(.next(error))
             break
         }
+    }
+
+    func presentCheckIn(_ buttonAlert: SingleButtonAlert) {
+        viewController?.viewModel.onShowError.on(.next(buttonAlert))
     }
 }
 

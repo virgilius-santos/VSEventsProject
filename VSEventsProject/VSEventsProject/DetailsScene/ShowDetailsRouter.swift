@@ -12,8 +12,9 @@
 
 import UIKit
 
-@objc protocol ShowDetailsRoutingLogic {
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
+protocol ShowDetailsRoutingLogic {
+    func sharing()
+    func checkIn()
 }
 
 protocol ShowDetailsDataPassing
@@ -21,7 +22,7 @@ protocol ShowDetailsDataPassing
     var dataStore: ShowDetailsDataStore? { get }
 }
 
-class ShowDetailsRouter: NSObject, ShowDetailsRoutingLogic, ShowDetailsDataPassing
+class ShowDetailsRouter: ShowDetailsDataPassing
 {
     weak var viewController: ShowDetailsViewController?
     var dataStore: ShowDetailsDataStore?
@@ -58,3 +59,17 @@ class ShowDetailsRouter: NSObject, ShowDetailsRoutingLogic, ShowDetailsDataPassi
     //}
 }
 
+extension ShowDetailsRouter: ShowDetailsRoutingLogic {
+
+    func sharing() {
+        let sharingVC = SharingController(viewController: viewController)
+        viewController?.present(sharingVC.activityVC, animated: true)
+
+    }
+
+    func checkIn() {
+        let userController = viewController!.userController
+        viewController!.present(userController.alert, animated: true, completion: nil)
+    }
+
+}

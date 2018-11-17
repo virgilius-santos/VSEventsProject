@@ -12,6 +12,8 @@
 		1801C6B721A04CB10066EC81 /* PersonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1801C6B521A04CB10066EC81 /* PersonCollectionViewCell.xib */; };
 		187E334B21A077A80010CCE1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E334A21A077A80010CCE1 /* User.swift */; };
 		187E334D21A083150010CCE1 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E334C21A083150010CCE1 /* UIViewController.swift */; };
+		187E334F21A089BF0010CCE1 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E334E21A089BF0010CCE1 /* UserController.swift */; };
+		187E335121A08FAB0010CCE1 /* SharingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E335021A08FAB0010CCE1 /* SharingController.swift */; };
 		18D40270219F75B8002A3BC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D4026F219F75B8002A3BC2 /* AppDelegate.swift */; };
 		18D40277219F75BB002A3BC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D40276219F75BB002A3BC2 /* Assets.xcassets */; };
 		18D4027A219F75BB002A3BC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D40278219F75BB002A3BC2 /* LaunchScreen.storyboard */; };
@@ -59,6 +61,8 @@
 		1801C6B521A04CB10066EC81 /* PersonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonCollectionViewCell.xib; sourceTree = "<group>"; };
 		187E334A21A077A80010CCE1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		187E334C21A083150010CCE1 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		187E334E21A089BF0010CCE1 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		187E335021A08FAB0010CCE1 /* SharingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingController.swift; sourceTree = "<group>"; };
 		18D4026C219F75B8002A3BC2 /* VSEventsProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VSEventsProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D4026F219F75B8002A3BC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18D40276219F75BB002A3BC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -136,6 +140,8 @@
 				18D402BB219F7F96002A3BC2 /* ShowDetailsViewController.swift */,
 				1801C6B521A04CB10066EC81 /* PersonCollectionViewCell.xib */,
 				1801C6B421A04CB10066EC81 /* PersonCollectionViewCell.swift */,
+				187E334E21A089BF0010CCE1 /* UserController.swift */,
+				187E335021A08FAB0010CCE1 /* SharingController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -511,6 +517,7 @@
 				18D402BD219F7F96002A3BC2 /* ShowDetailsPresenter.swift in Sources */,
 				18D402DE219FE638002A3BC2 /* SingleButtonAlert.swift in Sources */,
 				18D402C0219F7F96002A3BC2 /* ShowDetailsModels.swift in Sources */,
+				187E334F21A089BF0010CCE1 /* UserController.swift in Sources */,
 				18D40270219F75B8002A3BC2 /* AppDelegate.swift in Sources */,
 				18D402DC219FE12A002A3BC2 /* ShowEventsModels.swift in Sources */,
 				18D402B5219F7ED5002A3BC2 /* ShowEventsInteractor.swift in Sources */,
@@ -518,6 +525,7 @@
 				1801C6B121A04AD70066EC81 /* Date.swift in Sources */,
 				18D402CA219FA6E8002A3BC2 /* Person.swift in Sources */,
 				18D402C2219F7F96002A3BC2 /* ShowDetailsInteractor.swift in Sources */,
+				187E335121A08FAB0010CCE1 /* SharingController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

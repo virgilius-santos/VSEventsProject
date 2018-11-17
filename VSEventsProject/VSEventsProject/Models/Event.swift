@@ -52,7 +52,7 @@ extension Event {
         description = try container.decode(String.self, forKey: .description)
 
         let timeInterval = try container.decode(TimeInterval.self, forKey: .date)
-        date = Date(timeIntervalSince1970: timeInterval)
+        date = Date(timeIntervalSince1970: timeInterval / 1000)
 
         people = try container.decode([Person].self, forKey: .people)
         cupons = try container.decode([Cupom].self, forKey: .cupons)

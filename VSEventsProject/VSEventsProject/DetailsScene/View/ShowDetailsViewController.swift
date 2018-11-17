@@ -34,12 +34,16 @@ class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic, Sing
 
     let cellIdentifier = String(describing: PersonCollectionViewCell.self)
 
+    var userController = UserController()
+
     // MARK: View lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()
         setupCollectionView()
+        setupButtons()
+        setupUserController()
         interactor?.fetchDetail()
     }
 
@@ -120,6 +124,15 @@ class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic, Sing
             .bind(to: mapView.rx.annotationsToShowToAnimate)
             .disposed(by: disposeBag)
 
+        let observable : Observable<SingleButtonAlert> = viewModel.onShowError
+
+        observable
+            .subscribe(onNext: { [weak self] alert in
+
+                self?.presentSingleButtonDialog(alert: alert)
+
+            }).disposed(by: disposeBag)
+
     }
 
     func setupCollectionView() {
@@ -138,10 +151,30 @@ class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic, Sing
         
     }
 
-    func checkin() {
+    func setupButtons() {
+        shareButton
+            .rx
+            .tap
+            .bind { [unowned self] in
+                self.router?.sharing()
+            }.disposed(by: disposeBag)
+
+        checkInButton
+            .rx
+            .tap
+            .bind { [unowned self] in
+                self.userController = UserController()
+                self.setupUserController()
+                self.router?.checkIn()
+        }.disposed(by: disposeBag)
     }
 
-    func share() {
+    func setupUserController() {
+        userController.completion = { [weak self] data in
+            if data != nil {
+                self?.interactor?.postCheckIn(userInfo: data)
+            }
+        }
     }
 
 }

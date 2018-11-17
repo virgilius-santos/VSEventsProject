@@ -100,26 +100,38 @@ class EventAPI {
 
     func checkIn<T: Checkable>(source: T, completion: @escaping (Error?)->()) {
 
-        var dict: [String:Any]
+        var data: Data
 
         do {
 
-            let data = try! JSONEncoder().encode(source)
-            let obj = try JSONSerialization.jsonObject(with: data, options: [])
-            dict = obj as! [String : Any]
+            data = try JSONEncoder().encode(source)
 
         } catch {
             completion(error)
             return
         }
 
-        request(postCheckIngStringURL,
-                method: .post,
-                parameters: dict,
-                encoding: URLEncoding.httpBody
-            ).responseJSON { (response) in
-                completion(response.error)
-        }
+        let url = URL(string: postCheckIngStringURL)
+        var request = URLRequest(url: url!)
+        request.httpMethod = "POST"
+        request.httpBody = data
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+            if error != nil {
+                completion(error)
+                return
+            }
+
+            do {
+                let _ = try JSONSerialization.jsonObject(with: data!, options: [])
+                completion(nil)
+            } catch {
+                completion(error)
+            }
+
+        }.resume()
     }
 
 }

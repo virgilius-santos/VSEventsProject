@@ -14,6 +14,7 @@ import UIKit
 
 protocol ShowDetailsBusinessLogic {
     func fetchDetail()
+    func postCheckIn(userInfo: (String, String)?)
 }
 
 protocol ShowDetailsDataStore {
@@ -32,7 +33,49 @@ extension ShowDetailsInteractor: ShowDetailsBusinessLogic {
         eventAPI = EventAPI()
         eventAPI?.fetch(source: event!) { [weak self] (result: Result<Event, Error>) in
 
-            self?.presenter?.presentDetail(result)
+            switch result {
+
+            case .success(let evt):
+                self?.presenter?.presentDetail(.success(evt))
+
+            case .error(let error):
+                let alert = AlertAction(buttonTitle: "claro", handler: nil)
+                let buttonAlert
+                    = SingleButtonAlert(title: "azul",
+                                        message: error.localizedDescription,
+                                        action: alert)
+                self?.presenter?.presentDetail(.error(buttonAlert))
+            }
+
+        }
+    }
+
+    func postCheckIn(userInfo: (String, String)?) {
+        eventAPI = EventAPI()
+
+        let (name,email) = userInfo!
+        let user = User(name: name, email: email, eventId: event!.id)
+
+        eventAPI?.checkIn(source: user) {(error) in
+            if error == nil {
+                let alert = AlertAction(buttonTitle: "Ok", handler: nil)
+                let buttonAlert
+                    = SingleButtonAlert(title: "Check In",
+                                        message: "Sucesso!",
+                                        action: alert)
+                DispatchQueue.main.async {
+                    self.presenter?.presentCheckIn(buttonAlert)
+                }
+            } else {
+                let alert = AlertAction(buttonTitle: "Ok", handler: nil)
+                let buttonAlert
+                    = SingleButtonAlert(title: "Check In",
+                                        message: "Houve uma falha, tente novamente mais tarte.",
+                                        action: alert)
+                DispatchQueue.main.async {
+                    self.presenter?.presentCheckIn(buttonAlert)
+                }
+            }
         }
     }
 }
