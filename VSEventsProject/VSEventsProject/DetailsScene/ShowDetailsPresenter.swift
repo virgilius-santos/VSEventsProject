@@ -28,8 +28,8 @@ extension ShowDetailsPresenter: ShowDetailsPresentationLogic {
         switch result {
             
         case .success(let event):
-            viewController?.displayDetail(viewModel: event)
-
+            viewController?.viewModel.event.accept(event)
+            break
         case .error(_):
             break
         }
