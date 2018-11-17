@@ -16,10 +16,10 @@ import RxSwiftExt
 
 protocol ShowEventsDisplayLogic: class {
     var title: String? { get set }
-    func displayEvents(viewModel: [EventCellViewModel])
+    var viewModel: EventsTableViewViewModel { get }
 }
 
-class ShowEventsViewController: UIViewController {
+class ShowEventsViewController: UIViewController, ShowEventsDisplayLogic {
 
     var viewModel = EventsTableViewViewModel()
 
@@ -42,10 +42,6 @@ class ShowEventsViewController: UIViewController {
     }
 
     @IBOutlet weak var tableView: UITableView!
-
-    func fetchEvents() {
-        interactor?.fetchEvents()
-    }
 
     func bindViewModel() {
 
@@ -70,15 +66,16 @@ class ShowEventsViewController: UIViewController {
             })
             .disposed(by: disposeBag)
 
-    }
-}
+        tableView.rx.itemSelected
+            .subscribe(onNext: { [weak self] indexPath in
+                self?.tableView.deselectRow(at: indexPath, animated: false)
+            }).disposed(by: disposeBag)
 
-extension ShowEventsViewController: ShowEventsDisplayLogic {
-
-    func displayEvents(viewModel: [EventCellViewModel]) {
-        self.viewModel.cells.accept(viewModel)
     }
 
+    func fetchEvents() {
+        interactor?.fetchEvents()
+    }
 }
 
 

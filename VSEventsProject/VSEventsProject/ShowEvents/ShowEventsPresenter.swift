@@ -11,6 +11,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 protocol ShowEventsPresentationLogic {
     func displayEvents(result: Result<[Event], Error>)
@@ -31,7 +33,7 @@ extension ShowEventsPresenter: ShowEventsPresentationLogic {
     func displayEvents(result: Result<[Event], Error>) {
         switch result {
         case .success(let evts):
-            viewController?.displayEvents(viewModel: evts)
+            viewController?.viewModel.cells.accept(evts)
         case .error(_):
             break
         }
