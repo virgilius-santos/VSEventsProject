@@ -23,6 +23,10 @@
 		18D402C0219F7F96002A3BC2 /* ShowDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402BA219F7F96002A3BC2 /* ShowDetailsModels.swift */; };
 		18D402C1219F7F96002A3BC2 /* ShowDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402BB219F7F96002A3BC2 /* ShowDetailsViewController.swift */; };
 		18D402C2219F7F96002A3BC2 /* ShowDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402BC219F7F96002A3BC2 /* ShowDetailsInteractor.swift */; };
+		18D402C5219F8E45002A3BC2 /* EventAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402C4219F8E45002A3BC2 /* EventAPI.swift */; };
+		18D402C8219F9A72002A3BC2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402C7219F9A72002A3BC2 /* Event.swift */; };
+		18D402CA219FA6E8002A3BC2 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402C9219FA6E8002A3BC2 /* Person.swift */; };
+		18D402CC219FA700002A3BC2 /* Cupom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402CB219FA700002A3BC2 /* Cupom.swift */; };
 		77EFDCCACFEECBF060213FA6 /* Pods_VSEventsProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFFC2D0718B90B4D669D054A /* Pods_VSEventsProjectTests.framework */; };
 		E9E05BF83A8998A19E1FEA91 /* Pods_VSEventsProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98DDF11B927AB6609B23927C /* Pods_VSEventsProject.framework */; };
 /* End PBXBuildFile section */
@@ -58,6 +62,10 @@
 		18D402BA219F7F96002A3BC2 /* ShowDetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsModels.swift; sourceTree = "<group>"; };
 		18D402BB219F7F96002A3BC2 /* ShowDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsViewController.swift; sourceTree = "<group>"; };
 		18D402BC219F7F96002A3BC2 /* ShowDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsInteractor.swift; sourceTree = "<group>"; };
+		18D402C4219F8E45002A3BC2 /* EventAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAPI.swift; sourceTree = "<group>"; };
+		18D402C7219F9A72002A3BC2 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		18D402C9219FA6E8002A3BC2 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		18D402CB219FA700002A3BC2 /* Cupom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cupom.swift; sourceTree = "<group>"; };
 		23CA9628188772BAEC29AD9B /* Pods-VSEventsProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VSEventsProjectTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VSEventsProjectTests/Pods-VSEventsProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		2FEB70A15CB63A9E7FFEDF82 /* Pods-VSEventsProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VSEventsProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VSEventsProject/Pods-VSEventsProject.debug.xcconfig"; sourceTree = "<group>"; };
 		3C7CCD94C222F17A6EC34739 /* Pods-VSEventsProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VSEventsProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-VSEventsProject/Pods-VSEventsProject.release.xcconfig"; sourceTree = "<group>"; };
@@ -109,6 +117,8 @@
 		18D4026E219F75B8002A3BC2 /* VSEventsProject */ = {
 			isa = PBXGroup;
 			children = (
+				18D402C6219F9A60002A3BC2 /* Models */,
+				18D402C3219F8E2C002A3BC2 /* Services */,
 				18D402B6219F7F76002A3BC2 /* ShowDetails */,
 				18D4029D219F7E73002A3BC2 /* ShowEvents */,
 				18D4028F219F7BF6002A3BC2 /* SupportFiles */,
@@ -160,6 +170,24 @@
 				18D402BC219F7F96002A3BC2 /* ShowDetailsInteractor.swift */,
 			);
 			path = ShowDetails;
+			sourceTree = "<group>";
+		};
+		18D402C3219F8E2C002A3BC2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				18D402C4219F8E45002A3BC2 /* EventAPI.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		18D402C6219F9A60002A3BC2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				18D402C7219F9A72002A3BC2 /* Event.swift */,
+				18D402C9219FA6E8002A3BC2 /* Person.swift */,
+				18D402CB219FA700002A3BC2 /* Cupom.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		4433BC3504A72814CD0B8C15 /* Frameworks */ = {
@@ -313,6 +341,9 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-VSEventsProject/Pods-VSEventsProject-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -321,6 +352,9 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -388,8 +422,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				18D402B2219F7ED5002A3BC2 /* ShowEventsRouter.swift in Sources */,
+				18D402C5219F8E45002A3BC2 /* EventAPI.swift in Sources */,
+				18D402CC219FA700002A3BC2 /* Cupom.swift in Sources */,
 				18D402B0219F7ED5002A3BC2 /* ShowEventsPresenter.swift in Sources */,
 				18D402BF219F7F96002A3BC2 /* ShowDetailsRouter.swift in Sources */,
+				18D402C8219F9A72002A3BC2 /* Event.swift in Sources */,
 				18D402B3219F7ED5002A3BC2 /* ShowEventsModels.swift in Sources */,
 				18D402C1219F7F96002A3BC2 /* ShowDetailsViewController.swift in Sources */,
 				18D402B1219F7ED5002A3BC2 /* ShowEventsWorker.swift in Sources */,
@@ -399,6 +436,7 @@
 				18D402BE219F7F96002A3BC2 /* ShowDetailsWorker.swift in Sources */,
 				18D40270219F75B8002A3BC2 /* AppDelegate.swift in Sources */,
 				18D402B5219F7ED5002A3BC2 /* ShowEventsInteractor.swift in Sources */,
+				18D402CA219FA6E8002A3BC2 /* Person.swift in Sources */,
 				18D402C2219F7F96002A3BC2 /* ShowDetailsInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
