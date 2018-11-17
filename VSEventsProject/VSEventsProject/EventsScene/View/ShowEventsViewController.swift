@@ -19,7 +19,7 @@ protocol ShowEventsDisplayLogic: class {
     var viewModel: EventsTableViewViewModel { get }
 }
 
-class ShowEventsViewController: UIViewController, ShowEventsDisplayLogic {
+class ShowEventsViewController: UIViewController, ShowEventsDisplayLogic, SingleButtonDialogPresenter {
 
     var viewModel = EventsTableViewViewModel()
 
@@ -52,6 +52,16 @@ class ShowEventsViewController: UIViewController, ShowEventsDisplayLogic {
                 cell.viewModel = element
                 
             }.disposed(by: disposeBag)
+
+        let observable : Observable<SingleButtonAlert> = viewModel.onShowError
+
+        observable
+            .subscribe(onNext: { [weak self] alert in
+
+                self?.presentSingleButtonDialog(alert: alert)
+                
+            }).disposed(by: disposeBag)
+
 
     }
 

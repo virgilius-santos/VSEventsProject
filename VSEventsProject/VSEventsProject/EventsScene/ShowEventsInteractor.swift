@@ -36,7 +36,19 @@ extension ShowEventsInteractor: ShowEventsBusinessLogic {
         eventAPI = EventAPI()
         eventAPI?.fetch { [weak self] (result: Result<[Event], Error>) in
 
-            self?.presenter?.displayEvents(result: result)
+            switch result {
+            case .success(let evt):
+                self?.presenter?.displayEvents(result: .success(evt))
+
+            case .error(let error):
+                print(error)
+                let alert = AlertAction(buttonTitle: "OK", handler: nil)
+                let buttonAlert
+                    = SingleButtonAlert(title: "Erro Na Busca dos Dados",
+                                        message: "Tente novamente mais tarde",
+                                        action: alert)
+                self?.presenter?.displayEvents(result: .error(buttonAlert))
+            }
         }
     }
 }

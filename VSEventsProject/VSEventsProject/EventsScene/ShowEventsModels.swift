@@ -33,6 +33,8 @@ class EventsTableViewViewModel {
     }
     let cells = BehaviorRelay<[EventCellViewModel]>(value: [])
 
+    let onShowError = PublishSubject<SingleButtonAlert>()
+    
     let disposeBag = DisposeBag()
 
 }
