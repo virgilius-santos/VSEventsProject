@@ -11,79 +11,74 @@
 //
 
 import UIKit
+import RxSwift
+import RxSwiftExt
 
-protocol ShowEventsDisplayLogic: class
-{
-  func displaySomething(viewModel: ShowEvents.Something.ViewModel)
+protocol ShowEventsDisplayLogic: class {
+    var title: String? { get set }
+    func displayEvents(viewModel: [EventCellViewModel])
 }
 
-class ShowEventsViewController: UIViewController, ShowEventsDisplayLogic
-{
-  var interactor: ShowEventsBusinessLogic?
-  var router: (NSObjectProtocol & ShowEventsRoutingLogic & ShowEventsDataPassing)?
+class ShowEventsViewController: UIViewController {
 
-  // MARK: Object lifecycle
-  
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-  {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder)
-  {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
-  // MARK: Setup
-  
-  private func setup()
-  {
-    let viewController = self
-    let interactor = ShowEventsInteractor()
-    let presenter = ShowEventsPresenter()
-    let router = ShowEventsRouter()
-    viewController.interactor = interactor
-    viewController.router = router
-    interactor.presenter = presenter
-    presenter.viewController = viewController
-    router.viewController = viewController
-    router.dataStore = interactor
-  }
-  
-  // MARK: Routing
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-  {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
+    var viewModel = EventsTableViewViewModel()
+
+    var interactor: ShowEventsBusinessLogic?
+
+    var router: (ShowEventsRoutingLogic & ShowEventsDataPassing)?
+
+    var disposeBag = DisposeBag()
+
+    let cellIdentifier = String(describing: EventTableViewCell.self)
+
+    // MARK: View lifecycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        bindViewModel()
+        setupTableView()
+        fetchEvents()
     }
-  }
-  
-  // MARK: View lifecycle
-  
-  override func viewDidLoad()
-  {
-    super.viewDidLoad()
-    doSomething()
-  }
-  
-  // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doSomething()
-  {
-    let request = ShowEvents.Something.Request()
-    interactor?.doSomething(request: request)
-  }
-  
-  func displaySomething(viewModel: ShowEvents.Something.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
-  }
+
+    @IBOutlet weak var tableView: UITableView!
+
+    func fetchEvents() {
+        interactor?.fetchEvents()
+    }
+
+    func bindViewModel() {
+
+        viewModel
+            .eventCells
+            .bind(to: self.tableView.rx.items(cellIdentifier: cellIdentifier, cellType: EventTableViewCell.self)) { (row, element, cell) in
+
+                cell.viewModel = element
+                
+            }.disposed(by: disposeBag)
+
+    }
+
+    func setupTableView() {
+
+        tableView.register(EventTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+
+        tableView.rx
+            .modelSelected(EventCellViewModel.self)
+            .subscribe(onNext:  { [weak self] value in
+                self?.router?.routeToDetail(value)
+            })
+            .disposed(by: disposeBag)
+
+    }
 }
+
+extension ShowEventsViewController: ShowEventsDisplayLogic {
+
+    func displayEvents(viewModel: [EventCellViewModel]) {
+        self.viewModel.cells.accept(viewModel)
+    }
+
+}
+
+

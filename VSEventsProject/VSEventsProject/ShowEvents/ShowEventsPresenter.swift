@@ -12,20 +12,30 @@
 
 import UIKit
 
-protocol ShowEventsPresentationLogic
-{
-  func presentSomething(response: ShowEvents.Something.Response)
+protocol ShowEventsPresentationLogic {
+    func displayEvents(result: Result<[Event], Error>)
 }
 
-class ShowEventsPresenter: ShowEventsPresentationLogic
-{
-  weak var viewController: ShowEventsDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: ShowEvents.Something.Response)
-  {
-    let viewModel = ShowEvents.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+class ShowEventsPresenter {
+
+    weak var viewController: ShowEventsDisplayLogic? {
+        didSet {
+            viewController?.title = "Events List"
+        }
+    }
+    
 }
+
+extension ShowEventsPresenter: ShowEventsPresentationLogic {
+
+    func displayEvents(result: Result<[Event], Error>) {
+        switch result {
+        case .success(let evts):
+            viewController?.displayEvents(viewModel: evts)
+        case .error(_):
+            break
+        }
+    }
+
+}
+

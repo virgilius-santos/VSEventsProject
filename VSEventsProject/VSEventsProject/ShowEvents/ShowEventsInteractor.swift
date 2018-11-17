@@ -12,30 +12,32 @@
 
 import UIKit
 
-protocol ShowEventsBusinessLogic
-{
-  func doSomething(request: ShowEvents.Something.Request)
+protocol ShowEventsBusinessLogic {
+    func fetchEvents()
 }
 
-protocol ShowEventsDataStore
-{
-  //var name: String { get set }
+protocol ShowEventsDataStore {
+    //var name: String { get set }
 }
 
-class ShowEventsInteractor: ShowEventsBusinessLogic, ShowEventsDataStore
-{
-  var presenter: ShowEventsPresentationLogic?
-  var worker: ShowEventsWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: ShowEvents.Something.Request)
-  {
-    worker = ShowEventsWorker()
-    worker?.doSomeWork()
-    
-    let response = ShowEvents.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+class ShowEventsInteractor: ShowEventsDataStore {
+
+    var presenter: ShowEventsPresentationLogic?
+    var eventAPI: EventAPI?
+    //var name: String = ""
+
 }
+
+extension ShowEventsInteractor: ShowEventsBusinessLogic {
+
+    // poderia ser usado um worker no lugar de chamar a API
+    // pelo tamanho da classe decidi simplificar neste ponto
+    func fetchEvents() {
+        eventAPI = EventAPI()
+        eventAPI?.fetch { [weak self] (result: Result<[Event], Error>) in
+
+            self?.presenter?.displayEvents(result: result)
+        }
+    }
+}
+

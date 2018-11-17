@@ -6,6 +6,8 @@ def rx_pods
     pod 'RxSwift',    '~> 4.0'
     pod 'RxCocoa',    '~> 4.0'
     pod 'RxAlamofire','~> 4.0'
+    pod 'RxDataSources'
+    pod 'RxSwiftExt'
 end
 
 target 'VSEventsProject' do

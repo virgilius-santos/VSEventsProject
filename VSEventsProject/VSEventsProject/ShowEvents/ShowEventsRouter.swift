@@ -12,49 +12,53 @@
 
 import UIKit
 
-@objc protocol ShowEventsRoutingLogic
-{
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+protocol ShowEventsRoutingLogic {
+    func routeToDetail(_ viewModel: EventCellViewModel)
 }
 
-protocol ShowEventsDataPassing
-{
-  var dataStore: ShowEventsDataStore? { get }
+protocol ShowEventsDataPassing {
+    var dataStore: ShowEventsDataStore? { get }
 }
 
-class ShowEventsRouter: NSObject, ShowEventsRoutingLogic, ShowEventsDataPassing
-{
-  weak var viewController: ShowEventsViewController?
-  var dataStore: ShowEventsDataStore?
-  
-  // MARK: Routing
-  
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
+class ShowEventsRouter: ShowEventsDataPassing {
+    weak var viewController: ShowEventsViewController?
+    var dataStore: ShowEventsDataStore?
 
-  // MARK: Navigation
-  
-  //func navigateToSomewhere(source: ShowEventsViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
-  
-  // MARK: Passing data
-  
-  //func passDataToSomewhere(source: ShowEventsDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+    // MARK: Routing
+
+    //func routeToSomewhere(segue: UIStoryboardSegue?)
+    //{
+    //  if let segue = segue {
+    //    let destinationVC = segue.destination as! SomewhereViewController
+    //    var destinationDS = destinationVC.router!.dataStore!
+    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
+    //  } else {
+    //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
+    //    var destinationDS = destinationVC.router!.dataStore!
+    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
+    //    navigateToSomewhere(source: viewController!, destination: destinationVC)
+    //  }
+    //}
+
+    // MARK: Navigation
+
+    //func navigateToSomewhere(source: ShowEventsViewController, destination: SomewhereViewController)
+    //{
+    //  source.show(destination, sender: nil)
+    //}
+
+    // MARK: Passing data
+
+    //func passDataToSomewhere(source: ShowEventsDataStore, destination: inout SomewhereDataStore)
+    //{
+    //  destination.name = source.name
+    //}
 }
+
+extension ShowEventsRouter: ShowEventsRoutingLogic {
+    func routeToDetail(_ viewModel: EventCellViewModel) {
+        
+    }
+}
+
