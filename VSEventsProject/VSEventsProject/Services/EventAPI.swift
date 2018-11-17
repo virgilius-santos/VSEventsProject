@@ -20,12 +20,23 @@ protocol Identifiable {
     var id: String { get }
 }
 
+protocol Checkable: Encodable {
+    var eventId: String { get }
+    var name: String { get }
+    var email: String { get }
+}
+
 class EventAPI {
-    let sourceStringURL = "http://5b840ba5db24a100142dcd8c.mockapi.io/api/events"
+    let getEventStringURL
+        = "http://5b840ba5db24a100142dcd8c.mockapi.io/api/events"
+
+    let postCheckIngStringURL
+        = "http://5b840ba5db24a100142dcd8c.mockapi.io/api/checkin"
+
     let disposeBag = DisposeBag()
 
     func fetch<T: Decodable>(completion: @escaping (Result<[T], Error>)->()) {
-        request(.get, sourceStringURL)
+        request(.get, getEventStringURL)
             .flatMap { request in
                 return request.validate(statusCode: 200..<300)
                     .rx.data()
@@ -52,8 +63,16 @@ class EventAPI {
 
     func fetch<T: Decodable>(source: Identifiable, completion: @escaping (Result<T, Error>)->()) {
 
-        var url = try! sourceStringURL.asURL()
-        url.appendPathComponent(source.id)
+        var url: URL
+
+        do {
+            url = try getEventStringURL.asURL()
+            url.appendPathComponent(source.id)
+        } catch {
+            completion(.error(error))
+            return
+        }
+
         request(.get, url)
             .flatMap { request in
                 return request.validate(statusCode: 200..<300)
@@ -79,5 +98,28 @@ class EventAPI {
             .disposed(by: disposeBag)
     }
 
+    func checkIn<T: Checkable>(source: T, completion: @escaping (Error?)->()) {
+
+        var dict: [String:Any]
+
+        do {
+
+            let data = try! JSONEncoder().encode(source)
+            let obj = try JSONSerialization.jsonObject(with: data, options: [])
+            dict = obj as! [String : Any]
+
+        } catch {
+            completion(error)
+            return
+        }
+
+        request(postCheckIngStringURL,
+                method: .post,
+                parameters: dict,
+                encoding: URLEncoding.httpBody
+            ).responseJSON { (response) in
+                completion(response.error)
+        }
+    }
 
 }

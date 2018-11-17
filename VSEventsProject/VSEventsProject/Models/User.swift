@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct User: Encodable {
+struct User: Checkable {
     var name: String
     var email: String
     var eventId: String
