@@ -12,6 +12,7 @@
 		1801C6B721A04CB10066EC81 /* PersonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1801C6B521A04CB10066EC81 /* PersonCollectionViewCell.xib */; };
 		1832E71D21A3B24E00746AF2 /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832E71C21A3B24E00746AF2 /* Codable.swift */; };
 		1832E71F21A3BBD200746AF2 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832E71E21A3BBD200746AF2 /* String.swift */; };
+		1832E72221A3C49E00746AF2 /* ShowEventsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832E72121A3C49E00746AF2 /* ShowEventsInteractorTests.swift */; };
 		187E334B21A077A80010CCE1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E334A21A077A80010CCE1 /* User.swift */; };
 		187E334D21A083150010CCE1 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E334C21A083150010CCE1 /* UIViewController.swift */; };
 		187E334F21A089BF0010CCE1 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E334E21A089BF0010CCE1 /* UserController.swift */; };
@@ -19,7 +20,6 @@
 		18D40270219F75B8002A3BC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D4026F219F75B8002A3BC2 /* AppDelegate.swift */; };
 		18D40277219F75BB002A3BC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D40276219F75BB002A3BC2 /* Assets.xcassets */; };
 		18D4027A219F75BB002A3BC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D40278219F75BB002A3BC2 /* LaunchScreen.storyboard */; };
-		18D40285219F75BC002A3BC2 /* VSEventsProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D40284219F75BC002A3BC2 /* VSEventsProjectTests.swift */; };
 		18D402B0219F7ED5002A3BC2 /* ShowEventsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402AA219F7ED5002A3BC2 /* ShowEventsPresenter.swift */; };
 		18D402B2219F7ED5002A3BC2 /* ShowEventsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402AC219F7ED5002A3BC2 /* ShowEventsRouter.swift */; };
 		18D402B5219F7ED5002A3BC2 /* ShowEventsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402AF219F7ED5002A3BC2 /* ShowEventsInteractor.swift */; };
@@ -63,6 +63,7 @@
 		1801C6B521A04CB10066EC81 /* PersonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonCollectionViewCell.xib; sourceTree = "<group>"; };
 		1832E71C21A3B24E00746AF2 /* Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
 		1832E71E21A3BBD200746AF2 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		1832E72121A3C49E00746AF2 /* ShowEventsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsInteractorTests.swift; sourceTree = "<group>"; };
 		187E334A21A077A80010CCE1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		187E334C21A083150010CCE1 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		187E334E21A089BF0010CCE1 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
@@ -73,7 +74,6 @@
 		18D40279219F75BB002A3BC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18D4027B219F75BB002A3BC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18D40280219F75BC002A3BC2 /* VSEventsProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VSEventsProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		18D40284219F75BC002A3BC2 /* VSEventsProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VSEventsProjectTests.swift; sourceTree = "<group>"; };
 		18D40286219F75BC002A3BC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18D402AA219F7ED5002A3BC2 /* ShowEventsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsPresenter.swift; sourceTree = "<group>"; };
 		18D402AC219F7ED5002A3BC2 /* ShowEventsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsRouter.swift; sourceTree = "<group>"; };
@@ -186,8 +186,8 @@
 		18D40283219F75BC002A3BC2 /* VSEventsProjectTests */ = {
 			isa = PBXGroup;
 			children = (
-				18D40284219F75BC002A3BC2 /* VSEventsProjectTests.swift */,
 				18D40286219F75BC002A3BC2 /* Info.plist */,
+				1832E72121A3C49E00746AF2 /* ShowEventsInteractorTests.swift */,
 			);
 			path = VSEventsProjectTests;
 			sourceTree = "<group>";
@@ -294,7 +294,6 @@
 				18D40269219F75B8002A3BC2 /* Frameworks */,
 				18D4026A219F75B8002A3BC2 /* Resources */,
 				26E6693ACA078B70DDEF58E3 /* [CP] Embed Pods Frameworks */,
-				1832E72021A3C0DB00746AF2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -408,23 +407,6 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
-		};
-		1832E72021A3C0DB00746AF2 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		26E6693ACA078B70DDEF58E3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -563,7 +545,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18D40285219F75BC002A3BC2 /* VSEventsProjectTests.swift in Sources */,
+				1832E72221A3C49E00746AF2 /* ShowEventsInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
