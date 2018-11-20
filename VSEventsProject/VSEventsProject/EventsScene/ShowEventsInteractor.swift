@@ -33,7 +33,7 @@ extension ShowEventsInteractor: ShowEventsBusinessLogic {
     // poderia ser usado um worker no lugar de chamar a API
     // pelo tamanho da classe decidi simplificar neste ponto
     func fetchEvents() {
-        eventAPI = EventAPI()
+        
         eventAPI?.fetch { [weak self] (result: Result<[Event], Error>) in
 
             switch result {

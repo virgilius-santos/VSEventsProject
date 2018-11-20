@@ -22,6 +22,7 @@ class ShowDetailsConfigurator {
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter
+        interactor.eventAPI = EventAPI()
         presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor
