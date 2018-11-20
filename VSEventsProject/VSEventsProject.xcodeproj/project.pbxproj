@@ -10,6 +10,7 @@
 		1801C6B121A04AD70066EC81 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1801C6B021A04AD70066EC81 /* Date.swift */; };
 		1801C6B621A04CB10066EC81 /* PersonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1801C6B421A04CB10066EC81 /* PersonCollectionViewCell.swift */; };
 		1801C6B721A04CB10066EC81 /* PersonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1801C6B521A04CB10066EC81 /* PersonCollectionViewCell.xib */; };
+		1832E71D21A3B24E00746AF2 /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832E71C21A3B24E00746AF2 /* Codable.swift */; };
 		187E334B21A077A80010CCE1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E334A21A077A80010CCE1 /* User.swift */; };
 		187E334D21A083150010CCE1 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E334C21A083150010CCE1 /* UIViewController.swift */; };
 		187E334F21A089BF0010CCE1 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E334E21A089BF0010CCE1 /* UserController.swift */; };
@@ -30,7 +31,7 @@
 		18D402C8219F9A72002A3BC2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402C7219F9A72002A3BC2 /* Event.swift */; };
 		18D402CA219FA6E8002A3BC2 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402C9219FA6E8002A3BC2 /* Person.swift */; };
 		18D402CC219FA700002A3BC2 /* Cupom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402CB219FA700002A3BC2 /* Cupom.swift */; };
-		18D402CE219FA89D002A3BC2 /* ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402CD219FA89D002A3BC2 /* ImageAPI.swift */; };
+		18D402CE219FA89D002A3BC2 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402CD219FA89D002A3BC2 /* UIImageView.swift */; };
 		18D402D2219FB34B002A3BC2 /* ShowEventsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402D1219FB34B002A3BC2 /* ShowEventsConfigurator.swift */; };
 		18D402D9219FBB4A002A3BC2 /* ShowEventsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D402D7219FBB4A002A3BC2 /* ShowEventsViewController.xib */; };
 		18D402DA219FBB4A002A3BC2 /* ShowEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402D8219FBB4A002A3BC2 /* ShowEventsViewController.swift */; };
@@ -59,6 +60,7 @@
 		1801C6B021A04AD70066EC81 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		1801C6B421A04CB10066EC81 /* PersonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCollectionViewCell.swift; sourceTree = "<group>"; };
 		1801C6B521A04CB10066EC81 /* PersonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonCollectionViewCell.xib; sourceTree = "<group>"; };
+		1832E71C21A3B24E00746AF2 /* Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
 		187E334A21A077A80010CCE1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		187E334C21A083150010CCE1 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		187E334E21A089BF0010CCE1 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
@@ -83,7 +85,7 @@
 		18D402C7219F9A72002A3BC2 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		18D402C9219FA6E8002A3BC2 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		18D402CB219FA700002A3BC2 /* Cupom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cupom.swift; sourceTree = "<group>"; };
-		18D402CD219FA89D002A3BC2 /* ImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPI.swift; sourceTree = "<group>"; };
+		18D402CD219FA89D002A3BC2 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		18D402D1219FB34B002A3BC2 /* ShowEventsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsConfigurator.swift; sourceTree = "<group>"; };
 		18D402D7219FBB4A002A3BC2 /* ShowEventsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowEventsViewController.xib; sourceTree = "<group>"; };
 		18D402D8219FBB4A002A3BC2 /* ShowEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowEventsViewController.swift; sourceTree = "<group>"; };
@@ -229,7 +231,6 @@
 			isa = PBXGroup;
 			children = (
 				18D402C4219F8E45002A3BC2 /* EventAPI.swift */,
-				18D402CD219FA89D002A3BC2 /* ImageAPI.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -249,9 +250,11 @@
 		18D402E721A02BC3002A3BC2 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				18D402E821A02BD4002A3BC2 /* UIView.swift */,
 				1801C6B021A04AD70066EC81 /* Date.swift */,
+				18D402CD219FA89D002A3BC2 /* UIImageView.swift */,
+				18D402E821A02BD4002A3BC2 /* UIView.swift */,
 				187E334C21A083150010CCE1 /* UIViewController.swift */,
+				1832E71C21A3B24E00746AF2 /* Codable.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -505,7 +508,7 @@
 				1801C6B621A04CB10066EC81 /* PersonCollectionViewCell.swift in Sources */,
 				187E334D21A083150010CCE1 /* UIViewController.swift in Sources */,
 				18D402B0219F7ED5002A3BC2 /* ShowEventsPresenter.swift in Sources */,
-				18D402CE219FA89D002A3BC2 /* ImageAPI.swift in Sources */,
+				18D402CE219FA89D002A3BC2 /* UIImageView.swift in Sources */,
 				18D402BF219F7F96002A3BC2 /* ShowDetailsRouter.swift in Sources */,
 				18D402E221A000D8002A3BC2 /* ShowDetailsConfigurator.swift in Sources */,
 				18D402C8219F9A72002A3BC2 /* Event.swift in Sources */,
@@ -517,6 +520,7 @@
 				18D402BD219F7F96002A3BC2 /* ShowDetailsPresenter.swift in Sources */,
 				18D402DE219FE638002A3BC2 /* SingleButtonAlert.swift in Sources */,
 				18D402C0219F7F96002A3BC2 /* ShowDetailsModels.swift in Sources */,
+				1832E71D21A3B24E00746AF2 /* Codable.swift in Sources */,
 				187E334F21A089BF0010CCE1 /* UserController.swift in Sources */,
 				18D40270219F75B8002A3BC2 /* AppDelegate.swift in Sources */,
 				18D402DC219FE12A002A3BC2 /* ShowEventsModels.swift in Sources */,
