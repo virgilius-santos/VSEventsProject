@@ -26,7 +26,16 @@ protocol Checkable: Encodable {
     var email: String { get }
 }
 
-class EventAPI {
+protocol EventAPIProtocol {
+    func fetch<T: Decodable>(completion: @escaping (Result<[T], Error>)->())
+}
+
+protocol DetailAPIProtocol {
+    func fetch<T: Decodable>(source: Identifiable, completion: @escaping (Result<T, Error>)->())
+    func checkIn<T: Checkable>(source: T, completion: @escaping (Result<[String:Any],Error>)->())
+}
+
+class EventAPI: EventAPIProtocol, DetailAPIProtocol {
     let getEventStringURL
         = "http://5b840ba5db24a100142dcd8c.mockapi.io/api/events"
 
@@ -39,15 +48,14 @@ class EventAPI {
         request(.get, getEventStringURL)
             .flatMap { request in
                 return request.validate(statusCode: 200..<300)
-                    .rx.data()
+                    .rx.json()
             }
             .observeOn(MainScheduler.instance)
             .subscribe( { event in
                 switch event {
-                case .next(let data):
+                case .next(let json):
                     do {
-                        let decoder = JSONDecoder()
-                        let obj = try decoder.decode([T].self, from: data)
+                        let obj = try [T].decoder(json: json)
                         completion(.success(obj))
                     } catch {
                         completion(.error(error))
@@ -76,15 +84,14 @@ class EventAPI {
         request(.get, url)
             .flatMap { request in
                 return request.validate(statusCode: 200..<300)
-                    .rx.data()
+                    .rx.json()
             }
             .observeOn(MainScheduler.instance)
             .subscribe( { event in
                 switch event {
-                case .next(let data):
+                case .next(let json):
                     do {
-                        let decoder = JSONDecoder()
-                        let obj = try decoder.decode(T.self, from: data)
+                        let obj = try T.decoder(json: json)
                         completion(.success(obj))
                     } catch {
                         completion(.error(error))
@@ -98,40 +105,36 @@ class EventAPI {
             .disposed(by: disposeBag)
     }
 
-    func checkIn<T: Checkable>(source: T, completion: @escaping (Error?)->()) {
+    func checkIn<T: Checkable>(
+        source: T,
+        completion: @escaping (Result<[String:Any],Error>)->()) {
 
-        var data: Data
-
+        var dict: [String:Any]
         do {
-
-            data = try JSONEncoder().encode(source)
-
+            dict = try source.toJson()
         } catch {
-            completion(error)
+            completion(.error(error))
             return
         }
 
-        let url = URL(string: postCheckIngStringURL)
-        var request = URLRequest(url: url!)
-        request.httpMethod = "POST"
-        request.httpBody = data
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        requestJSON(.post, postCheckIngStringURL,
+                    parameters: dict,
+                    encoding: URLEncoding.httpBody)
+            .observeOn(MainScheduler.instance)
+            .subscribe( { event in
+                switch event {
+                case .next(let dataReceived):
+                    let (_,json) = dataReceived
+                    let dict = json as! [String:Any]
+                    completion(.success(dict))
+                case .error(let err):
+                    completion(.error(err))
+                case .completed:
+                    break
+                }
+            })
+            .disposed(by: disposeBag)
 
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-
-            if error != nil {
-                completion(error)
-                return
-            }
-
-            do {
-                let _ = try JSONSerialization.jsonObject(with: data!, options: [])
-                completion(nil)
-            } catch {
-                completion(error)
-            }
-
-        }.resume()
     }
 
 }

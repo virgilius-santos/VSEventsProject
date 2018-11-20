@@ -23,7 +23,7 @@ protocol ShowDetailsDataStore {
 
 class ShowDetailsInteractor: ShowDetailsDataStore {
     var presenter: ShowDetailsPresentationLogic?
-    var eventAPI: EventAPI?
+    var eventAPI: DetailAPIProtocol?
     var event: Event?
 
 }
@@ -56,26 +56,24 @@ extension ShowDetailsInteractor: ShowDetailsBusinessLogic {
         let (name,email) = userInfo!
         let user = User(name: name, email: email, eventId: event!.id)
 
-        eventAPI?.checkIn(source: user) {(error) in
-            if error == nil {
-                let alert = AlertAction(buttonTitle: "Ok", handler: nil)
-                let buttonAlert
-                    = SingleButtonAlert(title: "Check In",
-                                        message: "Sucesso!",
-                                        action: alert)
-                DispatchQueue.main.async {
-                    self.presenter?.presentCheckIn(buttonAlert)
-                }
+        eventAPI?.checkIn(source: user) {(result) in
+            if case .success(let dict) = result, (dict["code"] as? String) == "200" {
+                self.sendMessage(msg: "Sucesso!")
             } else {
-                let alert = AlertAction(buttonTitle: "Ok", handler: nil)
-                let buttonAlert
-                    = SingleButtonAlert(title: "Check In",
-                                        message: "Houve uma falha, tente novamente mais tarte.",
-                                        action: alert)
-                DispatchQueue.main.async {
-                    self.presenter?.presentCheckIn(buttonAlert)
-                }
+                self.sendMessage(msg:
+                    "Houve uma falha, tente novamente mais tarte.")
             }
+        }
+    }
+
+    func sendMessage(msg: String) {
+        let alert = AlertAction(buttonTitle: "Ok", handler: nil)
+        let buttonAlert
+            = SingleButtonAlert(title: "Check In",
+                                message: msg,
+                                action: alert)
+        DispatchQueue.main.async {
+            self.presenter?.presentCheckIn(buttonAlert)
         }
     }
 }

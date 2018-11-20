@@ -23,7 +23,7 @@ protocol ShowEventsDataStore {
 class ShowEventsInteractor: ShowEventsDataStore {
 
     var presenter: ShowEventsPresentationLogic?
-    var eventAPI: EventAPI?
+    var eventAPI: EventAPIProtocol?
     var event: Event?
 
 }
