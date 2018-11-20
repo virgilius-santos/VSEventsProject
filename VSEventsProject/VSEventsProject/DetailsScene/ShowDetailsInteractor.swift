@@ -56,6 +56,11 @@ extension ShowDetailsInteractor: ShowDetailsBusinessLogic {
         let (name,email) = userInfo!
         let user = User(name: name, email: email, eventId: event!.id)
 
+        if email.match(.email) {
+            self.sendMessage(msg:
+                "email no formato invalido, tente novamente.")
+            return
+        }
         eventAPI?.checkIn(source: user) {(result) in
             if case .success(let dict) = result, (dict["code"] as? String) == "200" {
                 self.sendMessage(msg: "Sucesso!")

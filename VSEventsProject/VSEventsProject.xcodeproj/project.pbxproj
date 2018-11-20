@@ -11,6 +11,7 @@
 		1801C6B621A04CB10066EC81 /* PersonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1801C6B421A04CB10066EC81 /* PersonCollectionViewCell.swift */; };
 		1801C6B721A04CB10066EC81 /* PersonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1801C6B521A04CB10066EC81 /* PersonCollectionViewCell.xib */; };
 		1832E71D21A3B24E00746AF2 /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832E71C21A3B24E00746AF2 /* Codable.swift */; };
+		1832E71F21A3BBD200746AF2 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832E71E21A3BBD200746AF2 /* String.swift */; };
 		187E334B21A077A80010CCE1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E334A21A077A80010CCE1 /* User.swift */; };
 		187E334D21A083150010CCE1 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E334C21A083150010CCE1 /* UIViewController.swift */; };
 		187E334F21A089BF0010CCE1 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E334E21A089BF0010CCE1 /* UserController.swift */; };
@@ -61,6 +62,7 @@
 		1801C6B421A04CB10066EC81 /* PersonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCollectionViewCell.swift; sourceTree = "<group>"; };
 		1801C6B521A04CB10066EC81 /* PersonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonCollectionViewCell.xib; sourceTree = "<group>"; };
 		1832E71C21A3B24E00746AF2 /* Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
+		1832E71E21A3BBD200746AF2 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		187E334A21A077A80010CCE1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		187E334C21A083150010CCE1 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		187E334E21A089BF0010CCE1 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				18D402E821A02BD4002A3BC2 /* UIView.swift */,
 				187E334C21A083150010CCE1 /* UIViewController.swift */,
 				1832E71C21A3B24E00746AF2 /* Codable.swift */,
+				1832E71E21A3BBD200746AF2 /* String.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -502,6 +505,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1832E71F21A3BBD200746AF2 /* String.swift in Sources */,
 				18D402B2219F7ED5002A3BC2 /* ShowEventsRouter.swift in Sources */,
 				18D402C5219F8E45002A3BC2 /* EventAPI.swift in Sources */,
 				18D402CC219FA700002A3BC2 /* Cupom.swift in Sources */,
