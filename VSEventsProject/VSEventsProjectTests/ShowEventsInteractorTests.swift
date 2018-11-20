@@ -18,20 +18,20 @@ class ShowEventsInteractorTests: QuickSpec {
         case error
     }
 
-    class EventAPIProtocolMock: EventAPIProtocol {
+    class APIProtocolMock: EventAPIProtocol {
         func fetch<T>(completion: @escaping (Result<[T], Error>) -> Void) where T: Decodable {
             let obj = try! [T].decoder(json: dataMock)
             completion(.success(obj))
         }
     }
 
-    class EventAPIProtocolMockError: EventAPIProtocol {
+    class APIProtocolMockError: EventAPIProtocol {
         func fetch<T>(completion: @escaping (Result<[T], Error>) -> Void) where T: Decodable {
             completion(.error(MockError.error))
         }
     }
 
-    class ShowEventsPresentationLogicMock: ShowEventsPresentationLogic {
+    class PresentationLogicMock: ShowEventsPresentationLogic {
         var result: Result<[Event], SingleButtonAlert>?
         var done: (() -> Void)?
         func displayEvents(result: Result<[Event], SingleButtonAlert>) {
@@ -41,18 +41,18 @@ class ShowEventsInteractorTests: QuickSpec {
     }
 
     var sei: ShowEventsInteractor!
-    var pre: ShowEventsPresentationLogicMock!
+    var pre: PresentationLogicMock!
 
     override func spec() {
         beforeEach {
-            self.pre = ShowEventsPresentationLogicMock()
+            self.pre = PresentationLogicMock()
             self.sei = ShowEventsInteractor()
             self.sei.presenter = self.pre
         }
         describe("solicitando listas de eventos") {
             context("a api esta funcionando") {
                 it("validar se o request é recebido corretamente") {
-                    self.sei.eventAPI = EventAPIProtocolMock()
+                    self.sei.eventAPI = APIProtocolMock()
                     waitUntil(timeout: 10) { done in
                         self.pre.done = done
                         self.sei.fetchEvents()
@@ -68,7 +68,7 @@ class ShowEventsInteractorTests: QuickSpec {
 
             context("a api NAO esta funcionando") {
                 it("validar se o request é recebido corretamente") {
-                    self.sei.eventAPI = EventAPIProtocolMockError()
+                    self.sei.eventAPI = APIProtocolMockError()
                     waitUntil(timeout: 10) { done in
                         self.pre.done = done
                         self.sei.fetchEvents()

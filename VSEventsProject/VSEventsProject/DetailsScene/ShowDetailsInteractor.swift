@@ -30,7 +30,6 @@ class ShowDetailsInteractor: ShowDetailsDataStore {
 
 extension ShowDetailsInteractor: ShowDetailsBusinessLogic {
     func fetchDetail() {
-        eventAPI = EventAPI()
         eventAPI?.fetch(source: event!) { [weak self] (result: Result<Event, Error>) in
 
             switch result {
@@ -55,7 +54,7 @@ extension ShowDetailsInteractor: ShowDetailsBusinessLogic {
         let (name, email) = userInfo!
         let user = User(name: name, email: email, eventId: event!.id)
 
-        if email.match(.email) {
+        if !email.match(.email) {
             self.sendMessage(msg:
                 "email no formato invalido, tente novamente.")
             return
@@ -70,7 +69,7 @@ extension ShowDetailsInteractor: ShowDetailsBusinessLogic {
         }
     }
 
-    func sendMessage(msg: String) {
+    private func sendMessage(msg: String) {
         let alert = AlertAction(buttonTitle: "Ok", handler: nil)
         let buttonAlert
             = SingleButtonAlert(title: "Check In",

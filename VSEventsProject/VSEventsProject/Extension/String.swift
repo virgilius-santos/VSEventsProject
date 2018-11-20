@@ -15,6 +15,9 @@ enum Patterns: String {
 
 extension String {
     func match(_ pattern: Patterns) -> Bool {
+        if self.isEmpty {
+            return false
+        }
         let mutable = NSMutableString(string: self)
         let range: NSRange = NSRange(location: 0, length: self.count)
         do {

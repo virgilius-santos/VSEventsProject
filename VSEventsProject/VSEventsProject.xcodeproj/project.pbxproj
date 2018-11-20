@@ -13,6 +13,8 @@
 		1832E71D21A3B24E00746AF2 /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832E71C21A3B24E00746AF2 /* Codable.swift */; };
 		1832E71F21A3BBD200746AF2 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832E71E21A3BBD200746AF2 /* String.swift */; };
 		1832E72221A3C49E00746AF2 /* ShowEventsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832E72121A3C49E00746AF2 /* ShowEventsInteractorTests.swift */; };
+		1832E72421A3DA4200746AF2 /* EmailMatchTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832E72321A3DA4200746AF2 /* EmailMatchTest.swift */; };
+		1832E72621A3DBF000746AF2 /* ShowDetailsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832E72521A3DBF000746AF2 /* ShowDetailsInteractorTests.swift */; };
 		187E334B21A077A80010CCE1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E334A21A077A80010CCE1 /* User.swift */; };
 		187E334D21A083150010CCE1 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E334C21A083150010CCE1 /* UIViewController.swift */; };
 		187E334F21A089BF0010CCE1 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E334E21A089BF0010CCE1 /* UserController.swift */; };
@@ -64,6 +66,8 @@
 		1832E71C21A3B24E00746AF2 /* Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
 		1832E71E21A3BBD200746AF2 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		1832E72121A3C49E00746AF2 /* ShowEventsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsInteractorTests.swift; sourceTree = "<group>"; };
+		1832E72321A3DA4200746AF2 /* EmailMatchTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailMatchTest.swift; sourceTree = "<group>"; };
+		1832E72521A3DBF000746AF2 /* ShowDetailsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsInteractorTests.swift; sourceTree = "<group>"; };
 		187E334A21A077A80010CCE1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		187E334C21A083150010CCE1 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		187E334E21A089BF0010CCE1 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
@@ -188,6 +192,8 @@
 			children = (
 				18D40286219F75BC002A3BC2 /* Info.plist */,
 				1832E72121A3C49E00746AF2 /* ShowEventsInteractorTests.swift */,
+				1832E72321A3DA4200746AF2 /* EmailMatchTest.swift */,
+				1832E72521A3DBF000746AF2 /* ShowDetailsInteractorTests.swift */,
 			);
 			path = VSEventsProjectTests;
 			sourceTree = "<group>";
@@ -545,6 +551,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1832E72621A3DBF000746AF2 /* ShowDetailsInteractorTests.swift in Sources */,
+				1832E72421A3DA4200746AF2 /* EmailMatchTest.swift in Sources */,
 				1832E72221A3C49E00746AF2 /* ShowEventsInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
