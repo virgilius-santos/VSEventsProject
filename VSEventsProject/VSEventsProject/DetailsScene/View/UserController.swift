@@ -12,13 +12,12 @@ class UserController {
 
     var alert: UIAlertController
 
-    var completion: (((String, String)?)->())?
+    var completion: (((String, String)?) -> Void)?
 
     init() {
         alert = UIAlertController(title: "Check In",
                                       message: "Entre com seus dados",
                                       preferredStyle: .alert)
-
 
         alert.addTextField { (textField) in
             textField.placeholder = "Digite seu nome"
@@ -41,7 +40,7 @@ class UserController {
 
                 let name = txtFlds[0].text
                 let email = txtFlds[1].text
-                self.completion?((name!,email!))
+                self.completion?((name!, email!))
 
         }
 

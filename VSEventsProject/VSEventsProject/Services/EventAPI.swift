@@ -11,7 +11,7 @@ import Alamofire
 import RxSwift
 import RxAlamofire
 
-enum Result<S,E> {
+enum Result<S, E> {
     case success(S)
     case error(E)
 }
@@ -27,12 +27,12 @@ protocol Checkable: Encodable {
 }
 
 protocol EventAPIProtocol {
-    func fetch<T: Decodable>(completion: @escaping (Result<[T], Error>)->())
+    func fetch<T: Decodable>(completion: @escaping (Result<[T], Error>) -> Void)
 }
 
 protocol DetailAPIProtocol {
-    func fetch<T: Decodable>(source: Identifiable, completion: @escaping (Result<T, Error>)->())
-    func checkIn<T: Checkable>(source: T, completion: @escaping (Result<[String:Any],Error>)->())
+    func fetch<T: Decodable>(source: Identifiable, completion: @escaping (Result<T, Error>) -> Void)
+    func checkIn<T: Checkable>(source: T, completion: @escaping (Result<[String: Any], Error>) -> Void)
 }
 
 class EventAPI: EventAPIProtocol, DetailAPIProtocol {
@@ -44,14 +44,14 @@ class EventAPI: EventAPIProtocol, DetailAPIProtocol {
 
     let disposeBag = DisposeBag()
 
-    func fetch<T: Decodable>(completion: @escaping (Result<[T], Error>)->()) {
+    func fetch<T: Decodable>(completion: @escaping (Result<[T], Error>) -> Void) {
         request(.get, getEventStringURL)
             .flatMap { request in
                 return request.validate(statusCode: 200..<300)
                     .rx.json()
             }
             .observeOn(MainScheduler.instance)
-            .subscribe( { event in
+            .subscribe({ event in
                 switch event {
                 case .next(let json):
                     do {
@@ -69,7 +69,7 @@ class EventAPI: EventAPIProtocol, DetailAPIProtocol {
             .disposed(by: disposeBag)
     }
 
-    func fetch<T: Decodable>(source: Identifiable, completion: @escaping (Result<T, Error>)->()) {
+    func fetch<T: Decodable>(source: Identifiable, completion: @escaping (Result<T, Error>) -> Void) {
 
         var url: URL
 
@@ -87,7 +87,7 @@ class EventAPI: EventAPIProtocol, DetailAPIProtocol {
                     .rx.json()
             }
             .observeOn(MainScheduler.instance)
-            .subscribe( { event in
+            .subscribe({ event in
                 switch event {
                 case .next(let json):
                     do {
@@ -107,9 +107,9 @@ class EventAPI: EventAPIProtocol, DetailAPIProtocol {
 
     func checkIn<T: Checkable>(
         source: T,
-        completion: @escaping (Result<[String:Any],Error>)->()) {
+        completion: @escaping (Result<[String: Any], Error>) -> Void) {
 
-        var dict: [String:Any]
+        var dict: [String: Any]
         do {
             dict = try source.toJson()
         } catch {
@@ -121,11 +121,11 @@ class EventAPI: EventAPIProtocol, DetailAPIProtocol {
                     parameters: dict,
                     encoding: URLEncoding.httpBody)
             .observeOn(MainScheduler.instance)
-            .subscribe( { event in
+            .subscribe({ event in
                 switch event {
                 case .next(let dataReceived):
-                    let (_,json) = dataReceived
-                    let dict = json as! [String:Any]
+                    let (_, json) = dataReceived
+                    let dict = json as! [String: Any]
                     completion(.success(dict))
                 case .error(let err):
                     completion(.error(err))

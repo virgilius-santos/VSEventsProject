@@ -25,11 +25,10 @@ extension UIView {
         backGrounView.backgroundColor = UIColor(white: 0.0, alpha: 0.4)
         backGrounView.translatesAutoresizingMaskIntoConstraints = false
 
-
         let descHorizontal = "H:|-0-[backGrounView]-0-|"
         let descVertical = "V:|-0-[backGrounView]-0-|"
 
-        let viewsDict = ["backGrounView" : backGrounView]
+        let viewsDict = ["backGrounView": backGrounView]
 
         let horizontalConstraint  = NSLayoutConstraint.constraints(withVisualFormat: descHorizontal,
                                                                    options: .init(rawValue: 0),
@@ -49,7 +48,6 @@ extension UIView {
         backGrounView.addSubview(activityIndicator)
 
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-
 
         let centerHorizontally = NSLayoutConstraint(item: activityIndicator,
                                                     attribute: .centerX,
@@ -91,4 +89,3 @@ extension UIView {
     }
 
 }
-

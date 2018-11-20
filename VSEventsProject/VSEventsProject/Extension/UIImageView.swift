@@ -22,8 +22,7 @@ extension UIImageView {
 
         let placeholder = UIImage(named: "placeholder")
 
-        self.af_setImage(withURL: url, placeholderImage: placeholder) {
-            dataResponse in
+        self.af_setImage(withURL: url, placeholderImage: placeholder) { dataResponse in
 
             if let image = dataResponse.result.value {
                 downloader.imageCache?.add(image, withIdentifier: url.absoluteString)

@@ -26,5 +26,3 @@ extension String {
         return String(mutable).isEmpty
     }
 }
-
-

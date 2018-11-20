@@ -17,13 +17,11 @@ protocol ShowDetailsRoutingLogic {
     func checkIn()
 }
 
-protocol ShowDetailsDataPassing
-{
+protocol ShowDetailsDataPassing {
     var dataStore: ShowDetailsDataStore? { get }
 }
 
-class ShowDetailsRouter: ShowDetailsDataPassing
-{
+class ShowDetailsRouter: ShowDetailsDataPassing {
     weak var viewController: ShowDetailsViewController?
     var dataStore: ShowDetailsDataStore?
 }

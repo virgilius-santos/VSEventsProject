@@ -38,5 +38,3 @@ class EventsTableViewViewModel {
     let disposeBag = DisposeBag()
 
 }
-
-

@@ -47,13 +47,13 @@ class ShowEventsViewController: UIViewController, ShowEventsDisplayLogic, Single
 
         viewModel
             .eventCells
-            .bind(to: self.tableView.rx.items(cellIdentifier: cellIdentifier, cellType: EventTableViewCell.self)) { (row, element, cell) in
+            .bind(to: self.tableView.rx.items(cellIdentifier: cellIdentifier, cellType: EventTableViewCell.self)) { (_, element, cell) in
 
                 cell.viewModel = element
                 
             }.disposed(by: disposeBag)
 
-        let observable : Observable<SingleButtonAlert> = viewModel.onShowError
+        let observable: Observable<SingleButtonAlert> = viewModel.onShowError
 
         observable
             .subscribe(onNext: { [weak self] alert in
@@ -61,7 +61,6 @@ class ShowEventsViewController: UIViewController, ShowEventsDisplayLogic, Single
                 self?.presentSingleButtonDialog(alert: alert)
                 
             }).disposed(by: disposeBag)
-
 
     }
 
@@ -71,7 +70,7 @@ class ShowEventsViewController: UIViewController, ShowEventsDisplayLogic, Single
 
         tableView.rx
             .modelSelected(EventCellViewModel.self)
-            .subscribe(onNext:  { [weak self] value in
+            .subscribe(onNext: { [weak self] value in
                 self?.router?.routeToDetail(value)
             })
             .disposed(by: disposeBag)
@@ -87,5 +86,3 @@ class ShowEventsViewController: UIViewController, ShowEventsDisplayLogic, Single
         interactor?.fetchEvents()
     }
 }
-
-

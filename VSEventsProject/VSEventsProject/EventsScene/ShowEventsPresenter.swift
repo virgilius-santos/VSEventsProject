@@ -42,4 +42,3 @@ extension ShowEventsPresenter: ShowEventsPresentationLogic {
     }
 
 }
-

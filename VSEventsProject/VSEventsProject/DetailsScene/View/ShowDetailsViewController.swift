@@ -70,7 +70,6 @@ class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic, Sing
 
     @IBOutlet weak var mapView: MKMapView!
 
-
     func bindViewModel() {
 
         viewModel
@@ -83,14 +82,8 @@ class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic, Sing
             .event
             .map({$0.imageUrl})
             .subscribe { [weak self] (event) in
-                switch event {
-                case .next(let url):
+                if case .next(let url) = event {
                     self?.eventPoster.getImage(withURL: url)
-                    break
-                case .error(_):
-                    break
-                case .completed:
-                    break
                 }
             }.disposed(by: disposeBag)
 
@@ -124,7 +117,7 @@ class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic, Sing
             .bind(to: mapView.rx.annotationsToShowToAnimate)
             .disposed(by: disposeBag)
 
-        let observable : Observable<SingleButtonAlert> = viewModel.onShowError
+        let observable: Observable<SingleButtonAlert> = viewModel.onShowError
 
         observable
             .subscribe(onNext: { [weak self] alert in
@@ -141,14 +134,16 @@ class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic, Sing
 
         viewModel
             .eventCells
-            .bind(to: self.participantsCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: PersonCollectionViewCell.self))
-            { (row, element, cell) in
+            .bind(to: self.participantsCollectionView
+                .rx
+                .items(cellIdentifier: cellIdentifier,
+                       cellType: PersonCollectionViewCell.self)
+            ) { (_, element, cell) in
 
                 cell.viewModel = element
 
             }.disposed(by: disposeBag)
 
-        
     }
 
     func setupButtons() {

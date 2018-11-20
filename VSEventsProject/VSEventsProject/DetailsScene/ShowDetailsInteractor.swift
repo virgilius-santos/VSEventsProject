@@ -53,7 +53,7 @@ extension ShowDetailsInteractor: ShowDetailsBusinessLogic {
     func postCheckIn(userInfo: (String, String)?) {
         eventAPI = EventAPI()
 
-        let (name,email) = userInfo!
+        let (name, email) = userInfo!
         let user = User(name: name, email: email, eventId: event!.id)
 
         if email.match(.email) {

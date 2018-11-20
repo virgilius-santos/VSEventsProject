@@ -30,10 +30,9 @@ extension ShowDetailsPresenter: ShowDetailsPresentationLogic {
             
         case .success(let event):
             viewController?.viewModel.event.accept(event)
-            break
+
         case .error(let error):
             viewController?.viewModel.onShowError.on(.next(error))
-            break
         }
     }
 
@@ -41,4 +40,3 @@ extension ShowDetailsPresenter: ShowDetailsPresentationLogic {
         viewController?.viewModel.onShowError.on(.next(buttonAlert))
     }
 }
-

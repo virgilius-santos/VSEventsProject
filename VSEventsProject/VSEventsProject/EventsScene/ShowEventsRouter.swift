@@ -50,4 +50,3 @@ extension ShowEventsRouter: ShowEventsRoutingLogic {
     }
     
 }
-
