@@ -52,7 +52,7 @@ DEPENDENCIES:
   - RxTest (~> 4.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Alamofire
     - AlamofireImage
     - Differentiator
@@ -86,4 +86,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: eead0ea9dd95a0a9abc51f5357e9c89c6f2f04bb
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.4
