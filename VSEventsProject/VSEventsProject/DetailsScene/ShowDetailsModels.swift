@@ -81,7 +81,7 @@ class DetailViewModel {
 protocol PersonCellViewModel {
     var eventItem: Person { get }
     var title: String { get }
-    var imageUrl: URL { get }
+    var imageUrl: URL? { get }
 }
 
 extension Person: PersonCellViewModel {
@@ -89,8 +89,8 @@ extension Person: PersonCellViewModel {
         return self.name
     }
 
-    var imageUrl: URL {
-        return self.picture
+    var imageUrl: URL? {
+        return URL(string: self.picture)
     }
 
     var eventItem: Person {
