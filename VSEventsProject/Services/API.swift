@@ -3,10 +3,6 @@ import Alamofire
 import RxSwift
 import RxAlamofire
 
-protocol Identifiable {
-    var id: String { get }
-}
-
 struct Endpoint: Equatable {
     let method: HTTPMethod
     let url: String
@@ -68,3 +64,4 @@ final class API: APIProtocol {
         .disposed(by: disposeBag)
     }
 }
+
