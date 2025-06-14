@@ -2,11 +2,12 @@ import UIKit
 
 protocol ShowDetailsRoutingLogic {
     func sharing()
-    func checkIn()
+    func checkIn(onOK: @escaping (UserInputTexts) -> Void)
 }
 
 final class ShowDetailsRouter {
     weak var viewController: ShowDetailsViewController?
+    let userControllerFactory = UserControllerFactory()
 }
 
 extension ShowDetailsRouter: ShowDetailsRoutingLogic {
@@ -15,8 +16,10 @@ extension ShowDetailsRouter: ShowDetailsRoutingLogic {
         viewController?.present(sharingVC.activityVC, animated: true)
     }
 
-    func checkIn() {
-        let userController = viewController!.userController
-        viewController?.present(userController.alert, animated: true, completion: nil)
+    func checkIn(onOK: @escaping (UserInputTexts) -> Void) {
+        let userController = userControllerFactory.makeUserInputAlertController(
+            onOK: onOK
+        )
+        viewController?.present(userController, animated: true, completion: nil)
     }
 }

@@ -91,25 +91,9 @@ final class ShowDetailsInteractorTests: QuickSpec {
                 }
             }
             
-            context("when post check in with nil values") {
-                beforeEach {
-                    sut.postCheckIn(userInfo: nil)
-                }
-                it("should deliver error alert") {
-                    let alertMock = SingleButtonAlert.fixture(
-                        title: "Check In",
-                        message: "dados invalidos",
-                        action: .fixture(buttonTitle: "OK")
-                    )
-                    expect(doubles.anyMessages).to(equal([
-                        ShowDetailsPresentationLogicMock.Message.presentCheckIn(alertMock)
-                    ]))
-                }
-            }
-            
             context("when post check in with invalid email") {
                 beforeEach {
-                    sut.postCheckIn(userInfo: ("ioio", "uiui"))
+                    sut.postCheckIn(userInfo: .init(name: "ioio", email: "uiui"))
                 }
                 
                 it("should deliver error alert") {
@@ -126,7 +110,7 @@ final class ShowDetailsInteractorTests: QuickSpec {
             
             context("when post check in with valid data") {
                 beforeEach {
-                    sut.postCheckIn(userInfo: ("ioio", "uiui@acad.com"))
+                    sut.postCheckIn(userInfo: .init(name: "ioio", email: "uiui@acad.com"))
                 }
                 
                 it("should call check in api") {

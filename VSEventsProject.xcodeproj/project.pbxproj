@@ -17,8 +17,10 @@
 		1832E72621A3DBF000746AF2 /* ShowDetailsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832E72521A3DBF000746AF2 /* ShowDetailsInteractorTests.swift */; };
 		187E334B21A077A80010CCE1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E334A21A077A80010CCE1 /* User.swift */; };
 		187E334D21A083150010CCE1 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E334C21A083150010CCE1 /* UIViewControllerExtensions.swift */; };
-		187E334F21A089BF0010CCE1 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E334E21A089BF0010CCE1 /* UserController.swift */; };
+		187E334F21A089BF0010CCE1 /* UserControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E334E21A089BF0010CCE1 /* UserControllerFactory.swift */; };
 		187E335121A08FAB0010CCE1 /* SharingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E335021A08FAB0010CCE1 /* SharingController.swift */; };
+		18A3256B2DFE275100430723 /* UserInputTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A3256A2DFE275100430723 /* UserInputTexts.swift */; };
+		18A3256D2DFE276400430723 /* UserAlertStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A3256C2DFE276400430723 /* UserAlertStrings.swift */; };
 		18C7C1A52DFDA1C100E7AB61 /* EventAPIProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7C1A42DFDA1C100E7AB61 /* EventAPIProtocolMock.swift */; };
 		18C7C1A72DFDA2BA00E7AB61 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7C1A62DFDA2B700E7AB61 /* ArrayExtensions.swift */; };
 		18C7C1A92DFDAB9F00E7AB61 /* ShowEventsPresentationLogicMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7C1A82DFDAB9F00E7AB61 /* ShowEventsPresentationLogicMock.swift */; };
@@ -89,8 +91,10 @@
 		1832E72521A3DBF000746AF2 /* ShowDetailsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsInteractorTests.swift; sourceTree = "<group>"; };
 		187E334A21A077A80010CCE1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		187E334C21A083150010CCE1 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
-		187E334E21A089BF0010CCE1 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		187E334E21A089BF0010CCE1 /* UserControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserControllerFactory.swift; sourceTree = "<group>"; };
 		187E335021A08FAB0010CCE1 /* SharingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingController.swift; sourceTree = "<group>"; };
+		18A3256A2DFE275100430723 /* UserInputTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputTexts.swift; sourceTree = "<group>"; };
+		18A3256C2DFE276400430723 /* UserAlertStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAlertStrings.swift; sourceTree = "<group>"; };
 		18C7C1A42DFDA1C100E7AB61 /* EventAPIProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAPIProtocolMock.swift; sourceTree = "<group>"; };
 		18C7C1A62DFDA2B700E7AB61 /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		18C7C1A82DFDAB9F00E7AB61 /* ShowEventsPresentationLogicMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsPresentationLogicMock.swift; sourceTree = "<group>"; };
@@ -182,10 +186,19 @@
 				18D402BB219F7F96002A3BC2 /* ShowDetailsViewController.swift */,
 				1801C6B521A04CB10066EC81 /* PersonCollectionViewCell.xib */,
 				1801C6B421A04CB10066EC81 /* PersonCollectionViewCell.swift */,
-				187E334E21A089BF0010CCE1 /* UserController.swift */,
 				187E335021A08FAB0010CCE1 /* SharingController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		18A325692DFE274900430723 /* UserController */ = {
+			isa = PBXGroup;
+			children = (
+				187E334E21A089BF0010CCE1 /* UserControllerFactory.swift */,
+				18A3256C2DFE276400430723 /* UserAlertStrings.swift */,
+				18A3256A2DFE275100430723 /* UserInputTexts.swift */,
+			);
+			path = UserController;
 			sourceTree = "<group>";
 		};
 		18C7C1A32DFDA1B900E7AB61 /* Doubles */ = {
@@ -271,6 +284,7 @@
 				18D402E721A02BC3002A3BC2 /* Extension */,
 				18D402C6219F9A60002A3BC2 /* Models */,
 				18D402C3219F8E2C002A3BC2 /* Services */,
+				18A325692DFE274900430723 /* UserController */,
 				18D402B6219F7F76002A3BC2 /* DetailsScene */,
 				18D4029D219F7E73002A3BC2 /* EventsScene */,
 				18D4028F219F7BF6002A3BC2 /* SupportFiles */,
@@ -600,6 +614,7 @@
 				18C7C1C82DFDDCCF00E7AB61 /* ShowDetailsService.swift in Sources */,
 				18D402E521A01D90002A3BC2 /* EventTableViewCell.swift in Sources */,
 				18D402DA219FBB4A002A3BC2 /* ShowEventsViewController.swift in Sources */,
+				18A3256D2DFE276400430723 /* UserAlertStrings.swift in Sources */,
 				18D402E921A02BD4002A3BC2 /* UIViewExtensions.swift in Sources */,
 				18D402D2219FB34B002A3BC2 /* ShowEventsConfigurator.swift in Sources */,
 				18D402C1219F7F96002A3BC2 /* ShowDetailsViewController.swift in Sources */,
@@ -608,12 +623,13 @@
 				18D402DE219FE638002A3BC2 /* SingleButtonAlert.swift in Sources */,
 				18D402C0219F7F96002A3BC2 /* ShowDetailsModels.swift in Sources */,
 				1832E71D21A3B24E00746AF2 /* CodableExtensions.swift in Sources */,
-				187E334F21A089BF0010CCE1 /* UserController.swift in Sources */,
+				187E334F21A089BF0010CCE1 /* UserControllerFactory.swift in Sources */,
 				18D40270219F75B8002A3BC2 /* AppDelegate.swift in Sources */,
 				18C7C1BB2DFDB76500E7AB61 /* EquatableExtensions.swift in Sources */,
 				18D402DC219FE12A002A3BC2 /* ShowEventsModels.swift in Sources */,
 				18D402B5219F7ED5002A3BC2 /* ShowEventsInteractor.swift in Sources */,
 				187E334B21A077A80010CCE1 /* User.swift in Sources */,
+				18A3256B2DFE275100430723 /* UserInputTexts.swift in Sources */,
 				1801C6B121A04AD70066EC81 /* DateExtensions.swift in Sources */,
 				18D402CA219FA6E8002A3BC2 /* Person.swift in Sources */,
 				18D402C2219F7F96002A3BC2 /* ShowDetailsInteractor.swift in Sources */,

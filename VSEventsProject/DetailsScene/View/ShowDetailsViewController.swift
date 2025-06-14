@@ -32,8 +32,6 @@ class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic, Sing
 
     var disposeBag = DisposeBag()
 
-    var userController = UserController()
-
     // MARK: View lifecycle
 
     override func viewDidLoad() {
@@ -41,7 +39,7 @@ class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic, Sing
         bindViewModel()
         setupCollectionView()
         setupButtons()
-        setupUserController()
+//        setupUserController()
         interactor?.fetchDetail()
     }
 
@@ -144,19 +142,14 @@ class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic, Sing
             .rx
             .tap
             .bind { [weak self] in
-                guard let self else { return }
-                self.userController = UserController()
-                self.setupUserController()
-                self.router?.checkIn()
+                self?.routeChecking()
             }
             .disposed(by: disposeBag)
     }
 
-    func setupUserController() {
-        userController.completion = { [weak self] data in
-            if data != nil {
-                self?.interactor?.postCheckIn(userInfo: data)
-            }
+    func routeChecking() {
+        router?.checkIn { [weak self] userInfo in
+            self?.interactor?.postCheckIn(userInfo: userInfo)
         }
     }
 }

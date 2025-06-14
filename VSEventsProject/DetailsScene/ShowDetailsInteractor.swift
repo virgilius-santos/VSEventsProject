@@ -2,7 +2,7 @@ import UIKit
 
 protocol ShowDetailsBusinessLogic {
     func fetchDetail()
-    func postCheckIn(userInfo: (String, String)?)
+    func postCheckIn(userInfo: UserInputTexts)
 }
 
 final class ShowDetailsInteractor {
@@ -39,17 +39,13 @@ extension ShowDetailsInteractor: ShowDetailsBusinessLogic {
         self.presenter.presentDetail(.failure(buttonAlert))
     }
 
-    func postCheckIn(userInfo: (String, String)?) {
-        guard let (name, email) = userInfo else {
-            self.sendCheckInMessage(msg: "dados invalidos")
-            return
-        }
-        guard email.match(.email) else {
+    func postCheckIn(userInfo: UserInputTexts) {
+        guard userInfo.email.match(.email) else {
             self.sendCheckInMessage(msg: "email no formato invalido, tente novamente.")
             return
         }
         
-        let user = User(name: name, email: email, eventId: event.id)
+        let user = User(name: userInfo.name, email: userInfo.email, eventId: event.id)
         eventAPI.checkIn(user: user) { result in
             if case .success(let model) = result, model.code == "200" {
                 self.sendCheckInMessage(msg: "Sucesso!")
