@@ -1,4 +1,4 @@
-import UIKit
+import Foundation
 
 protocol ShowEventsBusinessLogic {
     func fetchEvents()
@@ -22,7 +22,7 @@ extension ShowEventsInteractor: ShowEventsBusinessLogic {
             case .success(let evt):
                 self?.presenter.displayEvents(result: .success(evt))
 
-            case .error(let error):
+            case .failure(let error):
                 print(error)
                 let buttonAlert = SingleButtonAlert(
                     title: "Erro Na Busca dos Dados",
@@ -31,7 +31,7 @@ extension ShowEventsInteractor: ShowEventsBusinessLogic {
                         buttonTitle: "OK"
                     )
                 )
-                self?.presenter.displayEvents(result: .error(buttonAlert))
+                self?.presenter.displayEvents(result: .failure(buttonAlert))
             }
         }
     }

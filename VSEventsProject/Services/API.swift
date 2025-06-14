@@ -3,13 +3,6 @@ import Alamofire
 import RxSwift
 import RxAlamofire
 
-enum Result<S, E> {
-    case success(S)
-    case error(E)
-}
-
-extension Result: Equatable where S: Equatable, E: Equatable {}
-
 protocol Identifiable {
     var id: String { get }
 }
@@ -23,7 +16,7 @@ struct Endpoint: Equatable {
 protocol APIProtocol {
     func fetch(
         endpoint: Endpoint,
-        completion: @escaping (Result<Data, Error>) -> Void
+        completion: @escaping (Swift.Result<Data, Error>) -> Void
     )
 }
 
@@ -32,13 +25,13 @@ final class API: APIProtocol {
 
     func fetch(
         endpoint: Endpoint,
-        completion: @escaping (Result<Data, Error>) -> Void
+        completion: @escaping (Swift.Result<Data, Error>) -> Void
     ) {
         let parameters: [String: Any]?
         do {
             parameters = try endpoint.parameters?.toJson()
         } catch {
-            completion(.error(error))
+            completion(.failure(error))
             return
         }
         request(
@@ -57,7 +50,7 @@ final class API: APIProtocol {
             case .next(let data):
                 completion(.success(data))
             case .error(let err):
-                completion(.error(err))
+                completion(.failure(err))
             case .completed:
                 break
             }

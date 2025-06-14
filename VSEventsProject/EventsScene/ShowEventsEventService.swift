@@ -18,8 +18,8 @@ final class ShowEventsEventService: EventAPIProtocol {
             switch result {
             case .success(let data):
                 completion(mapResult(data))
-            case .error(let error):
-                completion(.error(error))
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }
@@ -29,7 +29,7 @@ final class ShowEventsEventService: EventAPIProtocol {
             let decodedObject = try [Event].decoder(json: data)
             return .success(decodedObject)
         } catch {
-            return .error(error)
+            return .failure(error)
         }
     }
 }

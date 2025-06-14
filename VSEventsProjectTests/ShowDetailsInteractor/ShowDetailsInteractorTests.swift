@@ -73,7 +73,7 @@ final class ShowDetailsInteractorTests: QuickSpec {
                 context("when API fails") {
                     beforeEach {
                         doubles.anyMessages.clearMessages()
-                        let resultSent = Result<Event, Error>.error(MockError.error)
+                        let resultSent = Result<Event, Error>.failure(MockError.error)
                         doubles.eventAPI.simulateFetchResponse(with: resultSent)
                     }
                     
@@ -83,7 +83,7 @@ final class ShowDetailsInteractorTests: QuickSpec {
                             message: MockError.error.localizedDescription,
                             action: .fixture(buttonTitle: "OK")
                         )
-                        let resultExpected = Result<Event, SingleButtonAlert>.error(alertMock)
+                        let resultExpected = Result<Event, SingleButtonAlert>.failure(alertMock)
                         expect(doubles.anyMessages).to(equal([
                             ShowDetailsPresentationLogicMock.Message.presentDetail(resultExpected)
                         ]))
@@ -164,7 +164,7 @@ final class ShowDetailsInteractorTests: QuickSpec {
                 context("when API fails with error") {
                     beforeEach {
                         doubles.anyMessages.clearMessages()
-                        let resultSent = Result<CheckIn, Error>.error(MockError.error)
+                        let resultSent = Result<CheckIn, Error>.failure(MockError.error)
                         doubles.eventAPI.simulateCheckInResponse(with: resultSent)
                     }
                     

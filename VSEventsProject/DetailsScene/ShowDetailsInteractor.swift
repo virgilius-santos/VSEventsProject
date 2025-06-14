@@ -24,7 +24,7 @@ extension ShowDetailsInteractor: ShowDetailsBusinessLogic {
             switch result {
             case .success(let evt):
                 presenter.presentDetail(.success(evt))
-            case .error(let error):
+            case .failure(let error):
                 sendDetailMessage(msg: error.localizedDescription)
             }
         }
@@ -36,7 +36,7 @@ extension ShowDetailsInteractor: ShowDetailsBusinessLogic {
             message: msg,
             action: AlertAction(buttonTitle: "OK")
         )
-        self.presenter.presentDetail(.error(buttonAlert))
+        self.presenter.presentDetail(.failure(buttonAlert))
     }
 
     func postCheckIn(userInfo: (String, String)?) {

@@ -31,7 +31,7 @@ extension ShowDetailsPresenter: ShowDetailsPresentationLogic {
         case .success(let event):
             viewController?.viewModel.event.accept(event)
 
-        case .error(let error):
+        case .failure(let error):
             viewController?.viewModel.onShowError.on(.next(error))
         }
     }

@@ -1,7 +1,7 @@
 import Foundation
 
-struct User: Equatable {
-    var name: String
-    var email: String
-    var eventId: String
+struct User: Equatable, Encodable {
+    let name: String
+    let email: String
+    let eventId: String
 }

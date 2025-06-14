@@ -57,7 +57,7 @@ final class ShowEventsInteractorTests: QuickSpec {
                 
                 context("when API fails") {
                     beforeEach {
-                        let resultSent = Result<[Event], Error>.error(MockError.error)
+                        let resultSent = Result<[Event], Error>.failure(MockError.error)
                         doubles.eventAPI.simulateNetworkResponse(with: resultSent)
                     }
                     
@@ -67,7 +67,7 @@ final class ShowEventsInteractorTests: QuickSpec {
                             message: "Tente novamente",
                             action: .fixture(buttonTitle: "OK")
                         )
-                        let resultExpected = Result<[Event], SingleButtonAlert>.error(alertMock)
+                        let resultExpected = Result<[Event], SingleButtonAlert>.failure(alertMock)
                         expect(doubles.presenter.resultReceived).to(equal([resultExpected]))
                     }
                 }

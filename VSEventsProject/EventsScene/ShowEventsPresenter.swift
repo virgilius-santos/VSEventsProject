@@ -1,9 +1,6 @@
-import UIKit
-import RxSwift
-import RxCocoa
 
 protocol ShowEventsPresentationLogic {
-    func displayEvents(result: Result<[Event], SingleButtonAlert>)
+    func displayEvents(result: Swift.Result<[Event], SingleButtonAlert>)
 }
 
 final class ShowEventsPresenter {
@@ -15,12 +12,12 @@ final class ShowEventsPresenter {
 }
 
 extension ShowEventsPresenter: ShowEventsPresentationLogic {
-    func displayEvents(result: Result<[Event], SingleButtonAlert>) {
+    func displayEvents(result: Swift.Result<[Event], SingleButtonAlert>) {
         viewController?.title = "Lista de Eventos"
         switch result {
         case .success(let evts):
             viewController?.viewModel.cells.accept(evts)
-        case .error(let err):
+        case .failure(let err):
             viewController?.viewModel.onShowError.on(.next(err))
         }
     }

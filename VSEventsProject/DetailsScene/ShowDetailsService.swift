@@ -1,7 +1,7 @@
 import Foundation
 
 protocol DetailAPIProtocol {
-    func fetchEvent(_ event: Event, completion: @escaping (Result<Event, Error>) -> Void)
+    func fetchEvent(_ event: Event, completion: @escaping (Swift.Result<Event, Error>) -> Void)
     func checkIn(user: User, completion: @escaping (Result<CheckIn, Error>) -> Void)
 }
 
@@ -26,8 +26,8 @@ final class ShowDetailsService: DetailAPIProtocol {
             switch result {
             case .success(let data):
                 completion(mapResult(data))
-            case .error(let error):
-                completion(.error(error))
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }
@@ -37,7 +37,7 @@ final class ShowDetailsService: DetailAPIProtocol {
             let decodedObject = try Event.decoder(json: data)
             return .success(decodedObject)
         } catch {
-            return .error(error)
+            return .failure(error)
         }
     }
     
@@ -48,7 +48,7 @@ final class ShowDetailsService: DetailAPIProtocol {
         do {
             data = try user.toData()
         } catch {
-            completion(.error(error))
+            completion(.failure(error))
             return
         }
         
@@ -62,8 +62,8 @@ final class ShowDetailsService: DetailAPIProtocol {
             switch result {
             case .success(let data):
                 completion(mapResult(data))
-            case .error(let error):
-                completion(.error(error))
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }
@@ -73,7 +73,7 @@ final class ShowDetailsService: DetailAPIProtocol {
             let decodedObject = try CheckIn.decoder(json: data)
             return .success(decodedObject)
         } catch {
-            return .error(error)
+            return .failure(error)
         }
     }
 }
