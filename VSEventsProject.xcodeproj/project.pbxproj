@@ -32,6 +32,7 @@
 		18C7C1BF2DFDB9DC00E7AB61 /* EventFixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7C1BE2DFDB9DC00E7AB61 /* EventFixture.swift */; };
 		18C7C1C22DFDC26000E7AB61 /* AnyMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7C1C12DFDC25B00E7AB61 /* AnyMessage.swift */; };
 		18C7C1C42DFDC26A00E7AB61 /* AnyEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7C1C32DFDC26500E7AB61 /* AnyEquatable.swift */; };
+		18C7C1C62DFDD73300E7AB61 /* ShowEventsEventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7C1C52DFDD73300E7AB61 /* ShowEventsEventService.swift */; };
 		18D40270219F75B8002A3BC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D4026F219F75B8002A3BC2 /* AppDelegate.swift */; };
 		18D40277219F75BB002A3BC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D40276219F75BB002A3BC2 /* Assets.xcassets */; };
 		18D4027A219F75BB002A3BC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D40278219F75BB002A3BC2 /* LaunchScreen.storyboard */; };
@@ -100,6 +101,7 @@
 		18C7C1BE2DFDB9DC00E7AB61 /* EventFixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFixture.swift; sourceTree = "<group>"; };
 		18C7C1C12DFDC25B00E7AB61 /* AnyMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyMessage.swift; sourceTree = "<group>"; };
 		18C7C1C32DFDC26500E7AB61 /* AnyEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyEquatable.swift; sourceTree = "<group>"; };
+		18C7C1C52DFDD73300E7AB61 /* ShowEventsEventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsEventService.swift; sourceTree = "<group>"; };
 		18D4026C219F75B8002A3BC2 /* VSEventsProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VSEventsProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D4026F219F75B8002A3BC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18D40276219F75BB002A3BC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 				18D402D1219FB34B002A3BC2 /* ShowEventsConfigurator.swift */,
 				1801C6B221A04C700066EC81 /* View */,
 				18D402DB219FE12A002A3BC2 /* ShowEventsModels.swift */,
+				18C7C1C52DFDD73300E7AB61 /* ShowEventsEventService.swift */,
 				18D402AF219F7ED5002A3BC2 /* ShowEventsInteractor.swift */,
 				18D402AA219F7ED5002A3BC2 /* ShowEventsPresenter.swift */,
 				18D402AC219F7ED5002A3BC2 /* ShowEventsRouter.swift */,
@@ -577,6 +580,7 @@
 				18D402B2219F7ED5002A3BC2 /* ShowEventsRouter.swift in Sources */,
 				18D402C5219F8E45002A3BC2 /* EventAPI.swift in Sources */,
 				18D402CC219FA700002A3BC2 /* Cupom.swift in Sources */,
+				18C7C1C62DFDD73300E7AB61 /* ShowEventsEventService.swift in Sources */,
 				1801C6B621A04CB10066EC81 /* PersonCollectionViewCell.swift in Sources */,
 				187E334D21A083150010CCE1 /* UIViewControllerExtensions.swift in Sources */,
 				18D402B0219F7ED5002A3BC2 /* ShowEventsPresenter.swift in Sources */,

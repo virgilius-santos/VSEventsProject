@@ -16,7 +16,7 @@ final class ShowEventsInteractor {
 
 extension ShowEventsInteractor: ShowEventsBusinessLogic {
     func fetchEvents() {
-        eventAPI.fetch { [weak self] (result: Result<[Event], Error>) in
+        eventAPI.fetchEvents { [weak self] (result: Result<[Event], Error>) in
 
             switch result {
             case .success(let evt):

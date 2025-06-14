@@ -7,7 +7,7 @@ final class ShowEventsConfigurator {
     func make() -> UIViewController {
         let viewController = ShowEventsViewController(nibName: nibName, bundle: nil)
         let presenter = ShowEventsPresenter(viewController: viewController)
-        let eventAPI = EventAPI()
+        let eventAPI = ShowEventsEventService()
         let interactor = ShowEventsInteractor(
             presenter: presenter,
             eventAPI: eventAPI

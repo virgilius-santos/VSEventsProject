@@ -1,11 +1,3 @@
-//
-//  EventAPI.swift
-//  VSEventsProject
-//
-//  Created by Virgilius Santos on 16/11/18.
-//  Copyright © 2018 Virgilius Santos. All rights reserved.
-//
-
 import Foundation
 import Alamofire
 import RxSwift
@@ -28,16 +20,12 @@ protocol Checkable: Encodable {
     var email: String { get }
 }
 
-protocol EventAPIProtocol {
-    func fetch<T: Decodable>(completion: @escaping (Result<[T], Error>) -> Void)
-}
-
 protocol DetailAPIProtocol {
     func fetch<T: Decodable>(source: Identifiable, completion: @escaping (Result<T, Error>) -> Void)
     func checkIn<T: Checkable>(source: T, completion: @escaping (Result<[String: Any], Error>) -> Void)
 }
 
-class EventAPI: EventAPIProtocol, DetailAPIProtocol {
+class EventAPI: DetailAPIProtocol {
     let getEventStringURL
         = "https://vsevents.free.beeceptor.com/api/events"
 
