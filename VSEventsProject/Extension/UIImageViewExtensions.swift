@@ -23,9 +23,7 @@ extension UIImageView {
             }
         })
     }
-
 }
-
 
 extension Reactive where Base: UIImageView {
     var imageLoader: Binder<URL?> {

@@ -21,6 +21,7 @@
 		187E335121A08FAB0010CCE1 /* SharingControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E335021A08FAB0010CCE1 /* SharingControllerFactory.swift */; };
 		18A3256B2DFE275100430723 /* UserInputTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A3256A2DFE275100430723 /* UserInputTexts.swift */; };
 		18A3256D2DFE276400430723 /* UserAlertStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A3256C2DFE276400430723 /* UserAlertStrings.swift */; };
+		18A325702DFE2DF700430723 /* ShowDetailsShareData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A3256F2DFE2DF700430723 /* ShowDetailsShareData.swift */; };
 		18C7C1A52DFDA1C100E7AB61 /* EventAPIProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7C1A42DFDA1C100E7AB61 /* EventAPIProtocolMock.swift */; };
 		18C7C1A72DFDA2BA00E7AB61 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7C1A62DFDA2B700E7AB61 /* ArrayExtensions.swift */; };
 		18C7C1A92DFDAB9F00E7AB61 /* ShowEventsPresentationLogicMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7C1A82DFDAB9F00E7AB61 /* ShowEventsPresentationLogicMock.swift */; };
@@ -95,6 +96,7 @@
 		187E335021A08FAB0010CCE1 /* SharingControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingControllerFactory.swift; sourceTree = "<group>"; };
 		18A3256A2DFE275100430723 /* UserInputTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputTexts.swift; sourceTree = "<group>"; };
 		18A3256C2DFE276400430723 /* UserAlertStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAlertStrings.swift; sourceTree = "<group>"; };
+		18A3256F2DFE2DF700430723 /* ShowDetailsShareData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsShareData.swift; sourceTree = "<group>"; };
 		18C7C1A42DFDA1C100E7AB61 /* EventAPIProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAPIProtocolMock.swift; sourceTree = "<group>"; };
 		18C7C1A62DFDA2B700E7AB61 /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		18C7C1A82DFDAB9F00E7AB61 /* ShowEventsPresentationLogicMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsPresentationLogicMock.swift; sourceTree = "<group>"; };
@@ -186,7 +188,6 @@
 				18D402BB219F7F96002A3BC2 /* ShowDetailsViewController.swift */,
 				1801C6B521A04CB10066EC81 /* PersonCollectionViewCell.xib */,
 				1801C6B421A04CB10066EC81 /* PersonCollectionViewCell.swift */,
-				18A3256E2DFE29DA00430723 /* SharingController */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -205,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				187E335021A08FAB0010CCE1 /* SharingControllerFactory.swift */,
+				18A3256F2DFE2DF700430723 /* ShowDetailsShareData.swift */,
 			);
 			path = SharingController;
 			sourceTree = "<group>";
@@ -293,6 +295,7 @@
 				18D402C6219F9A60002A3BC2 /* Models */,
 				18D402C3219F8E2C002A3BC2 /* Services */,
 				18A325692DFE274900430723 /* UserController */,
+				18A3256E2DFE29DA00430723 /* SharingController */,
 				18D402B6219F7F76002A3BC2 /* DetailsScene */,
 				18D4029D219F7E73002A3BC2 /* EventsScene */,
 				18D4028F219F7BF6002A3BC2 /* SupportFiles */,
@@ -607,6 +610,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1832E71F21A3BBD200746AF2 /* StringExtensions.swift in Sources */,
+				18A325702DFE2DF700430723 /* ShowDetailsShareData.swift in Sources */,
 				18C7C1A72DFDA2BA00E7AB61 /* ArrayExtensions.swift in Sources */,
 				18D402B2219F7ED5002A3BC2 /* ShowEventsRouter.swift in Sources */,
 				18D402C5219F8E45002A3BC2 /* API.swift in Sources */,
