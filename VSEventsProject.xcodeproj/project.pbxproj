@@ -35,6 +35,7 @@
 		18C7C1C62DFDD73300E7AB61 /* ShowEventsEventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7C1C52DFDD73300E7AB61 /* ShowEventsEventService.swift */; };
 		18C7C1C82DFDDCCF00E7AB61 /* ShowDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7C1C72DFDDCCD00E7AB61 /* ShowDetailsService.swift */; };
 		18C7C1CA2DFDE23400E7AB61 /* CheckIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7C1C92DFDE23000E7AB61 /* CheckIn.swift */; };
+		18C7C1CC2DFDED5B00E7AB61 /* ResultExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7C1CB2DFDED5700E7AB61 /* ResultExtensions.swift */; };
 		18D40270219F75B8002A3BC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D4026F219F75B8002A3BC2 /* AppDelegate.swift */; };
 		18D40277219F75BB002A3BC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D40276219F75BB002A3BC2 /* Assets.xcassets */; };
 		18D4027A219F75BB002A3BC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D40278219F75BB002A3BC2 /* LaunchScreen.storyboard */; };
@@ -106,6 +107,7 @@
 		18C7C1C52DFDD73300E7AB61 /* ShowEventsEventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsEventService.swift; sourceTree = "<group>"; };
 		18C7C1C72DFDDCCD00E7AB61 /* ShowDetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsService.swift; sourceTree = "<group>"; };
 		18C7C1C92DFDE23000E7AB61 /* CheckIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckIn.swift; sourceTree = "<group>"; };
+		18C7C1CB2DFDED5700E7AB61 /* ResultExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultExtensions.swift; sourceTree = "<group>"; };
 		18D4026C219F75B8002A3BC2 /* VSEventsProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VSEventsProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D4026F219F75B8002A3BC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18D40276219F75BB002A3BC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 				18C7C1A62DFDA2B700E7AB61 /* ArrayExtensions.swift */,
 				1801C6B021A04AD70066EC81 /* DateExtensions.swift */,
 				1832E71E21A3BBD200746AF2 /* StringExtensions.swift */,
+				18C7C1CB2DFDED5700E7AB61 /* ResultExtensions.swift */,
 				18D402CD219FA89D002A3BC2 /* UIImageViewExtensions.swift */,
 				18D402E821A02BD4002A3BC2 /* UIViewExtensions.swift */,
 				187E334C21A083150010CCE1 /* UIViewControllerExtensions.swift */,
@@ -615,6 +618,7 @@
 				18D402CA219FA6E8002A3BC2 /* Person.swift in Sources */,
 				18D402C2219F7F96002A3BC2 /* ShowDetailsInteractor.swift in Sources */,
 				187E335121A08FAB0010CCE1 /* SharingController.swift in Sources */,
+				18C7C1CC2DFDED5B00E7AB61 /* ResultExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -5,6 +5,23 @@ protocol DetailAPIProtocol {
     func checkIn(user: User, completion: @escaping (Result<CheckIn, Error>) -> Void)
 }
 
+extension Endpoint {
+    static func event(_ event: Event) -> Self {
+        Endpoint(
+            method: .get,
+            url: "https://vsevents.free.beeceptor.com/api/events/\(event.id)"
+        )
+    }
+    
+    static func checkIn(_ user: User) throws -> Self {
+        Endpoint(
+            method: .post,
+            url: "https://vsevents.free.beeceptor.com/api/checkin",
+            parameters: try user.toData()
+        )
+    }
+}
+
 final class ShowDetailsService: DetailAPIProtocol {
     let api: APIProtocol
     
@@ -12,68 +29,24 @@ final class ShowDetailsService: DetailAPIProtocol {
         self.api = api
     }
     
-    func getEventStringURL(path: String) -> String {
-        "https://vsevents.free.beeceptor.com/api/events/\(path)"
-    }
-    
     func fetchEvent(_ event: Event, completion: @escaping (Result<Event, any Error>) -> Void) {
-        let endpoint = Endpoint(
-            method: .get,
-            url: getEventStringURL(path: event.id)
-        )
-        api.fetch(endpoint: endpoint) { [weak self] result in
-            guard let self else { return }
-            switch result {
-            case .success(let data):
-                completion(mapResult(data))
-            case .failure(let error):
-                completion(.failure(error))
-            }
+        api.fetch(endpoint: Endpoint.event(event)) { [weak self] result in
+            guard self != nil else { return }
+            completion(result.decodeTo(Event.self))
         }
     }
-    
-    func mapResult(_ data: Data) -> Result<Event, any Error> {
-        do {
-            let decodedObject = try Event.decoder(json: data)
-            return .success(decodedObject)
-        } catch {
-            return .failure(error)
-        }
-    }
-    
-    let postCheckIngStringURL = "http://5b840ba5db24a100142dcd8c.mockapi.io/api/checkin"
-    
+        
     func checkIn(user: User, completion: @escaping (Result<CheckIn, any Error>) -> Void) {
-        let data: Data?
+        let endpoint: Endpoint
         do {
-            data = try user.toData()
+            endpoint = try Endpoint.checkIn(user)
         } catch {
             completion(.failure(error))
             return
         }
-        
-        let endpoint = Endpoint(
-            method: .post,
-            url: postCheckIngStringURL,
-            parameters: data
-        )
         api.fetch(endpoint: endpoint) { [weak self] result in
-            guard let self else { return }
-            switch result {
-            case .success(let data):
-                completion(mapResult(data))
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-    }
-    
-    func mapResult(_ data: Data) -> Result<CheckIn, any Error> {
-        do {
-            let decodedObject = try CheckIn.decoder(json: data)
-            return .success(decodedObject)
-        } catch {
-            return .failure(error)
+            guard self != nil else { return }
+            completion(result.decodeTo(CheckIn.self))
         }
     }
 }
