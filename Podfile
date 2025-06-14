@@ -16,8 +16,8 @@ def rx_pods_tests
 end
 
 def quick_pods_tests
-    pod 'Quick', '1.3.2', :inhibit_warnings => true
-    pod 'Nimble', '7.3.1', :inhibit_warnings => true
+    pod 'Quick', '~> 5.0', :inhibit_warnings => true
+    pod 'Nimble', '~> 10.0', :inhibit_warnings => true
 end
 
 def alamofire_pods
