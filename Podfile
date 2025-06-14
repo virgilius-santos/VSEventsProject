@@ -7,6 +7,7 @@ def rx_pods
     pod 'RxAlamofire', '~> 5.0', :inhibit_warnings => true
     pod 'RxDataSources', :inhibit_warnings => true
     pod 'RxSwiftExt', :inhibit_warnings => true
+    pod 'RxMapKit', :git => 'https://github.com/virgilius-santos/RxMapKit.git'
 end
 
 def rx_pods_tests
