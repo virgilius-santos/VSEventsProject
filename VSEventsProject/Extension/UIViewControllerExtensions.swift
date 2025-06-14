@@ -18,7 +18,7 @@ extension SingleButtonDialogPresenter where Self: UIViewController {
                                                 preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: alert.action.buttonTitle,
                                                 style: .default,
-                                                handler: { _ in alert.action.handler?() }))
+                                                handler: { _ in /*alert.action.handler?()*/ }))
         self.present(alertController, animated: true, completion: nil)
     }
 }

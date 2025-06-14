@@ -16,6 +16,8 @@ enum Result<S, E> {
     case error(E)
 }
 
+extension Result: Equatable where S: Equatable, E: Equatable {}
+
 protocol Identifiable {
     var id: String { get }
 }

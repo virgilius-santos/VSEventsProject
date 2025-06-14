@@ -41,13 +41,13 @@ extension ShowEventsInteractor: ShowEventsBusinessLogic {
 
             case .error(let error):
                 print(error)
-                let alert = AlertAction(buttonTitle: "OK", handler: { [weak self] in
-                    self?.fetchEvents()
-                })
-                let buttonAlert
-                    = SingleButtonAlert(title: "Erro Na Busca dos Dados",
-                                        message: "Tente novamente",
-                                        action: alert)
+                let buttonAlert = SingleButtonAlert(
+                    title: "Erro Na Busca dos Dados",
+                    message: "Tente novamente",
+                    action: AlertAction(
+                        buttonTitle: "OK"
+                    )
+                )
                 self?.presenter?.displayEvents(result: .error(buttonAlert))
             }
         }

@@ -31,52 +31,51 @@ class ShowDetailsInteractor: ShowDetailsDataStore {
 extension ShowDetailsInteractor: ShowDetailsBusinessLogic {
     func fetchDetail() {
         eventAPI?.fetch(source: event!) { [weak self] (result: Result<Event, Error>) in
-
+            guard let self else { return }
             switch result {
-
             case .success(let evt):
-                self?.presenter?.presentDetail(.success(evt))
-
+                presenter?.presentDetail(.success(evt))
             case .error(let error):
-                let alert = AlertAction(buttonTitle: "claro", handler: nil)
-                let buttonAlert
-                    = SingleButtonAlert(title: "azul",
-                                        message: error.localizedDescription,
-                                        action: alert)
-                self?.presenter?.presentDetail(.error(buttonAlert))
+                sendDetailMessage(msg: error.localizedDescription)
             }
-
         }
+    }
+    
+    private func sendDetailMessage(msg: String) {
+        let buttonAlert = SingleButtonAlert(
+            title: "Detalhes",
+            message: msg,
+            action: AlertAction(buttonTitle: "OK")
+        )
+        self.presenter?.presentDetail(.error(buttonAlert))
     }
 
     func postCheckIn(userInfo: (String, String)?) {
-
-        let (name, email) = userInfo!
-        let user = User(name: name, email: email, eventId: event!.id)
-
-        if !email.match(.email) {
-            self.sendMessage(msg:
-                "email no formato invalido, tente novamente.")
+        guard let (name, email) = userInfo else {
+            self.sendCheckInMessage(msg: "dados invalidos")
             return
         }
-        eventAPI?.checkIn(source: user) {(result) in
+        guard email.match(.email) else {
+            self.sendCheckInMessage(msg: "email no formato invalido, tente novamente.")
+            return
+        }
+        
+        let user = User(name: name, email: email, eventId: event!.id)
+        eventAPI?.checkIn(source: user) { result in
             if case .success(let dict) = result, (dict["code"] as? String) == "200" {
-                self.sendMessage(msg: "Sucesso!")
+                self.sendCheckInMessage(msg: "Sucesso!")
             } else {
-                self.sendMessage(msg:
-                    "Houve uma falha, tente novamente mais tarte.")
+                self.sendCheckInMessage(msg: "Houve uma falha, tente novamente mais tarte.")
             }
         }
     }
 
-    private func sendMessage(msg: String) {
-        let alert = AlertAction(buttonTitle: "Ok", handler: nil)
-        let buttonAlert
-            = SingleButtonAlert(title: "Check In",
-                                message: msg,
-                                action: alert)
-        DispatchQueue.main.async {
-            self.presenter?.presentCheckIn(buttonAlert)
-        }
+    private func sendCheckInMessage(msg: String) {
+        let buttonAlert = SingleButtonAlert(
+            title: "Check In",
+            message: msg,
+            action: AlertAction(buttonTitle: "OK")
+        )
+        self.presenter?.presentCheckIn(buttonAlert)
     }
 }
