@@ -23,11 +23,7 @@ extension Encodable {
 }
 
 extension Decodable {
-    static func decoder(json: Any) throws -> Self {
-
-        let documentData = try JSONSerialization.data(withJSONObject: json, options: [])
-        let decodeObject = try JSONDecoder().decode(Self.self, from: documentData)
-
-        return decodeObject
+    static func decoder(json: Data) throws -> Self {
+        try JSONDecoder().decode(Self.self, from: json)
     }
 }

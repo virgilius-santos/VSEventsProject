@@ -37,7 +37,7 @@ protocol DetailAPIProtocol {
 
 class EventAPI: EventAPIProtocol, DetailAPIProtocol {
     let getEventStringURL
-        = "http://5b840ba5db24a100142dcd8c.mockapi.io/api/events"
+        = "https://vsevents.free.beeceptor.com/api/events"
 
     let postCheckIngStringURL
         = "http://5b840ba5db24a100142dcd8c.mockapi.io/api/checkin"
@@ -47,8 +47,7 @@ class EventAPI: EventAPIProtocol, DetailAPIProtocol {
     func fetch<T: Decodable>(completion: @escaping (Result<[T], Error>) -> Void) {
         request(.get, getEventStringURL)
             .flatMap { request in
-                return request.validate(statusCode: 200..<300)
-                    .rx.json()
+                return request.validate(statusCode: 200..<300).rx.data()
             }
             .observeOn(MainScheduler.instance)
             .subscribe({ event in
@@ -84,7 +83,7 @@ class EventAPI: EventAPIProtocol, DetailAPIProtocol {
         request(.get, url)
             .flatMap { request in
                 return request.validate(statusCode: 200..<300)
-                    .rx.json()
+                    .rx.data()
             }
             .observeOn(MainScheduler.instance)
             .subscribe({ event in
