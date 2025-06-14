@@ -4,12 +4,6 @@ import RxSwift
 import RxCocoa
 
 extension UIImageView {
-    var imageLoader: Binder<URL?> {
-        .init(self) { imageView, url in
-            imageView.getImage(withURL:url)
-        }
-    }
-
     func getImage(withURL url: URL?) {
         guard let url = url else { return }
         
@@ -30,4 +24,13 @@ extension UIImageView {
         })
     }
 
+}
+
+
+extension Reactive where Base: UIImageView {
+    var imageLoader: Binder<URL?> {
+        .init(base) { imageView, url in
+            imageView.getImage(withURL:url)
+        }
+    }
 }

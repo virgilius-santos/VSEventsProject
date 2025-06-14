@@ -76,7 +76,7 @@ class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic, Sing
         viewModel
             .event
             .map(\.imageUrl)
-            .bind(to: eventPoster.imageLoader)
+            .bind(to: eventPoster.rx.imageLoader)
             .disposed(by: disposeBag)
 
         viewModel
@@ -110,7 +110,7 @@ class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic, Sing
             .disposed(by: disposeBag)
 
         viewModel.onShowError
-            .bind(to: alertMessage)
+            .bind(to: rx.alertMessage)
             .disposed(by: disposeBag)
 
     }
@@ -133,9 +133,8 @@ class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic, Sing
         shareButton
             .rx
             .tap
-            .bind { [weak self] in
-                self?.router?.sharing()
-            }
+            .withLatestFrom(rx.shareData)
+            .bind(to: rx.share)
             .disposed(by: disposeBag)
 
         checkInButton
@@ -151,5 +150,28 @@ class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic, Sing
         router?.checkIn { [weak self] userInfo in
             self?.interactor?.postCheckIn(userInfo: userInfo)
         }
+    }
+}
+
+extension ShowDetailsViewController {
+    var shareData: ShowDetailsShareData {
+        ShowDetailsShareData(
+            title: titleLabel.text,
+            price: priceLabel.text,
+            date: dateLabel.text,
+            poster: eventPoster.image
+        )
+    }
+}
+
+extension Reactive where Base: ShowDetailsViewController {
+    var share: Binder<ShowDetailsShareData> {
+        .init(base) { controller, shareData in
+            controller.router?.sharing(shareData: shareData)
+        }
+    }
+    
+    var shareData: Observable<ShowDetailsShareData> {
+        .just(base.shareData)
     }
 }

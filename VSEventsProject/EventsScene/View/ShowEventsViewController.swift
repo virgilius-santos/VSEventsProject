@@ -38,7 +38,7 @@ final class ShowEventsViewController: UIViewController, ShowEventsDisplayLogic, 
             .disposed(by: disposeBag)
 
         viewModel.onShowError
-            .bind(to: alertMessage)
+            .bind(to: rx.alertMessage)
             .disposed(by: disposeBag)
     }
 

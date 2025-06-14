@@ -16,9 +16,7 @@ final class EventTableViewCell: UITableViewCell {
     private func bindViewModel() {
         selectionStyle = .none
         eventLabel?.text = viewModel?.title
-        if let url = viewModel?.imageUrl {
-            eventImageView.getImage(withURL: url)
-        }
+        eventImageView.getImage(withURL: viewModel?.imageUrl)
     }
 
     override func prepareForReuse() {

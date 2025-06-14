@@ -1,19 +1,21 @@
 import UIKit
 
 protocol ShowDetailsRoutingLogic {
-    func sharing()
+    func sharing(shareData: ShowDetailsShareData)
     func checkIn(onOK: @escaping (UserInputTexts) -> Void)
 }
 
 final class ShowDetailsRouter {
     weak var viewController: ShowDetailsViewController?
     let userControllerFactory = UserControllerFactory()
+    let sharingControllerFactory = SharingControllerFactory()
 }
 
 extension ShowDetailsRouter: ShowDetailsRoutingLogic {
-    func sharing() {
-        let sharingVC = SharingController(viewController: viewController)
-        viewController?.present(sharingVC.activityVC, animated: true)
+    func sharing(shareData: ShowDetailsShareData) {
+        let sharingVC = sharingControllerFactory.make(shareData: shareData)
+        sharingVC.popoverPresentationController?.sourceView = viewController?.view
+        viewController?.present(sharingVC, animated: true)
     }
 
     func checkIn(onOK: @escaping (UserInputTexts) -> Void) {

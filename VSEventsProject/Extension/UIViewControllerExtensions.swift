@@ -1,4 +1,5 @@
 import UIKit
+import RxSwift
 import RxCocoa
 
 protocol SingleButtonDialogPresenter {
@@ -12,12 +13,6 @@ extension SingleButtonDialogPresenter {
 }
 
 extension SingleButtonDialogPresenter where Self: UIViewController {
-    var alertMessage: Binder<SingleButtonAlert> {
-        .init(self) { controller, alert in
-            controller.presentSingleButtonDialog(alert: alert)
-        }
-    }
-    
     func presentSingleButtonDialog(
         alert: SingleButtonAlert,
         primaryAction: (() -> Void)? = nil
@@ -35,5 +30,14 @@ extension SingleButtonDialogPresenter where Self: UIViewController {
             )
         )
         self.present(alertController, animated: true, completion: nil)
+    }
+}
+
+
+extension Reactive where Base: UIViewController & SingleButtonDialogPresenter {
+    var alertMessage: Binder<SingleButtonAlert> {
+        .init(base) { controller, alert in
+            controller.presentSingleButtonDialog(alert: alert)
+        }
     }
 }
