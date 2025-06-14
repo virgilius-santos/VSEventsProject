@@ -1,30 +1,29 @@
-//
-//  ShowDetailsConfigurator.swift
-//  VSEventsProject
-//
-//  Created by Virgilius Santos on 17/11/18.
-//  Copyright © 2018 Virgilius Santos. All rights reserved.
-//
-
 import Foundation
+import UIKit
 
-class ShowDetailsConfigurator {
-
+final class ShowDetailsConfigurator {
     private let nibName = String(describing: ShowDetailsViewController.self)
 
-    var viewController: ShowDetailsViewController
+    let eventItem: Event
 
-    init() {
-        viewController = ShowDetailsViewController(nibName: nibName, bundle: nil)
-        let interactor = ShowDetailsInteractor()
+    init(eventItem: Event) {
+        self.eventItem = eventItem
+    }
+    
+    func make() -> UIViewController {
+        let viewController = ShowDetailsViewController(nibName: nibName, bundle: nil)
         let presenter = ShowDetailsPresenter()
+        let eventAPI = EventAPI()
+        let interactor = ShowDetailsInteractor(
+            presenter: presenter,
+            eventAPI: eventAPI,
+            event: eventItem
+        )
         let router = ShowDetailsRouter()
         viewController.interactor = interactor
         viewController.router = router
-        interactor.presenter = presenter
-        interactor.eventAPI = EventAPI()
         presenter.viewController = viewController
         router.viewController = viewController
-        router.dataStore = interactor
+        return viewController
     }
 }

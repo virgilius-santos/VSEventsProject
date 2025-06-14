@@ -26,7 +26,7 @@ extension Event: EventCellViewModel {
     }
 }
 
-class EventsTableViewViewModel {
+final class EventsTableViewViewModel {
 
     var eventCells: Observable<[EventCellViewModel]> {
         return cells.asObservable()

@@ -26,7 +26,7 @@ class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic, Sing
 
     var interactor: ShowDetailsBusinessLogic?
 
-    var router: (ShowDetailsRoutingLogic & ShowDetailsDataPassing)?
+    var router: ShowDetailsRoutingLogic?
 
     var viewModel = DetailViewModel()
 

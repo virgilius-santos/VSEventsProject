@@ -1,33 +1,21 @@
-//
-//  ShowEventsConfigurator.swift
-//  VSEventsProject
-//
-//  Created by Virgilius Santos on 17/11/18.
-//  Copyright © 2018 Virgilius Santos. All rights reserved.
-//
-
 import UIKit
 
-class ShowEventsConfigurator {
+final class ShowEventsConfigurator {
 
     private let nibName = String(describing: ShowEventsViewController.self)
 
-    var viewController: ShowEventsViewController
-
-    init(window: UIWindow) {
-        viewController = ShowEventsViewController(nibName: nibName, bundle: nil)
-        let interactor = ShowEventsInteractor()
-        let presenter = ShowEventsPresenter()
+    func make() -> UIViewController {
+        let viewController = ShowEventsViewController(nibName: nibName, bundle: nil)
+        let presenter = ShowEventsPresenter(viewController: viewController)
+        let eventAPI = EventAPI()
+        let interactor = ShowEventsInteractor(
+            presenter: presenter,
+            eventAPI: eventAPI
+        )
         let router = ShowEventsRouter()
         viewController.interactor = interactor
         viewController.router = router
-        interactor.presenter = presenter
-        interactor.eventAPI = EventAPI()
-        presenter.viewController = viewController
         router.viewController = viewController
-        router.dataStore = interactor
-
-        let nav = UINavigationController(rootViewController: viewController)
-        window.rootViewController = nav
+        return viewController
     }
 }

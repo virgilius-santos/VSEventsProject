@@ -19,10 +19,11 @@ final class ShowDetailsInteractorTests: QuickSpec {
     
     func makeSut() -> (Sut, Doubles) {
         let doubles = Doubles()
-        let sut = Sut()
-        sut.presenter = doubles.presenter
-        sut.eventAPI = doubles.eventAPI
-        sut.event = doubles.initialEvent
+        let sut = Sut.init(
+            presenter: doubles.presenter,
+            eventAPI: doubles.eventAPI,
+            event: doubles.initialEvent
+        )
         
         doubles.presenter.anyMessages = doubles.anyMessages
         doubles.eventAPI.anyMessages = doubles.anyMessages
