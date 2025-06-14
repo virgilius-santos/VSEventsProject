@@ -99,7 +99,6 @@ final class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic
         viewModel.onShowError
             .bind(to: rx.alertMessage)
             .disposed(by: disposeBag)
-
     }
 
     func setupCollectionView() {
@@ -114,7 +113,6 @@ final class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic
                 cell.viewModel = element
             }
             .disposed(by: disposeBag)
-
     }
 
     func setupButtons() {

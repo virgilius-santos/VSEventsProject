@@ -15,7 +15,7 @@ struct Endpoint: Equatable {
 
 protocol APIProtocol {
     func fetch(
-        endpoint: Endpoint,
+        endpoint end: @autoclosure () throws -> Endpoint,
         completion: @escaping (Swift.Result<Data, Error>) -> Void
     )
 }
@@ -24,11 +24,13 @@ final class API: APIProtocol {
     let disposeBag = DisposeBag()
 
     func fetch(
-        endpoint: Endpoint,
+        endpoint end: @autoclosure () throws -> Endpoint,
         completion: @escaping (Swift.Result<Data, Error>) -> Void
     ) {
         let parameters: [String: Any]?
+        let endpoint: Endpoint
         do {
+            endpoint = try end()
             parameters = try endpoint.parameters?.toJson()
         } catch {
             completion(.failure(error))

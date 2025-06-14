@@ -37,14 +37,7 @@ final class ShowDetailsService: DetailAPIProtocol {
     }
         
     func checkIn(user: User, completion: @escaping (Result<CheckIn, any Error>) -> Void) {
-        let endpoint: Endpoint
-        do {
-            endpoint = try Endpoint.checkIn(user)
-        } catch {
-            completion(.failure(error))
-            return
-        }
-        api.fetch(endpoint: endpoint) { [weak self] result in
+        api.fetch(endpoint: try Endpoint.checkIn(user)) { [weak self] result in
             guard self != nil else { return }
             completion(result.decodeTo(CheckIn.self))
         }
