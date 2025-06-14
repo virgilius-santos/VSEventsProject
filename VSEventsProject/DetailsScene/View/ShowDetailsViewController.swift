@@ -32,8 +32,6 @@ class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic, Sing
 
     var disposeBag = DisposeBag()
 
-    let cellIdentifier = String(describing: PersonCollectionViewCell.self)
-
     var userController = UserController()
 
     // MARK: View lifecycle
@@ -71,77 +69,64 @@ class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic, Sing
     @IBOutlet weak var mapView: MKMapView!
 
     func bindViewModel() {
-
         viewModel
             .eventDetail
-            .map({$0.title})
+            .map(\.title)
             .bind(to: titleLabel.rx.text)
             .disposed(by: disposeBag)
 
         viewModel
             .event
-            .map({$0.imageUrl})
-            .subscribe { [weak self] (event) in
-                if case .next(let url) = event {
-                    self?.eventPoster.getImage(withURL: url)
-                }
-            }.disposed(by: disposeBag)
+            .map(\.imageUrl)
+            .bind(to: eventPoster.imageLoader)
+            .disposed(by: disposeBag)
 
         viewModel
             .eventDetail
-            .map({"\($0.price)"})
+            .map(\.priceValue)
             .bind(to: priceLabel.rx.text)
             .disposed(by: disposeBag)
 
         viewModel
             .eventDetail
-            .map({$0.description})
+            .map(\.description)
             .bind(to: descriptionTextView.rx.text)
             .disposed(by: disposeBag)
 
         viewModel
             .eventDetail
-            .map({$0.dateString})
+            .map(\.dateString)
             .bind(to: dateLabel.rx.text)
             .disposed(by: disposeBag)
 
         viewModel
             .eventDetail
-            .map({$0.region})
+            .map(\.region)
             .bind(to: mapView.rx.region)
             .disposed(by: disposeBag)
 
         viewModel
             .eventDetail
-            .map({[$0.annotation]})
+            .map(\.annotations)
             .bind(to: mapView.rx.annotationsToShowToAnimate)
             .disposed(by: disposeBag)
 
-        let observable: Observable<SingleButtonAlert> = viewModel.onShowError
-
-        observable
-            .subscribe(onNext: { [weak self] alert in
-
-                self?.presentSingleButtonDialog(alert: alert)
-
-            }).disposed(by: disposeBag)
+        viewModel.onShowError
+            .bind(to: alertMessage)
+            .disposed(by: disposeBag)
 
     }
 
     func setupCollectionView() {
-        let nib = UINib(nibName: cellIdentifier, bundle: nil)
-        participantsCollectionView.register(nib, forCellWithReuseIdentifier: cellIdentifier)
-
+        let nib = UINib(nibName: PersonCollectionViewCell.cellIdentifier, bundle: nil)
+        participantsCollectionView.register(nib, forCellWithReuseIdentifier: PersonCollectionViewCell.cellIdentifier)
         viewModel
             .eventCells
-            .bind(to: self.participantsCollectionView
-                .rx
-                .items(cellIdentifier: cellIdentifier,
-                       cellType: PersonCollectionViewCell.self)
-            ) { (_, element, cell) in
-
+            .bind(to: participantsCollectionView.rx.items(
+                cellIdentifier: PersonCollectionViewCell.cellIdentifier,
+                cellType: PersonCollectionViewCell.self
+            )) { (_, element, cell) in
                 cell.viewModel = element
-
             }.disposed(by: disposeBag)
 
     }
@@ -150,18 +135,21 @@ class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic, Sing
         shareButton
             .rx
             .tap
-            .bind { [unowned self] in
-                self.router?.sharing()
-            }.disposed(by: disposeBag)
+            .bind { [weak self] in
+                self?.router?.sharing()
+            }
+            .disposed(by: disposeBag)
 
         checkInButton
             .rx
             .tap
-            .bind { [unowned self] in
+            .bind { [weak self] in
+                guard let self else { return }
                 self.userController = UserController()
                 self.setupUserController()
                 self.router?.checkIn()
-        }.disposed(by: disposeBag)
+            }
+            .disposed(by: disposeBag)
     }
 
     func setupUserController() {
@@ -171,5 +159,4 @@ class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic, Sing
             }
         }
     }
-
 }

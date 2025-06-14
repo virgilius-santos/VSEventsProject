@@ -7,17 +7,13 @@ protocol ShowEventsDisplayLogic: class {
     var viewModel: EventsTableViewViewModel { get }
 }
 
-class ShowEventsViewController: UIViewController, ShowEventsDisplayLogic, SingleButtonDialogPresenter {
-
+final class ShowEventsViewController: UIViewController, ShowEventsDisplayLogic, SingleButtonDialogPresenter {
     var viewModel = EventsTableViewViewModel()
 
     var interactor: ShowEventsBusinessLogic?
-
     var router: ShowEventsRoutingLogic?
 
     var disposeBag = DisposeBag()
-
-    let cellIdentifier = String(describing: EventTableViewCell.self)
 
     // MARK: View lifecycle
 
@@ -32,29 +28,23 @@ class ShowEventsViewController: UIViewController, ShowEventsDisplayLogic, Single
     @IBOutlet weak var tableView: UITableView!
 
     func bindViewModel() {
-
-        viewModel
-            .eventCells
-            .bind(to: self.tableView.rx.items(cellIdentifier: cellIdentifier, cellType: EventTableViewCell.self)) { (_, element, cell) in
-
+        viewModel.eventCells
+            .bind(to: tableView.rx.items(
+                cellIdentifier: EventTableViewCell.cellIdentifier,
+                cellType: EventTableViewCell.self
+            )) { (_, element, cell) in
                 cell.viewModel = element
-                
-            }.disposed(by: disposeBag)
+            }
+            .disposed(by: disposeBag)
 
-        let observable: Observable<SingleButtonAlert> = viewModel.onShowError
-
-        observable
-            .subscribe(onNext: { [weak self] alert in
-
-                self?.presentSingleButtonDialog(alert: alert)
-                
-            }).disposed(by: disposeBag)
-
+        viewModel.onShowError
+            .bind(to: alertMessage)
+            .disposed(by: disposeBag)
     }
 
     func setupTableView() {
-        let nib = UINib(nibName: cellIdentifier, bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: cellIdentifier)
+        let nib = UINib(nibName: EventTableViewCell.cellIdentifier, bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: EventTableViewCell.cellIdentifier)
 
         tableView.rx
             .modelSelected(EventCellViewModel.self)
@@ -62,12 +52,6 @@ class ShowEventsViewController: UIViewController, ShowEventsDisplayLogic, Single
                 self?.router?.routeToDetail(value)
             })
             .disposed(by: disposeBag)
-
-        tableView.rx.itemSelected
-            .subscribe(onNext: { [weak self] indexPath in
-                self?.tableView.deselectRow(at: indexPath, animated: false)
-            }).disposed(by: disposeBag)
-
     }
 
     func fetchEvents() {

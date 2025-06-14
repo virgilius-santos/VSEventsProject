@@ -1,14 +1,7 @@
-//
-//  PersonCollectionViewCell.swift
-//  VSEventsProject
-//
-//  Created by Virgilius Santos on 17/11/18.
-//  Copyright © 2018 Virgilius Santos. All rights reserved.
-//
-
 import UIKit
 
-class PersonCollectionViewCell: UICollectionViewCell {
+final class PersonCollectionViewCell: UICollectionViewCell {
+    static let cellIdentifier = String(describing: PersonCollectionViewCell.self)
 
     @IBOutlet weak var photoImageView: UIImageView!
     
@@ -22,9 +15,7 @@ class PersonCollectionViewCell: UICollectionViewCell {
 
     private func bindViewModel() {
         nameLabel?.text = viewModel?.title
-        if let url = viewModel?.imageUrl {
-            photoImageView.getImage(withURL: url)
-        }
+        photoImageView.getImage(withURL: viewModel?.imageUrl)
     }
 
     override func prepareForReuse() {

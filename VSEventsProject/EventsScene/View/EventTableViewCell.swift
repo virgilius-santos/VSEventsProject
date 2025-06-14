@@ -1,14 +1,7 @@
-//
-//  EventTableViewCell.swift
-//  VSEventsProject
-//
-//  Created by Virgilius Santos on 17/11/18.
-//  Copyright © 2018 Virgilius Santos. All rights reserved.
-//
-
 import UIKit
 
-class EventTableViewCell: UITableViewCell {
+final class EventTableViewCell: UITableViewCell {
+    static let cellIdentifier = String(describing: EventTableViewCell.self)
     
     @IBOutlet weak var eventImageView: UIImageView!
 
@@ -21,6 +14,7 @@ class EventTableViewCell: UITableViewCell {
     }
 
     private func bindViewModel() {
+        selectionStyle = .none
         eventLabel?.text = viewModel?.title
         if let url = viewModel?.imageUrl {
             eventImageView.getImage(withURL: url)

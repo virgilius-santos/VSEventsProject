@@ -1,18 +1,18 @@
-//
-//  ImageAPI.swift
-//  VSEventsProject
-//
-//  Created by Virgilius Santos on 16/11/18.
-//  Copyright © 2018 Virgilius Santos. All rights reserved.
-//
-
 import UIKit
 import AlamofireImage
+import RxSwift
+import RxCocoa
 
 extension UIImageView {
+    var imageLoader: Binder<URL?> {
+        .init(self) { imageView, url in
+            imageView.getImage(withURL:url)
+        }
+    }
 
-    func getImage(withURL url: URL) {
-
+    func getImage(withURL url: URL?) {
+        guard let url = url else { return }
+        
         let downloader = ImageDownloader.default
 
         if let image = downloader.imageCache?.image(withIdentifier: url.absoluteString) {

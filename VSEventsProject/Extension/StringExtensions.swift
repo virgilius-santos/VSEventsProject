@@ -1,16 +1,7 @@
-//
-//  String.swift
-//  VSEventsProject
-//
-//  Created by Virgilius Santos on 20/11/18.
-//  Copyright © 2018 Virgilius Santos. All rights reserved.
-//
-
 import Foundation
 
 enum Patterns: String {
-    case email
-        = "^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$"
+    case email = "^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$"
 }
 
 extension String {

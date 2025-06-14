@@ -1,11 +1,3 @@
-//
-//  UIView.swift
-//  VSEventsProject
-//
-//  Created by Virgilius Santos on 17/11/18.
-//  Copyright © 2018 Virgilius Santos. All rights reserved.
-//
-
 import UIKit
 
 extension UIView {
@@ -30,15 +22,19 @@ extension UIView {
 
         let viewsDict = ["backGrounView": backGrounView]
 
-        let horizontalConstraint  = NSLayoutConstraint.constraints(withVisualFormat: descHorizontal,
-                                                                   options: .init(rawValue: 0),
-                                                                   metrics: nil,
-                                                                   views: viewsDict)
+        let horizontalConstraint  = NSLayoutConstraint.constraints(
+            withVisualFormat: descHorizontal,
+            options: .init(rawValue: 0),
+            metrics: nil,
+            views: viewsDict
+        )
 
-        let verticalConstraint  = NSLayoutConstraint.constraints(withVisualFormat: descVertical,
-                                                                 options: .init(rawValue: 0),
-                                                                 metrics: nil,
-                                                                 views: viewsDict)
+        let verticalConstraint  = NSLayoutConstraint.constraints(
+            withVisualFormat: descVertical,
+            options: .init(rawValue: 0),
+            metrics: nil,
+            views: viewsDict
+        )
 
         addConstraints(horizontalConstraint)
         addConstraints(verticalConstraint)
@@ -49,43 +45,43 @@ extension UIView {
 
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
 
-        let centerHorizontally = NSLayoutConstraint(item: activityIndicator,
-                                                    attribute: .centerX,
-                                                    relatedBy: .equal,
-                                                    toItem: backGrounView,
-                                                    attribute: .centerX,
-                                                    multiplier: 1.0,
-                                                    constant: 0.0)
+        let centerHorizontally = NSLayoutConstraint(
+            item: activityIndicator,
+            attribute: .centerX,
+            relatedBy: .equal,
+            toItem: backGrounView,
+            attribute: .centerX,
+            multiplier: 1.0,
+            constant: 0.0
+        )
 
-        let centerVertically = NSLayoutConstraint(item: activityIndicator,
-                                                  attribute: .centerY,
-                                                  relatedBy: .equal,
-                                                  toItem: backGrounView,
-                                                  attribute: .centerY,
-                                                  multiplier: 1.0,
-                                                  constant: 0.0)
+        let centerVertically = NSLayoutConstraint(
+            item: activityIndicator,
+            attribute: .centerY,
+            relatedBy: .equal,
+            toItem: backGrounView,
+            attribute: .centerY,
+            multiplier: 1.0,
+            constant: 0.0
+        )
 
         backGrounView.addConstraints([centerHorizontally, centerVertically])
 
-        UIView.animate(withDuration: 0.3, animations: {
-            backGrounView.alpha = 1
-        }) { (_) in
-            activityIndicator.startAnimating()
-        }
-
+        UIView.animate(
+            withDuration: 0.3,
+            animations: { backGrounView.alpha = 1 },
+            completion: { _ in activityIndicator.startAnimating() }
+        )
     }
 
     func unlock() {
         guard let backGroundView = self.viewWithTag(backGrounViewTag) else {
             return
         }
-
-        UIView.animate(withDuration: 0.3, animations: {
-            backGroundView.alpha = 0
-        }) { (_) in
-            backGroundView.removeFromSuperview()
-        }
-
+        UIView.animate(
+            withDuration: 0.3,
+            animations: { backGroundView.alpha = 0 },
+            completion: { _ in backGroundView.removeFromSuperview() }
+        )
     }
-
 }
