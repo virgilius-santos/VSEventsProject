@@ -19,7 +19,7 @@ final class ShowDetailsInteractor {
 
 extension ShowDetailsInteractor: ShowDetailsBusinessLogic {
     func fetchDetail() {
-        eventAPI.fetch(source: event) { [weak self] (result: Result<Event, Error>) in
+        eventAPI.fetchEvent(event) { [weak self] result in
             guard let self else { return }
             switch result {
             case .success(let evt):
@@ -50,8 +50,8 @@ extension ShowDetailsInteractor: ShowDetailsBusinessLogic {
         }
         
         let user = User(name: name, email: email, eventId: event.id)
-        eventAPI.checkIn(source: user) { result in
-            if case .success(let dict) = result, (dict["code"] as? String) == "200" {
+        eventAPI.checkIn(user: user) { result in
+            if case .success(let model) = result, model.code == "200" {
                 self.sendCheckInMessage(msg: "Sucesso!")
             } else {
                 self.sendCheckInMessage(msg: "Houve uma falha, tente novamente mais tarte.")

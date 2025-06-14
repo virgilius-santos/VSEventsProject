@@ -8,7 +8,7 @@ final class ShowEventsEventService: EventAPIProtocol {
     let getEventStringURL = "https://vsevents.free.beeceptor.com/api/events"
     let api: APIProtocol
     
-    init(api: APIProtocol = EventAPI()) {
+    init(api: APIProtocol = API()) {
         self.api = api
     }
     

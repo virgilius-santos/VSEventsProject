@@ -3,19 +3,8 @@ import Foundation
 
 final class DetailAPIProtocolMock: DetailAPIProtocol {
     enum Message: Equatable {
-        case fetch(_ source: Identifiable)
-        case checkIn(_ source: Any)
-        
-        static func == (lhs: DetailAPIProtocolMock.Message, rhs: DetailAPIProtocolMock.Message) -> Bool {
-            switch (lhs, rhs) {
-            case (.fetch(let l), .fetch(let r)):
-                return areEqual(l, r)
-            case (.checkIn(let l), .checkIn(let r)):
-                return areEqual(l, r)
-            default:
-                return false
-            }
-        }
+        case fetch(_ source: Event)
+        case checkIn(_ source: User)
     }
     
     private(set) var messages: [Message] = [] {
@@ -27,7 +16,7 @@ final class DetailAPIProtocolMock: DetailAPIProtocol {
     var anyMessages = AnyMessage()
     
     private(set) var fetchRequests: [Any] = []
-    func fetch<T>(source: Identifiable, completion: @escaping (Result<T, Error>) -> Void) where T: Decodable {
+    func fetchEvent(_ source: Event, completion: @escaping (Result<Event, Error>) -> Void) {
         messages.append(.fetch(source))
         fetchRequests.append(completion)
     }
@@ -36,12 +25,12 @@ final class DetailAPIProtocolMock: DetailAPIProtocol {
         completion?(result)
     }
     
-    private(set) var checkInRequests: [(Result<[String: Any], Error>) -> Void] = []
-    func checkIn<T>(source: T, completion: @escaping (Result<[String: Any], Error>) -> Void) where T: Checkable {
-        messages.append(.checkIn(source))
+    private(set) var checkInRequests: [(Result<CheckIn, Error>) -> Void] = []
+    func checkIn(user: User, completion: @escaping (Result<CheckIn, Error>) -> Void) {
+        messages.append(.checkIn(user))
         checkInRequests.append(completion)
     }
-    func simulateCheckInResponse(with result: Result<[String: Any], Error>, at index: Int = 0) {
+    func simulateCheckInResponse(with result: Result<CheckIn, Error>, at index: Int = 0) {
         let completion = checkInRequests[safe: index]
         completion?(result)
     }

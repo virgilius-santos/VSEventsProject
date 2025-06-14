@@ -9,16 +9,20 @@
 import Foundation
 
 extension Encodable {
+    func toData() throws -> Data {
+        try JSONEncoder().encode(self)
+    }
+    
     func toJson(excluding keys: [String] = [String]()) throws -> [String: Any] {
 
         let objectData = try JSONEncoder().encode(self)
         let jsonObject = try JSONSerialization.jsonObject(with: objectData, options: [])
 
-        var json = jsonObject as! [String: Any]
+        var json = jsonObject as? [String: Any]
 
-        keys.forEach { json[$0] = nil }
+        keys.forEach { json?[$0] = nil }
 
-        return json
+        return json ?? [:]
     }
 }
 

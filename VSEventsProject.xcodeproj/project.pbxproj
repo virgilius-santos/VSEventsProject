@@ -33,6 +33,8 @@
 		18C7C1C22DFDC26000E7AB61 /* AnyMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7C1C12DFDC25B00E7AB61 /* AnyMessage.swift */; };
 		18C7C1C42DFDC26A00E7AB61 /* AnyEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7C1C32DFDC26500E7AB61 /* AnyEquatable.swift */; };
 		18C7C1C62DFDD73300E7AB61 /* ShowEventsEventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7C1C52DFDD73300E7AB61 /* ShowEventsEventService.swift */; };
+		18C7C1C82DFDDCCF00E7AB61 /* ShowDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7C1C72DFDDCCD00E7AB61 /* ShowDetailsService.swift */; };
+		18C7C1CA2DFDE23400E7AB61 /* CheckIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7C1C92DFDE23000E7AB61 /* CheckIn.swift */; };
 		18D40270219F75B8002A3BC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D4026F219F75B8002A3BC2 /* AppDelegate.swift */; };
 		18D40277219F75BB002A3BC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D40276219F75BB002A3BC2 /* Assets.xcassets */; };
 		18D4027A219F75BB002A3BC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D40278219F75BB002A3BC2 /* LaunchScreen.storyboard */; };
@@ -44,7 +46,7 @@
 		18D402C0219F7F96002A3BC2 /* ShowDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402BA219F7F96002A3BC2 /* ShowDetailsModels.swift */; };
 		18D402C1219F7F96002A3BC2 /* ShowDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402BB219F7F96002A3BC2 /* ShowDetailsViewController.swift */; };
 		18D402C2219F7F96002A3BC2 /* ShowDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402BC219F7F96002A3BC2 /* ShowDetailsInteractor.swift */; };
-		18D402C5219F8E45002A3BC2 /* EventAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402C4219F8E45002A3BC2 /* EventAPI.swift */; };
+		18D402C5219F8E45002A3BC2 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402C4219F8E45002A3BC2 /* API.swift */; };
 		18D402C8219F9A72002A3BC2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402C7219F9A72002A3BC2 /* Event.swift */; };
 		18D402CA219FA6E8002A3BC2 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402C9219FA6E8002A3BC2 /* Person.swift */; };
 		18D402CC219FA700002A3BC2 /* Cupom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402CB219FA700002A3BC2 /* Cupom.swift */; };
@@ -102,6 +104,8 @@
 		18C7C1C12DFDC25B00E7AB61 /* AnyMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyMessage.swift; sourceTree = "<group>"; };
 		18C7C1C32DFDC26500E7AB61 /* AnyEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyEquatable.swift; sourceTree = "<group>"; };
 		18C7C1C52DFDD73300E7AB61 /* ShowEventsEventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsEventService.swift; sourceTree = "<group>"; };
+		18C7C1C72DFDDCCD00E7AB61 /* ShowDetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsService.swift; sourceTree = "<group>"; };
+		18C7C1C92DFDE23000E7AB61 /* CheckIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckIn.swift; sourceTree = "<group>"; };
 		18D4026C219F75B8002A3BC2 /* VSEventsProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VSEventsProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D4026F219F75B8002A3BC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18D40276219F75BB002A3BC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -117,7 +121,7 @@
 		18D402BA219F7F96002A3BC2 /* ShowDetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsModels.swift; sourceTree = "<group>"; };
 		18D402BB219F7F96002A3BC2 /* ShowDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsViewController.swift; sourceTree = "<group>"; };
 		18D402BC219F7F96002A3BC2 /* ShowDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsInteractor.swift; sourceTree = "<group>"; };
-		18D402C4219F8E45002A3BC2 /* EventAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAPI.swift; sourceTree = "<group>"; };
+		18D402C4219F8E45002A3BC2 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		18D402C7219F9A72002A3BC2 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		18D402C9219FA6E8002A3BC2 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		18D402CB219FA700002A3BC2 /* Cupom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cupom.swift; sourceTree = "<group>"; };
@@ -317,6 +321,7 @@
 				1801C6B321A04C870066EC81 /* View */,
 				18D402BA219F7F96002A3BC2 /* ShowDetailsModels.swift */,
 				18D402BC219F7F96002A3BC2 /* ShowDetailsInteractor.swift */,
+				18C7C1C72DFDDCCD00E7AB61 /* ShowDetailsService.swift */,
 				18D402B7219F7F96002A3BC2 /* ShowDetailsPresenter.swift */,
 				18D402B9219F7F96002A3BC2 /* ShowDetailsRouter.swift */,
 			);
@@ -326,7 +331,7 @@
 		18D402C3219F8E2C002A3BC2 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				18D402C4219F8E45002A3BC2 /* EventAPI.swift */,
+				18D402C4219F8E45002A3BC2 /* API.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -335,6 +340,7 @@
 			isa = PBXGroup;
 			children = (
 				18D402C7219F9A72002A3BC2 /* Event.swift */,
+				18C7C1C92DFDE23000E7AB61 /* CheckIn.swift */,
 				18D402C9219FA6E8002A3BC2 /* Person.swift */,
 				18D402CB219FA700002A3BC2 /* Cupom.swift */,
 				18D402DD219FE638002A3BC2 /* SingleButtonAlert.swift */,
@@ -578,7 +584,7 @@
 				1832E71F21A3BBD200746AF2 /* StringExtensions.swift in Sources */,
 				18C7C1A72DFDA2BA00E7AB61 /* ArrayExtensions.swift in Sources */,
 				18D402B2219F7ED5002A3BC2 /* ShowEventsRouter.swift in Sources */,
-				18D402C5219F8E45002A3BC2 /* EventAPI.swift in Sources */,
+				18D402C5219F8E45002A3BC2 /* API.swift in Sources */,
 				18D402CC219FA700002A3BC2 /* Cupom.swift in Sources */,
 				18C7C1C62DFDD73300E7AB61 /* ShowEventsEventService.swift in Sources */,
 				1801C6B621A04CB10066EC81 /* PersonCollectionViewCell.swift in Sources */,
@@ -588,11 +594,13 @@
 				18D402BF219F7F96002A3BC2 /* ShowDetailsRouter.swift in Sources */,
 				18D402E221A000D8002A3BC2 /* ShowDetailsConfigurator.swift in Sources */,
 				18D402C8219F9A72002A3BC2 /* Event.swift in Sources */,
+				18C7C1C82DFDDCCF00E7AB61 /* ShowDetailsService.swift in Sources */,
 				18D402E521A01D90002A3BC2 /* EventTableViewCell.swift in Sources */,
 				18D402DA219FBB4A002A3BC2 /* ShowEventsViewController.swift in Sources */,
 				18D402E921A02BD4002A3BC2 /* UIViewExtensions.swift in Sources */,
 				18D402D2219FB34B002A3BC2 /* ShowEventsConfigurator.swift in Sources */,
 				18D402C1219F7F96002A3BC2 /* ShowDetailsViewController.swift in Sources */,
+				18C7C1CA2DFDE23400E7AB61 /* CheckIn.swift in Sources */,
 				18D402BD219F7F96002A3BC2 /* ShowDetailsPresenter.swift in Sources */,
 				18D402DE219FE638002A3BC2 /* SingleButtonAlert.swift in Sources */,
 				18D402C0219F7F96002A3BC2 /* ShowDetailsModels.swift in Sources */,

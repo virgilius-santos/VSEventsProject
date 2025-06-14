@@ -143,8 +143,8 @@ final class ShowDetailsInteractorTests: QuickSpec {
                 context("with successful response") {
                     beforeEach {
                         doubles.anyMessages.clearMessages()
-                        let resultSent = Result<[String: Any], Error>.success(
-                            ["code": "200"]
+                        let resultSent = Result<CheckIn, Error>.success(
+                            .init(code: "200")
                         )
                         doubles.eventAPI.simulateCheckInResponse(with: resultSent)
                     }
@@ -164,7 +164,7 @@ final class ShowDetailsInteractorTests: QuickSpec {
                 context("when API fails with error") {
                     beforeEach {
                         doubles.anyMessages.clearMessages()
-                        let resultSent = Result<[String: Any], Error>.error(MockError.error)
+                        let resultSent = Result<CheckIn, Error>.error(MockError.error)
                         doubles.eventAPI.simulateCheckInResponse(with: resultSent)
                     }
                     
@@ -183,7 +183,7 @@ final class ShowDetailsInteractorTests: QuickSpec {
                 context("when API fails with invalid data") {
                     beforeEach {
                         doubles.anyMessages.clearMessages()
-                        let resultSent = Result<[String: Any], Error>.success([:])
+                        let resultSent = Result<CheckIn, Error>.success(.init(code: ""))
                         doubles.eventAPI.simulateCheckInResponse(with: resultSent)
                     }
                     

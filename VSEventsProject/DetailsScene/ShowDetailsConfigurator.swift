@@ -13,7 +13,7 @@ final class ShowDetailsConfigurator {
     func make() -> UIViewController {
         let viewController = ShowDetailsViewController(nibName: nibName, bundle: nil)
         let presenter = ShowDetailsPresenter()
-        let eventAPI = EventAPI()
+        let eventAPI = ShowDetailsService()
         let interactor = ShowDetailsInteractor(
             presenter: presenter,
             eventAPI: eventAPI,
