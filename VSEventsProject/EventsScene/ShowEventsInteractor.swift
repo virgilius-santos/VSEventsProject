@@ -33,7 +33,6 @@ extension ShowEventsInteractor: ShowEventsBusinessLogic {
     // poderia ser usado um worker no lugar de chamar a API
     // pelo tamanho da classe decidi simplificar neste ponto
     func fetchEvents() {
-        
         eventAPI?.fetch { [weak self] (result: Result<[Event], Error>) in
 
             switch result {
@@ -52,3 +51,174 @@ extension ShowEventsInteractor: ShowEventsBusinessLogic {
         }
     }
 }
+
+// Exemplo de payload de sucesso com 10 eventos:
+/*
+[
+    {
+        "id": "1",
+        "title": "Evento de Tecnologia 1",
+        "price": 49.99,
+        "latitude": -23.550520,
+        "longitude": -46.633308,
+        "image": "https://via.placeholder.com/300.png/09f/fff?text=Evento1",
+        "description": "Descrição detalhada do evento de tecnologia 1.",
+        "date": \(Date().timeIntervalSince1970),
+        "people": [
+            {
+                "id": "p1",
+                "eventId": "1",
+                "name": "Participante A",
+                "picture": "https://via.placeholder.com/50.png/09f/fff?text=P1"
+            }
+        ],
+        "cupons": [
+            {
+                "id": "c1",
+                "eventId": "1",
+                "discount": 10
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "title": "Conferência de Marketing Digital 2",
+        "price": 79.00,
+        "latitude": -23.561370,
+        "longitude": -46.656220,
+        "image": "https://via.placeholder.com/300.png/09f/fff?text=Evento2",
+        "description": "Uma conferência imperdível sobre as últimas tendências em marketing digital.",
+        "date": \(Date().addingTimeInterval(86400 * 2).timeIntervalSince1970),
+        "people": [],
+        "cupons": []
+    },
+    {
+        "id": "3",
+        "title": "Workshop de Fotografia 3",
+        "price": 120.50,
+        "latitude": -23.5489,
+        "longitude": -46.6388,
+        "image": "https://via.placeholder.com/300.png/09f/fff?text=Evento3",
+        "description": "Aprenda técnicas avançadas de fotografia com profissionais renomados.",
+        "date": \(Date().addingTimeInterval(86400 * 5).timeIntervalSince1970),
+        "people": [
+            {
+                "id": "p2",
+                "eventId": "3",
+                "name": "Fotógrafo B",
+                "picture": "https://via.placeholder.com/50.png/09f/fff?text=P2"
+            }
+        ],
+        "cupons": [
+            {
+                "id": "c2",
+                "eventId": "3",
+                "discount": 15
+            }
+        ]
+    },
+    {
+        "id": "4",
+        "title": "Festival de Música Indie 4",
+        "price": 30.00,
+        "latitude": -23.5558,
+        "longitude": -46.6396,
+        "image": "https://via.placeholder.com/300.png/09f/fff?text=Evento4",
+        "description": "Curta o melhor da música independente nacional e internacional.",
+        "date": \(Date().addingTimeInterval(86400 * 7).timeIntervalSince1970),
+        "people": [],
+        "cupons": []
+    },
+    {
+        "id": "5",
+        "title": "Feira Gastronômica Sabores do Mundo 5",
+        "price": 15.00,
+        "latitude": -23.5630,
+        "longitude": -46.6544,
+        "image": "https://via.placeholder.com/300.png/09f/fff?text=Evento5",
+        "description": "Experimente pratos deliciosos de diversas culturas em um só lugar.",
+        "date": \(Date().addingTimeInterval(86400 * 10).timeIntervalSince1970),
+        "people": [],
+        "cupons": [
+            {
+                "id": "c3",
+                "eventId": "5",
+                "discount": 5
+            }
+        ]
+    },
+    {
+        "id": "6",
+        "title": "Exposição de Arte Moderna 6",
+        "price": 25.00,
+        "latitude": -23.5500,
+        "longitude": -46.6300,
+        "image": "https://via.placeholder.com/300.png/09f/fff?text=Evento6",
+        "description": "Obras impactantes de artistas contemporâneos.",
+        "date": \(Date().addingTimeInterval(86400 * 12).timeIntervalSince1970),
+        "people": [],
+        "cupons": []
+    },
+    {
+        "id": "7",
+        "title": "Curso de Culinária Italiana 7",
+        "price": 150.00,
+        "latitude": -23.5678,
+        "longitude": -46.6400,
+        "image": "https://via.placeholder.com/300.png/09f/fff?text=Evento7",
+        "description": "Aprenda a fazer massas frescas e molhos autênticos.",
+        "date": \(Date().addingTimeInterval(86400 * 15).timeIntervalSince1970),
+        "people": [
+            {
+                "id": "p3",
+                "eventId": "7",
+                "name": "Chef C",
+                "picture": "https://via.placeholder.com/50.png/09f/fff?text=P3"
+            }
+        ],
+        "cupons": []
+    },
+    {
+        "id": "8",
+        "title": "Palestra sobre Inteligência Artificial 8",
+        "price": 0.00,
+        "latitude": -23.5400,
+        "longitude": -46.6200,
+        "image": "https://via.placeholder.com/300.png/09f/fff?text=Evento8",
+        "description": "Descubra o futuro da IA e suas aplicações.",
+        "date": \(Date().addingTimeInterval(86400 * 18).timeIntervalSince1970),
+        "people": [],
+        "cupons": []
+    },
+    {
+        "id": "9",
+        "title": "Show de Stand-up Comedy 9",
+        "price": 40.00,
+        "latitude": -23.5700,
+        "longitude": -46.6500,
+        "image": "https://via.placeholder.com/300.png/09f/fff?text=Evento9",
+        "description": "Gargalhadas garantidas com os melhores comediantes.",
+        "date": \(Date().addingTimeInterval(86400 * 20).timeIntervalSince1970),
+        "people": [],
+        "cupons": [
+            {
+                "id": "c4",
+                "eventId": "9",
+                "discount": 20
+            }
+        ]
+    },
+    {
+        "id": "10",
+        "title": "Corrida de Rua Beneficente 10",
+        "price": 50.00,
+        "latitude": -23.5800,
+        "longitude": -46.6600,
+        "image": "https://via.placeholder.com/300.png/09f/fff?text=Evento10",
+        "description": "Participe e ajude uma causa nobre.",
+        "date": \(Date().addingTimeInterval(86400 * 22).timeIntervalSince1970),
+        "people": [],
+        "cupons": []
+    }
+]
+*/

@@ -1,33 +1,23 @@
-//
-//  Event.swift
-//  VSEventsProject
-//
-//  Created by Virgilius Santos on 16/11/18.
-//  Copyright © 2018 Virgilius Santos. All rights reserved.
-//
-
 import Foundation
 
-struct Event: Decodable, Identifiable {
-    var id: String
-    var title: String
-    var price: Double
-    var latitude: Double
-    var longitude: Double
-    var image: URL
-    var description: String
-    var date: Date
-    var people: [Person]
-    var cupons: [Cupom]
+struct Event: Decodable, Identifiable, Equatable {
+    let id: String
+    let title: String
+    let price: Double
+    let latitude: Double
+    let longitude: Double
+    let image: URL
+    let description: String
+    let date: Date
+    let people: [Person]
+    let cupons: [Cupom]
+}
 
+extension Event {
     enum CodingKeys: String, CodingKey {
         case id, title, price, latitude, longitude
         case image, description, date, people, cupons
     }
-
-}
-
-extension Event {
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -52,7 +42,7 @@ extension Event {
         description = try container.decode(String.self, forKey: .description)
 
         let timeInterval = try container.decode(TimeInterval.self, forKey: .date)
-        date = Date(timeIntervalSince1970: timeInterval / 1000)
+        date = Date(timeIntervalSince1970: timeInterval)
 
         people = try container.decode([Person].self, forKey: .people)
         cupons = try container.decode([Cupom].self, forKey: .cupons)
