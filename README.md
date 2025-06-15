@@ -1,29 +1,59 @@
-# Setup
+# VSEventsProject
+
+Este projeto é um aplicativo iOS para visualização de eventos, desenvolvido como um exercício para demonstrar habilidades em Swift e arquitetura de aplicativos iOS.
+
+## Setup
 
 #### Instale as dependências
-`$ pod install`
+```bash
+$ pod install
+```
 
-## To do list:
-- [x] Swift 3.0 ou superior
-- [x] Autolayout
-- [x] O app deve funcionar no iOS 9
+## Arquitetura e Padrões
+
+O projeto utiliza exclusivamente a arquitetura **MVVM (Model-View-ViewModel)** combinada com **RxSwift** para programação reativa. A navegação entre telas é realizada por meio de **routers** dedicados, que centralizam a lógica de transição e apresentação de telas.
+
+O uso de **interactors** foi descontinuado e eles permanecem no projeto apenas para demonstrar habilidades em testes unitários.
+
+### Injeção de Dependências
+
+A injeção de dependências é feita principalmente via inicializadores. O arquivo `DependenciesContainer.swift` pode ser utilizado para centralizar a criação de serviços e dependências compartilhadas, que são injetadas nos ViewModels e routers conforme necessário.
+
+### Camada de API
+
+A comunicação com a API é abstraída pela `APIProtocol.swift` e implementada em `API.swift`. Esta camada utiliza **Alamofire** para as requisições de rede e **RxSwift** para lidar com as respostas de forma assíncrona e reativa.
+
+### Navegação
+
+A navegação entre as telas é realizada exclusivamente por **routers** dedicados, que centralizam a lógica de transição e apresentação de telas. Os routers são integrados ao padrão MVVM, recebendo comandos dos ViewModels ou ViewControllers para realizar navegações, como push, modal ou apresentação de fluxos específicos. Isso garante uma separação clara entre lógica de navegação e regras de negócio/interface.
+
+## Tecnologias e Dependências
+
+- **Swift:** 5.0
+- **iOS Deployment Target:** 12.1
+
+### CocoaPods Utilizados:
+
+- **RxSwift** (5.1.3): Para programação reativa.
+- **RxCocoa** (5.1.3): Bindings de RxSwift para Cocoa e CocoaTouch.
+- **Alamofire** (4.9.1): Para requisições de rede HTTP.
+- **AlamofireImage** (3.6.0): Para download e cache de imagens.
+- **Quick** (5.0.1): Framework de testes BDD para Swift.
+- **Nimble** (10.0.0): Matcher framework para Quick.
+- **RxAlamofire** (5.1.0): Wrappers RxSwift para Alamofire.
+- **RxDataSources** (4.0.1): Para lidar com DataSources de TableViews e CollectionViews de forma reativa.
+- **RxSwiftExt** (5.2.0): Coleção de operadores úteis para RxSwift.
+- Outras dependências de suporte do RxSwift (RxRelay, RxBlocking, RxTest) e Differentiator.
+
+## Lista de Tarefas (Original do Desafio)
+
+- [x] Swift 5.0 ou superior
+- [ ] Migrar para ViewCode
+- [x] O app deve funcionar no iOS 9 (Atualizado para iOS 12.1 como target mínimo)
 - [x] Testes unitários
-- [x] Preferencialmente utilizar: MVVM e RxSwift
+- [x] Preferencialmente utilizar: MVVM e RxSwift (Optado por Clean Swift + RxSwift)
 - [x] Uso do git
 
-## Uso de dependências
-Nesse projeto utilizei as seguintes dependências: 
-- RxSwift 
-- Alamofire/AlamofireImage
-- Quick/Nimble
+## Observações Adicionais
 
-## Observações
-Neste projeto resolvi experimentar:
-- pela primeira vez usei o RxSwift, pois entendi que este exercicio era uma ótima forma de ter contato com a programação reativa e, de tabela, atender a um requisito diferencial do exercicio. 
-- o design pattern Clean Swift, pois na entrevista foi dito que vocês usam routers para navegacao e como o Clean Swift também faz uso dessa ferramenta, optei por utiliza-la, alinhando com o proximo ponto, 
-- RxSwift + Clean Swift. na verdade eu ja estava atrás de outra oportunidade de programar usando Clean Swift.
-
-Optei por não usar o MVVM pois é com ele que mais tenho trabalhado e, mesmo correndo o risco de errar bastante, optei por desenvolver alternativas usando este exercicio como ferramenta.
-
-Os testes foram simples, mas priorizei as regras de negocio e repostas aos eventos da API.
-Usei o Quick pois ele deixa os testes mais legiveis e gosto da maneira simples que ele permite implementar os testes
+Os testes unitários foram focados nas regras de negócio e nas respostas da API, utilizando Quick e Nimble para maior legibilidade.
