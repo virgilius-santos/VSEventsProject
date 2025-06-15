@@ -1,13 +1,5 @@
 import UIKit
 
-protocol HasShowDetailsFactoryProtocol {
-    var showDetailsFactory: ShowDetailsFactoryProtocol { get }
-}
-
-protocol ShowDetailsFactoryProtocol {
-    func make(eventItem: Event) -> UIViewController
-}
-
 protocol ShowEventsRoutingLogic {
     func routeToDetail(_ viewModel: EventCellViewModel)
 }

@@ -3,27 +3,6 @@ import Alamofire
 import RxSwift
 import RxAlamofire
 
-struct Endpoint: Equatable {
-    let method: HTTPMethod
-    let url: String
-    var parameters: Data?
-}
-
-struct APIDataResult {
-    let data: Data
-}
-
-struct APIErrorResult: Error {
-    let error: Error
-}
-
-protocol APIProtocol {
-    func fetch(
-        endpoint end: @autoclosure () throws -> Endpoint,
-        completion: @escaping (Swift.Result<APIDataResult, APIErrorResult>) -> Void
-    )
-}
-
 final class API: APIProtocol {
     let disposeBag = DisposeBag()
 
@@ -41,7 +20,7 @@ final class API: APIProtocol {
             return
         }
         request(
-            endpoint.method,
+            mapHTTPMethod(endpoint.method),
             endpoint.url,
             parameters: parameters,
             encoding: URLEncoding.httpBody
@@ -63,5 +42,13 @@ final class API: APIProtocol {
         })
         .disposed(by: disposeBag)
     }
+    
+    func mapHTTPMethod(_ method: Endpoint.HTTPMethod) -> HTTPMethod {
+        switch method {
+        case .get:
+            .get
+        case .post:
+            .post
+        }
+    }
 }
-

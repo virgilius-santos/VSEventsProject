@@ -14,7 +14,7 @@ extension Endpoint {
 final class ShowEventsEventService: EventAPIProtocol {
     let api: APIProtocol
     
-    init(api: APIProtocol = API()) {
+    init(api: APIProtocol) {
         self.api = api
     }
     

@@ -24,11 +24,3 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
-
-typealias Dependencies = HasShowDetailsFactoryProtocol
-final class DependenciesContainer: Dependencies {
-    lazy var showDetailsFactory: ShowDetailsFactoryProtocol = ShowDetailsConfigurator()
-    
-}
-
-extension ShowDetailsConfigurator: ShowDetailsFactoryProtocol {}

@@ -1,7 +1,7 @@
 import UIKit
 
 final class ShowEventsConfigurator {
-    typealias Dependencies = HasShowDetailsFactoryProtocol
+    typealias Dependencies = HasShowDetailsFactoryProtocol & HasApi
     
     let dependencies: Dependencies
     
@@ -10,7 +10,9 @@ final class ShowEventsConfigurator {
     }
     
     func make() -> UIViewController {        
-        let eventAPI = ShowEventsEventService()
+        let eventAPI = ShowEventsEventService(
+            api: dependencies.api
+        )
         let router = ShowEventsRouter(
             dependencies: dependencies
         )
