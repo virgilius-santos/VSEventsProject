@@ -71,6 +71,7 @@
 		18D402E521A01D90002A3BC2 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402E321A01D90002A3BC2 /* EventTableViewCell.swift */; };
 		18D402E621A01D90002A3BC2 /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D402E421A01D90002A3BC2 /* EventTableViewCell.xib */; };
 		18D402E921A02BD4002A3BC2 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402E821A02BD4002A3BC2 /* UIViewExtensions.swift */; };
+		18D7C4812DFF053300232156 /* ShowEventsViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D7C47F2DFF050B00232156 /* ShowEventsViewModelSpec.swift */; };
 		7AFCCB58F0B3DD4CCE5C72E8 /* Pods_VSEventsProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC0B7EF7FB9A96023F9A0CD /* Pods_VSEventsProject.framework */; };
 		9EDB95B74FB13B6AC1AD5F61 /* Pods_VSEventsProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63243E7E1BCE3DADAF7585D2 /* Pods_VSEventsProjectTests.framework */; };
 /* End PBXBuildFile section */
@@ -157,6 +158,7 @@
 		18D402E321A01D90002A3BC2 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		18D402E421A01D90002A3BC2 /* EventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventTableViewCell.xib; sourceTree = "<group>"; };
 		18D402E821A02BD4002A3BC2 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		18D7C47F2DFF050B00232156 /* ShowEventsViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsViewModelSpec.swift; sourceTree = "<group>"; };
 		2FB437FFF4C253CA159A836D /* Pods-VSEventsProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VSEventsProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-VSEventsProjectTests/Pods-VSEventsProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		34F6B1467EF6847260AEC357 /* Pods-VSEventsProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VSEventsProjectTests.release.xcconfig"; path = "Target Support Files/Pods-VSEventsProjectTests/Pods-VSEventsProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		63243E7E1BCE3DADAF7585D2 /* Pods_VSEventsProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VSEventsProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -290,13 +292,14 @@
 			path = Doubles;
 			sourceTree = "<group>";
 		};
-		18C7C1AE2DFDB08400E7AB61 /* ShowEventsInteractor */ = {
+		18C7C1AE2DFDB08400E7AB61 /* ShowEvents */ = {
 			isa = PBXGroup;
 			children = (
+				18D7C47F2DFF050B00232156 /* ShowEventsViewModelSpec.swift */,
 				18C7C1AF2DFDB09100E7AB61 /* Doubles */,
 				1832E72121A3C49E00746AF2 /* ShowEventsInteractorTests.swift */,
 			);
-			path = ShowEventsInteractor;
+			path = ShowEvents;
 			sourceTree = "<group>";
 		};
 		18C7C1AF2DFDB09100E7AB61 /* Doubles */ = {
@@ -308,13 +311,13 @@
 			path = Doubles;
 			sourceTree = "<group>";
 		};
-		18C7C1B22DFDB12F00E7AB61 /* ShowDetailsInteractor */ = {
+		18C7C1B22DFDB12F00E7AB61 /* ShowDetails */ = {
 			isa = PBXGroup;
 			children = (
 				18C7C1B32DFDB13600E7AB61 /* Doubles */,
 				1832E72521A3DBF000746AF2 /* ShowDetailsInteractorTests.swift */,
 			);
-			path = ShowDetailsInteractor;
+			path = ShowDetails;
 			sourceTree = "<group>";
 		};
 		18C7C1B32DFDB13600E7AB61 /* Doubles */ = {
@@ -377,8 +380,8 @@
 				1832E72321A3DA4200746AF2 /* EmailMatchTest.swift */,
 				18C7C1C02DFDC24B00E7AB61 /* Helper */,
 				18C7C1A32DFDA1B900E7AB61 /* Doubles */,
-				18C7C1AE2DFDB08400E7AB61 /* ShowEventsInteractor */,
-				18C7C1B22DFDB12F00E7AB61 /* ShowDetailsInteractor */,
+				18C7C1AE2DFDB08400E7AB61 /* ShowEvents */,
+				18C7C1B22DFDB12F00E7AB61 /* ShowDetails */,
 			);
 			path = VSEventsProjectTests;
 			sourceTree = "<group>";
@@ -738,6 +741,7 @@
 				18C7C1AB2DFDABC300E7AB61 /* SingleButtonAlertFixture.swift in Sources */,
 				18C7C1B72DFDB27300E7AB61 /* DetailAPIProtocolMock.swift in Sources */,
 				18C7C1B12DFDB0D700E7AB61 /* EventDetailApiResponseMock.swift in Sources */,
+				18D7C4812DFF053300232156 /* ShowEventsViewModelSpec.swift in Sources */,
 				18C7C1C22DFDC26000E7AB61 /* AnyMessage.swift in Sources */,
 				18C7C1BF2DFDB9DC00E7AB61 /* EventFixture.swift in Sources */,
 				1832E72221A3C49E00746AF2 /* ShowEventsInteractorTests.swift in Sources */,

@@ -10,6 +10,8 @@ final class ShowEventsInteractorTests: QuickSpec {
     final class Doubles {
         let presenter = ShowEventsPresentationLogicMock()
         let eventAPI = EventAPIProtocolMock()
+        
+        var anyMessages = AnyMessage()
     }
     
     func makeSut() -> (Sut, Doubles) {
@@ -18,6 +20,8 @@ final class ShowEventsInteractorTests: QuickSpec {
             presenter: doubles.presenter,
             eventAPI: doubles.eventAPI
         )
+        doubles.presenter.anyMessages = doubles.anyMessages
+        doubles.eventAPI.anyMessages = doubles.anyMessages
         return (sut, doubles)
     }
     
@@ -35,28 +39,30 @@ final class ShowEventsInteractorTests: QuickSpec {
                     sut.fetchEvents()
                 }
                 
-                it("should make exactly one API request") {
-                    expect(doubles.eventAPI.receivedRequests).to(haveCount(1))
-                }
-                
-                it("should not response imeadety") {
-                    expect(doubles.presenter.resultReceived).to(beEmpty())
+                it("should make exactly only API request") {
+                    expect(doubles.anyMessages).to(equal([
+                        EventAPIProtocolMock.Message.fetchEvents
+                    ]))
                 }
                 
                 context("with successful response") {
                     beforeEach {
+                        doubles.anyMessages.clearMessages()
                         let resultSent = Result<[Event], Error>.success([])
                         doubles.eventAPI.simulateNetworkResponse(with: resultSent)
                     }
                     
                     it("should deliver empty events") {
                         let resultExpected = Result<[Event], SingleButtonAlert>.success([])
-                        expect(doubles.presenter.resultReceived).to(equal([resultExpected]))
+                        expect(doubles.anyMessages).to(equal([
+                            ShowEventsPresentationLogicMock.Message.displayEvents(resultExpected)
+                        ]))
                     }
                 }
                 
                 context("when API fails") {
                     beforeEach {
+                        doubles.anyMessages.clearMessages()
                         let resultSent = Result<[Event], Error>.failure(MockError.error)
                         doubles.eventAPI.simulateNetworkResponse(with: resultSent)
                     }
@@ -68,7 +74,9 @@ final class ShowEventsInteractorTests: QuickSpec {
                             action: .fixture(buttonTitle: "OK")
                         )
                         let resultExpected = Result<[Event], SingleButtonAlert>.failure(alertMock)
-                        expect(doubles.presenter.resultReceived).to(equal([resultExpected]))
+                        expect(doubles.anyMessages).to(equal([
+                            ShowEventsPresentationLogicMock.Message.displayEvents(resultExpected)
+                        ]))
                     }
                 }
             }
