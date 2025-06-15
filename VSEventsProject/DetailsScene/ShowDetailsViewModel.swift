@@ -115,10 +115,10 @@ private extension ShowDetailsViewModelV2 {
         case .success(let detail):
             eventDetailSubject.accept(detail)
             peopleCellSubject.accept(detail.people)
-        case .failure(let error):
+        case .failure:
             let alert = SingleButtonAlert(
                 title: "Detalhes",
-                message: error.localizedDescription,
+                message: "Tente Novamente",
                 action: AlertAction(buttonTitle: "OK")
             )
             showErrorSubject.accept(alert)
@@ -128,23 +128,8 @@ private extension ShowDetailsViewModelV2 {
 
 private extension ShowDetailsAPIProtocol {
     func fetchEventDetail(for eventModel: Event) -> Single<Result<Event, Error>> {
-        return .just(.success(Event(
-            id: "1",
-            title: "Evento Teste 1",
-            price: 100.0,
-            latitude: -23.55,
-            longitude: -46.63,
-            image: URL(string: "https://via.placeholder.com/300.png/09f/fff?text=Evento1")!,
-            description: "Descrição do evento teste 1.",
-            date: Date(),
-            people: [
-                Person(id: "p1", eventId: "1", name: "Participante 1", picture: "https://via.placeholder.com/50.png/09f/fff?text=P1")
-            ],
-            cupons: [
-                Cupom(id: "c1", eventId: "1", discount: 10)
-            ]
-        )))
-        .delaySubscription(.seconds(21), scheduler: MainScheduler.instance)
+        return .just(.failure(NSError()))
+        .delaySubscription(.seconds(1), scheduler: MainScheduler.instance)
         
 //        Single.create { [weak self] single in
 //            self?.fetchEvent(eventModel) { result in
