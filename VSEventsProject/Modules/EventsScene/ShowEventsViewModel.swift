@@ -77,7 +77,7 @@ final class ShowEventsViewModel {
     func handleResult(_ result: Result<[Event], Error>) {
         switch result {
             case .success(let events):
-            cells.accept(events)
+            cells.accept(events.map(EventCellViewModel.init))
         case .failure:
             let alert = SingleButtonAlert(
                 title: "Erro Na Busca dos Dados",

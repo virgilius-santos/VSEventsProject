@@ -18,24 +18,31 @@ final class ShowEventsViewModelSpec: QuickSpec {
         
         var anyMessages = AnyMessage()
         
-        let event = EventDTO(
-            id: "1",
+        let eventViewModel = EventCellViewModel(
+            eventItem: EventDTO(
+                id: "1",
+                title: "Evento Teste 1",
+                price: 100.0,
+                latitude: -23.55,
+                longitude: -46.63,
+                image: URL(string: "https://via.placeholder.com/300.png/09f/fff?text=Evento1")!,
+                description: "Descrição do evento teste 1.",
+                date: Date(),
+                people: [
+                    Person(id: "p1", eventId: "1", name: "Participante 1", picture: "https://via.placeholder.com/50.png/09f/fff?text=P1")
+                ],
+                cupons: [
+                    Cupom(id: "c1", eventId: "1", discount: 10)
+                ]
+            ),
             title: "Evento Teste 1",
-            price: 100.0,
-            latitude: -23.55,
-            longitude: -46.63,
-            image: URL(string: "https://via.placeholder.com/300.png/09f/fff?text=Evento1")!,
-            description: "Descrição do evento teste 1.",
-            date: Date(),
-            people: [
-                Person(id: "p1", eventId: "1", name: "Participante 1", picture: "https://via.placeholder.com/50.png/09f/fff?text=P1")
-            ],
-            cupons: [
-                Cupom(id: "c1", eventId: "1", discount: 10)
-            ]
+            imageUrl: URL(string: "https://via.placeholder.com/300.png/09f/fff?text=Evento1")!
         )
-        lazy var eventsMock = [event]
-        let emptyEventsMock = [EventDTO]()
+        
+        lazy var eventsViewModelMock = [eventViewModel]
+        lazy var eventsModelMock = [eventViewModel.eventItem]
+        
+        let emptyViewModelEventsMock = [EventCellViewModel]()
         let titleExpected = "Lista de Eventos"
         let loadingActivated = true
         let loadingDeactivated = false
@@ -55,7 +62,7 @@ final class ShowEventsViewModelSpec: QuickSpec {
         }
         
         func bindOutput(_ output: ShowEventsViewModel.Output) {
-            bindOutput(output.cells.map({ $0.map(\.eventItem) }).asObservable())
+            bindOutput(output.cells.asObservable())
             bindOutput(output.title.asObservable())
             bindOutput(output.showError.asObservable())
             bindOutput(output.isLoading.asObservable())
@@ -97,7 +104,7 @@ final class ShowEventsViewModelSpec: QuickSpec {
                 
                 it("should emit initial title and loading state") {
                     expect(doubles.anyMessages).to(equal([
-                        doubles.emptyEventsMock,
+                        doubles.emptyViewModelEventsMock,
                         doubles.titleExpected,
                         doubles.loadingActivated
                     ]))
@@ -119,13 +126,13 @@ final class ShowEventsViewModelSpec: QuickSpec {
                     context("with successful response") {
                         beforeEach {
                             doubles.anyMessages.clearMessages()
-                            let resultSent = Result<[EventDTO], Error>.success(doubles.eventsMock)
+                            let resultSent = Result<[EventDTO], Error>.success(doubles.eventsModelMock)
                             doubles.eventAPI.simulateNetworkResponse(with: resultSent)
                         }
                         
                         it("should deliver empty events") {
                             expect(doubles.anyMessages).to(equal([
-                                doubles.eventsMock,
+                                doubles.eventsViewModelMock,
                                 doubles.loadingDeactivated
                             ]))
                         }
@@ -168,12 +175,12 @@ final class ShowEventsViewModelSpec: QuickSpec {
                     context("and API returns success") {
                         beforeEach {
                             doubles.anyMessages.clearMessages()
-                            doubles.eventAPI.simulateNetworkResponse(with: .success(doubles.eventsMock))
+                            doubles.eventAPI.simulateNetworkResponse(with: .success(doubles.eventsModelMock))
                         }
                         
                         it("should emit events and finish refresh") {
                             expect(doubles.anyMessages).to(equal([
-                                doubles.eventsMock,
+                                doubles.eventsViewModelMock,
                                 doubles.isRefreshingDeactivated
                             ]))
                         }
@@ -183,11 +190,11 @@ final class ShowEventsViewModelSpec: QuickSpec {
                 context("when item is selected") {
                     beforeEach {
                         doubles.anyMessages.clearMessages()
-                        doubles.itemSelectedPublisher.onNext(doubles.event)
+                        doubles.itemSelectedPublisher.onNext(doubles.eventViewModel)
                     }
                     
                     it("should route to event detail") {
-                        expect(doubles.router.messages).to(equal([.routeToDetail(doubles.event)]))
+                        expect(doubles.router.messages).to(equal([.routeToDetail(doubles.eventViewModel.eventItem)]))
                     }
                 }
             }

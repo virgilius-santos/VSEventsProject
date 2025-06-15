@@ -17,8 +17,12 @@ protocol DetailInfo {
 }
 
 extension Event: DetailInfo {
+    var imageUrl: URL {
+        image
+    }
+    
     var dateString: String {
-        return date.toString()
+        date.toString()
     }
     
     var priceValue: String {
@@ -26,7 +30,7 @@ extension Event: DetailInfo {
     }
 
     var coordinate: CLLocationCoordinate2D {
-        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
 
     var region: MKCoordinateRegion {
@@ -54,14 +58,14 @@ protocol PersonCellViewModel {
 
 extension Person: PersonCellViewModel {
     var title: String {
-        return self.name
+        self.name
     }
 
     var imageUrl: URL? {
-        return URL(string: self.picture)
+        URL(string: self.picture)
     }
 
     var eventItem: Person {
-        return self
+        self
     }
 }

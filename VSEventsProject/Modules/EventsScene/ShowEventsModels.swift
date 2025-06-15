@@ -2,18 +2,16 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-protocol EventCellViewModel {
-    var eventItem: Event { get }
-    var title: String { get }
-    var imageUrl: URL { get }
+struct EventCellViewModel: Equatable {
+    let eventItem: Event
+    let title: String
+    let imageUrl: URL
 }
 
-extension Event: EventCellViewModel {
-    var imageUrl: URL {
-        return image
-    }
-
-    var eventItem: Event {
-        return self
+extension EventCellViewModel {
+    init(_ event: Event) {
+        eventItem = event
+        title = event.title
+        imageUrl = event.image
     }
 }
