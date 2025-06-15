@@ -73,3 +73,30 @@ A navegação entre as telas é realizada exclusivamente por **routers** dedicad
 ## Observações Adicionais
 
 Os testes unitários foram focados nas regras de negócio e nas respostas da API, utilizando Quick e Nimble para maior legibilidade.
+
+### Endpoints e URLs da API
+
+A comunicação com o backend é feita via HTTP utilizando a seguinte URL base:
+
+- **Base URL:** `https://vsevents.free.beeceptor.com/api/`
+
+Os principais endpoints utilizados no app são:
+
+#### ShowEventsEventService
+- **Listar eventos:**
+  - Método: GET
+  - Path: `/events`
+  - Exemplo de requisição: `GET https://vsevents.free.beeceptor.com/api/events`
+
+#### ShowDetailsService
+- **Detalhes de um evento:**
+  - Método: GET
+  - Path: `/events/{id}`
+  - Exemplo de requisição: `GET https://vsevents.free.beeceptor.com/api/events/123`
+- **Check-in em evento:**
+  - Método: POST
+  - Path: `/checkin`
+  - Exemplo de requisição: `POST https://vsevents.free.beeceptor.com/api/checkin`
+  - Body: dados do usuário serializados
+
+Essas informações facilitam a integração e o entendimento dos fluxos de rede do projeto.

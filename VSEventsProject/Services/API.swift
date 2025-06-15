@@ -5,7 +5,8 @@ import RxAlamofire
 
 final class API: APIProtocol {
     let disposeBag = DisposeBag()
-
+    let urlBase = "https://vsevents.free.beeceptor.com/api/"
+    
     func fetch(
         endpoint end: @autoclosure () throws -> Endpoint,
         completion: @escaping (Swift.Result<APIDataResult, APIErrorResult>) -> Void
@@ -21,7 +22,7 @@ final class API: APIProtocol {
         }
         request(
             mapHTTPMethod(endpoint.method),
-            endpoint.url,
+            "\(urlBase)\(endpoint.url)",
             parameters: parameters,
             encoding: URLEncoding.httpBody
         )

@@ -9,14 +9,14 @@ extension Endpoint {
     static func event(_ event: Event) -> Self {
         Endpoint(
             method: .get,
-            url: "https://vsevents.free.beeceptor.com/api/events/\(event.id)"
+            url: "events/\(event.id)"
         )
     }
     
     static func checkIn(_ user: User) throws -> Self {
         Endpoint(
             method: .post,
-            url: "https://vsevents.free.beeceptor.com/api/checkin",
+            url: "checkin",
             parameters: try user.toData()
         )
     }

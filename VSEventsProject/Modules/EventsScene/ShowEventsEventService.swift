@@ -7,7 +7,7 @@ protocol EventAPIProtocol: AnyObject {
 extension Endpoint {
     static let events = Endpoint(
         method: .get,
-        url: "https://vsevents.free.beeceptor.com/api/events"
+        url: "events"
     )
 }
 
