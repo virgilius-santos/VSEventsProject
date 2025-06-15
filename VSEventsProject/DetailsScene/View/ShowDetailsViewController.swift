@@ -6,18 +6,8 @@ import RxMapKit
 import AlamofireImage
 import MapKit
 
-protocol ShowDetailsDisplayLogic: class {
-    var viewModel: ShowDetailsViewModel { get }
-}
-
-final class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic, SingleButtonDialogPresenter {
-
-    var interactor: ShowDetailsBusinessLogic?
-
-    var router: ShowDetailsRoutingLogic?
-
-    var viewModel = ShowDetailsViewModel()
-
+final class ShowDetailsViewController: UIViewController, SingleButtonDialogPresenter {
+    var viewModel: ShowDetailsViewModelV2?
     var disposeBag = DisposeBag()
 
     // MARK: View lifecycle
@@ -25,9 +15,6 @@ final class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()
-        setupCollectionView()
-        setupButtons()
-        interactor?.fetchDetail()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -54,84 +41,88 @@ final class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic
     @IBOutlet weak var mapView: MKMapView!
 
     func bindViewModel() {
-        viewModel
-            .eventDetail
+        guard let viewModel else { return }
+        
+//        let refresh = PublishRelay<Void>()
+        let load = BehaviorRelay(value: ())
+        let sharedData = shareButton
+            .rx
+            .tap
+            .withLatestFrom(rx.shareData)
+            .asObservable()
+        
+        let output = viewModel.transform(
+            input: .init(
+                viewDidLoad: load.asObservable(),
+//                refresh: refresh.asObservable(),
+                userInputs: checkInButton.rx.tap.asObservable(),
+                sharedData: sharedData
+            )
+        )
+        
+        bindEventDetails(output.eventDetail)
+        bindPeopleCells(output.peopleCells)
+        
+        output.showError
+            .emit(to: rx.showAlertMessage {
+                load.accept(())
+            })
+            .disposed(by: disposeBag)
+        
+        output.showMessage
+            .emit(to: rx.showAlertMessage())
+            .disposed(by: disposeBag)
+    }
+    
+    func bindEventDetails(_ eventDetail: Signal<any DetailInfo>) {
+        eventDetail
             .map(\.title)
-            .bind(to: titleLabel.rx.text)
+            .emit(to: titleLabel.rx.text)
             .disposed(by: disposeBag)
 
-        viewModel
-            .event
+        eventDetail
             .map(\.imageUrl)
-            .bind(to: eventPoster.rx.imageLoader)
+            .emit(to: eventPoster.rx.imageLoader)
             .disposed(by: disposeBag)
 
-        viewModel
-            .eventDetail
+        eventDetail
             .map(\.priceValue)
-            .bind(to: priceLabel.rx.text)
+            .emit(to: priceLabel.rx.text)
             .disposed(by: disposeBag)
 
-        viewModel
-            .eventDetail
+        eventDetail
             .map(\.description)
-            .bind(to: descriptionTextView.rx.text)
+            .emit(to: descriptionTextView.rx.text)
             .disposed(by: disposeBag)
 
-        viewModel
-            .eventDetail
+        eventDetail
             .map(\.dateString)
-            .bind(to: dateLabel.rx.text)
+            .emit(to: dateLabel.rx.text)
             .disposed(by: disposeBag)
 
-        viewModel
-            .eventDetail
+        eventDetail
             .map(\.region)
-            .bind(to: mapView.rx.region)
+            .emit(to: mapView.rx.region)
             .disposed(by: disposeBag)
 
-        viewModel
-            .eventDetail
+        eventDetail
             .map(\.annotations)
-            .bind(to: mapView.rx.annotationsToShowToAnimate)
-            .disposed(by: disposeBag)
-
-        viewModel.onShowError
-            .bind(to: rx.alertMessage)
+            .emit(to: mapView.rx.annotationsToShowToAnimate)
             .disposed(by: disposeBag)
     }
 
-    func setupCollectionView() {
+    func bindPeopleCells(_ peopleCells: Driver<[any PersonCellViewModel]>) {
         let nib = UINib(nibName: PersonCollectionViewCell.cellIdentifier, bundle: nil)
         participantsCollectionView.register(nib, forCellWithReuseIdentifier: PersonCollectionViewCell.cellIdentifier)
-        viewModel
-            .eventCells
-            .bind(to: participantsCollectionView.rx.items(
+        
+        peopleCells
+            .drive(participantsCollectionView.rx.items(
                 cellIdentifier: PersonCollectionViewCell.cellIdentifier,
                 cellType: PersonCollectionViewCell.self
             )) { (_, element, cell) in
                 cell.viewModel = element
             }
             .disposed(by: disposeBag)
-    }
-
-    func setupButtons() {
-        shareButton
-            .rx
-            .tap
-            .withLatestFrom(rx.shareData)
-            .bind(to: rx.routeToShare)
-            .disposed(by: disposeBag)
-
-        checkInButton.rx.tap
-            .bind(to: rx.routeToCheckIn)
-            .disposed(by: disposeBag)
-    }
-
-    func routeChecking() {
-        router?.checkIn { [weak self] userInfo in
-            self?.interactor?.postCheckIn(userInfo: userInfo)
-        }
     }
 }
 
@@ -147,21 +138,21 @@ extension ShowDetailsViewController {
 }
 
 extension Reactive where Base: ShowDetailsViewController {
-    var routeToShare: Binder<ShowDetailsShareData> {
-        .init(base) { controller, shareData in
-            controller.router?.sharing(shareData: shareData)
-        }
-    }
-    
+//    var routeToShare: Binder<ShowDetailsShareData> {
+//        .init(base) { controller, shareData in
+//            controller.router?.sharing(shareData: shareData)
+//        }
+//    }
+//    
     var shareData: Observable<ShowDetailsShareData> {
         .just(base.shareData)
     }
-    
-    var routeToCheckIn: Binder<Void> {
-        .init(base) { controller, _ in
-            controller.router?.checkIn { [weak controller] userInfo in
-                controller?.interactor?.postCheckIn(userInfo: userInfo)
-            }
-        }
-    }
+//    
+//    var routeToCheckIn: Binder<Void> {
+//        .init(base) { controller, _ in
+//            controller.router?.checkIn { [weak controller] userInfo in
+//                controller?.interactor?.postCheckIn(userInfo: userInfo)
+//            }
+//        }
+//    }
 }

@@ -12,17 +12,14 @@ final class ShowDetailsConfigurator {
     
     func make() -> UIViewController {
         let viewController = ShowDetailsViewController(nibName: nibName, bundle: nil)
-        let presenter = ShowDetailsPresenter()
-        let eventAPI = ShowDetailsService()
-        let interactor = ShowDetailsInteractor(
-            presenter: presenter,
-            eventAPI: eventAPI,
+        let detailAPI = ShowDetailsService()
+        let router = ShowDetailsRouter()
+        let viewModel = ShowDetailsViewModelV2(
+            detailAPI: detailAPI,
+            router: router,
             event: eventItem
         )
-        let router = ShowDetailsRouter()
-        viewController.interactor = interactor
-        viewController.router = router
-        presenter.viewController = viewController
+        viewController.viewModel = viewModel
         router.viewController = viewController
         return viewController
     }

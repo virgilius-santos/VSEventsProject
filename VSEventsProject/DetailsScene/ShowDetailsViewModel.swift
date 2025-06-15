@@ -4,9 +4,9 @@ import RxCocoa
 final class ShowDetailsViewModelV2 {
     struct Input {
         let viewDidLoad: Observable<Void>
-        let refresh: Observable<Void>
-        let userInputs: Observable<UserInputTexts>
-        let itemSelected: Observable<PersonCellViewModel>
+//        let refresh: Observable<Void>
+        let userInputs: Observable<Void>
+        let sharedData: Observable<ShowDetailsShareData>
     }
     
     struct Output {
@@ -14,8 +14,8 @@ final class ShowDetailsViewModelV2 {
         let peopleCells: Driver<[PersonCellViewModel]>
         let showMessage: Signal<SingleButtonAlert>
         let showError: Signal<SingleButtonAlert>
-        let isLoading: Driver<Bool>
-        let isRefreshing: Signal<Bool>
+//        let isLoading: Driver<Bool>
+//        let isRefreshing: Signal<Bool>
     }
     
     let detailAPI: ShowDetailsAPIProtocol
@@ -25,7 +25,7 @@ final class ShowDetailsViewModelV2 {
     private let eventDetailSubject = PublishRelay<DetailInfo>()
     private let peopleCellSubject = BehaviorRelay<[PersonCellViewModel]>(value: [])
     private let isLoadingSubject = BehaviorRelay<Bool>(value: false)
-    private let isRefreshingSubject = PublishRelay<Bool>()
+//    private let isRefreshingSubject = PublishRelay<Bool>()
     private let showMessageSubject = PublishRelay<SingleButtonAlert>()
     private let showErrorSubject = PublishRelay<SingleButtonAlert>()
     
@@ -42,7 +42,29 @@ final class ShowDetailsViewModelV2 {
     }
     
     func transform(input: Input) -> Output {
-        let userResultStream = input.userInputs
+        setupUserInputsStream(input.userInputs)
+        setupSharedData(input.sharedData)
+        fetchEventDetail(input)
+        return Output(
+            eventDetail: eventDetailSubject.asSignal(),
+            peopleCells: peopleCellSubject.asDriver(),
+            showMessage: showMessageSubject.asSignal(),
+            showError: showErrorSubject.asSignal()
+//            isLoading: isLoadingSubject.asDriver(),
+//            isRefreshing: isRefreshingSubject.asSignal()
+        )
+    }
+    
+    func setupUserInputsStream(_ userInputs: Observable<Void>) {
+        let userResultStream = userInputs
+            .flatMapLatest { [router] _ in
+                Single.create { sn in
+                    router.checkIn { input in
+                        sn(.success(input))
+                    }
+                    return Disposables.create()
+                }
+            }
             .flatMapLatest { [detailAPI, event] in
                 detailAPI.validateUserInput($0, eventModel: event)
             }
@@ -50,23 +72,14 @@ final class ShowDetailsViewModelV2 {
         
         validateUserInput(userResultStream)
         performCheckIn(userResultStream)
-        
-        fetchEventDetail(input)
-        
-        //        input.itemSelected
-        //            .subscribe(onNext: { [weak self] personVM in
-        //                self?.router.routeToPersonDetail(personVM)
-        //            })
-        //            .disposed(by: disposeBag)
-        
-        return Output(
-            eventDetail: eventDetailSubject.asSignal(),
-            peopleCells: peopleCellSubject.asDriver(),
-            showMessage: showMessageSubject.asSignal(),
-            showError: showErrorSubject.asSignal(),
-            isLoading: isLoadingSubject.asDriver(),
-            isRefreshing: isRefreshingSubject.asSignal()
-        )
+    }
+    
+    func setupSharedData(_ sharedData: Observable<ShowDetailsShareData>) {
+        sharedData
+            .subscribe(onNext: { [weak self] shareData in
+                self?.router.sharing(shareData: shareData)
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -85,16 +98,16 @@ private extension ShowDetailsViewModelV2 {
             })
             .disposed(by: disposeBag)
         
-        input.refresh
-            .flatMapLatest { [detailAPI, isRefreshingSubject, event] in
-                isRefreshingSubject.accept(true)
-                return detailAPI.fetchEventDetail(for: event)
-            }
-            .subscribe(onNext: { [weak self] in
-                self?.handleEventResult($0)
-                self?.isRefreshingSubject.accept(false)
-            })
-            .disposed(by: disposeBag)
+//        input.refresh
+//            .flatMapLatest { [detailAPI, isRefreshingSubject, event] in
+//                isRefreshingSubject.accept(true)
+//                return detailAPI.fetchEventDetail(for: event)
+//            }
+//            .subscribe(onNext: { [weak self] in
+//                self?.handleEventResult($0)
+//                self?.isRefreshingSubject.accept(false)
+//            })
+//            .disposed(by: disposeBag)
     }
     
     func handleEventResult(_ result: Result<Event, Error>) {
@@ -115,12 +128,30 @@ private extension ShowDetailsViewModelV2 {
 
 private extension ShowDetailsAPIProtocol {
     func fetchEventDetail(for eventModel: Event) -> Single<Result<Event, Error>> {
-        Single.create { [weak self] single in
-            self?.fetchEvent(eventModel) { result in
-                single(.success(result))
-            }
-            return Disposables.create(with: {})
-        }
+        return .just(.success(Event(
+            id: "1",
+            title: "Evento Teste 1",
+            price: 100.0,
+            latitude: -23.55,
+            longitude: -46.63,
+            image: URL(string: "https://via.placeholder.com/300.png/09f/fff?text=Evento1")!,
+            description: "Descrição do evento teste 1.",
+            date: Date(),
+            people: [
+                Person(id: "p1", eventId: "1", name: "Participante 1", picture: "https://via.placeholder.com/50.png/09f/fff?text=P1")
+            ],
+            cupons: [
+                Cupom(id: "c1", eventId: "1", discount: 10)
+            ]
+        )))
+        .delaySubscription(.seconds(21), scheduler: MainScheduler.instance)
+        
+//        Single.create { [weak self] single in
+//            self?.fetchEvent(eventModel) { result in
+//                single(.success(result))
+//            }
+//            return Disposables.create(with: {})
+//        }
     }
 }
 
@@ -203,11 +234,14 @@ private extension ShowDetailsViewModelV2 {
 
 extension ShowDetailsAPIProtocol {
     func performCheckIn(for user: User) -> Single<Result<CheckIn, Error>> {
-        Single.create { [weak self] single in
-            self?.checkIn(user: user) { result in
-                single(.success(result))
-            }
-            return Disposables.create(with: {})
-        }
+        return .just(.success(.init(code: "200")))
+        .delaySubscription(.seconds(1), scheduler: MainScheduler.instance)
+        
+//        Single.create { [weak self] single in
+//            self?.checkIn(user: user) { result in
+//                single(.success(result))
+//            }
+//            return Disposables.create(with: {})
+//        }
     }
 }

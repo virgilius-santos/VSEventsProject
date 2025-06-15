@@ -5,6 +5,11 @@ protocol ShowDetailsBusinessLogic {
     func postCheckIn(userInfo: UserInputTexts)
 }
 
+protocol ShowDetailsPresentationLogic {
+    func presentDetail(_ result: Result<Event, SingleButtonAlert>)
+    func presentCheckIn(_ buttonAlert: SingleButtonAlert)
+}
+
 final class ShowDetailsInteractor {
     let presenter: ShowDetailsPresentationLogic
     let eventAPI: ShowDetailsAPIProtocol

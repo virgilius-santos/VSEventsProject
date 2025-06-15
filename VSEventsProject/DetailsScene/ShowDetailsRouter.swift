@@ -6,7 +6,8 @@ protocol ShowDetailsRoutingLogic {
 }
 
 final class ShowDetailsRouter {
-    weak var viewController: ShowDetailsViewController?
+    weak var viewController: UIViewController?
+    
     let userControllerFactory = UserControllerFactory()
     let sharingControllerFactory = SharingControllerFactory()
 }

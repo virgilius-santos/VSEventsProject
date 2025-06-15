@@ -35,13 +35,7 @@ extension SingleButtonDialogPresenter where Self: UIViewController {
 
 
 extension Reactive where Base: UIViewController & SingleButtonDialogPresenter {
-    var alertMessage: Binder<SingleButtonAlert> {
-        .init(base) { controller, alert in
-            controller.presentSingleButtonDialog(alert: alert)
-        }
-    }
-    
-    func showAlertMessage(completion: @escaping () -> Void) -> Binder<SingleButtonAlert> {
+    func showAlertMessage(completion: @escaping () -> Void = {}) -> Binder<SingleButtonAlert> {
         .init(base) { controller, alert in
             controller.presentSingleButtonDialog(alert: alert) {
                 completion()
