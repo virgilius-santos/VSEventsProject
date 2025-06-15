@@ -19,8 +19,16 @@ final class ShowEventsViewController: UIViewController, SingleButtonDialogPresen
         didSet {
             let nib = UINib(nibName: EventTableViewCell.cellIdentifier, bundle: nil)
             tableView.register(nib, forCellReuseIdentifier: EventTableViewCell.cellIdentifier)
+            tableView.refreshControl = refreshControl
         }
     }
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let rc = UIRefreshControl()
+        rc.tintColor = .systemBlue
+        rc.attributedTitle = NSAttributedString(string: "Atualizando...")
+        return rc
+    }()
 
     func bindViewModel() {
         guard let viewModel else { return }
@@ -34,7 +42,6 @@ final class ShowEventsViewController: UIViewController, SingleButtonDialogPresen
                     .asObservable()
             )
         )
-        
         output.cells
             .drive(tableView.rx.items(
                 cellIdentifier: EventTableViewCell.cellIdentifier,
@@ -45,9 +52,19 @@ final class ShowEventsViewController: UIViewController, SingleButtonDialogPresen
             .disposed(by: disposeBag)
         
         output.showError
-            .emit(to: rx.showAlertMessage(completion: {
+            .emit(to: rx.showAlertMessage {
                 refresh.accept(())
-            }))
+            })
+            .disposed(by: disposeBag)
+        
+        output.isRefreshing
+            .emit(to: refreshControl.rx.isRefreshing)
+            .disposed(by: disposeBag)
+        
+        refreshControl.rx.controlEvent(.valueChanged).asObservable()
+            .subscribe(onNext: {
+                refresh.accept(())
+            })
             .disposed(by: disposeBag)
     }
 }
