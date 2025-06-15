@@ -7,11 +7,22 @@ import AlamofireImage
 import MapKit
 
 final class ShowDetailsViewController: UIViewController, SingleButtonDialogPresenter {
-    var viewModel: ShowDetailsViewModelV2?
-    var disposeBag = DisposeBag()
+    let viewModel: ShowDetailsViewModelV2
+    let disposeBag = DisposeBag()
 
     // MARK: View lifecycle
-
+    
+    init(viewModel: ShowDetailsViewModelV2) {
+        self.viewModel = viewModel
+        let nibName = String(describing: ShowDetailsViewController.self)
+        super.init(nibName: nibName, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()
@@ -41,8 +52,6 @@ final class ShowDetailsViewController: UIViewController, SingleButtonDialogPrese
     @IBOutlet weak var mapView: MKMapView!
 
     func bindViewModel() {
-        guard let viewModel else { return }
-        
 //        let refresh = PublishRelay<Void>()
         let load = BehaviorRelay(value: ())
         let sharedData = shareButton

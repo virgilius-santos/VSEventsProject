@@ -10,10 +10,7 @@ final class ShowDetailsConfigurator: ShowDetailsFactoryProtocol {
         self.dependencies = dependencies
     }
     
-    private let nibName = String(describing: ShowDetailsViewController.self)
-    
     func make(eventItem: Event) -> UIViewController {
-        let viewController = ShowDetailsViewController(nibName: nibName, bundle: nil)
         let detailAPI = ShowDetailsService(
             api: dependencies.api
         )
@@ -23,7 +20,7 @@ final class ShowDetailsConfigurator: ShowDetailsFactoryProtocol {
             router: router,
             event: eventItem
         )
-        viewController.viewModel = viewModel
+        let viewController = ShowDetailsViewController(viewModel: viewModel)
         router.viewController = viewController
         return viewController
     }
