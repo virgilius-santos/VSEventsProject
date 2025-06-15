@@ -15,6 +15,21 @@ O projeto utiliza exclusivamente a arquitetura **MVVM (Model-View-ViewModel)** c
 
 O uso de **interactors** foi descontinuado e eles permanecem no projeto apenas para demonstrar habilidades em testes unitários.
 
+### Estratégias de Testes e Mocking
+
+#### AnyMessages
+O utilitário `AnyMessages` é utilizado para espiar ("spy") as dependências chamadas durante a execução dos testes. Ele permite registrar todas as mensagens (ou chamadas) recebidas, possibilitando verificar a ordem e a quantidade de vezes que cada dependência foi acionada. Isso é fundamental para garantir que o fluxo de chamadas entre ViewModel, Router e Services esteja correto, além de facilitar a validação de efeitos colaterais e interações esperadas.
+
+#### EventAPIProtocolMock
+A classe `EventAPIProtocolMock` implementa o protocolo da camada de API e é usada para simular o retorno do backend nos testes. Ela permite configurar respostas customizadas para cada endpoint, inclusive simulando delays para testar comportamentos assíncronos. Dessa forma, é possível garantir que o ViewModel e demais componentes reagem corretamente tanto a respostas rápidas (síncronas) quanto a respostas que chegam de forma assíncrona, como ocorre em chamadas reais de rede.
+
+#### Contextos Assíncronos e Síncronos
+Os testes abrangem tanto cenários síncronos quanto assíncronos:
+- **Síncronos**: Utilizados para validar lógicas imediatas, como validação de dados e chamadas diretas sem dependência de tempo.
+- **Assíncronos**: Simulam operações que dependem de resposta do backend ou de delays, como requisições de rede. Utilizando o mock da API, é possível controlar o tempo de resposta e garantir que o código lida corretamente com callbacks, observables e atualizações de UI após a conclusão das operações.
+
+Essas estratégias aumentam a confiabilidade dos testes e facilitam a manutenção do código, permitindo evoluir a arquitetura MVVM com segurança.
+
 ### Injeção de Dependências
 
 A injeção de dependências é feita principalmente via inicializadores. O arquivo `DependenciesContainer.swift` pode ser utilizado para centralizar a criação de serviços e dependências compartilhadas, que são injetadas nos ViewModels e routers conforme necessário.
