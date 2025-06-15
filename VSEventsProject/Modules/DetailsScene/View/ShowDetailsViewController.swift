@@ -7,12 +7,12 @@ import AlamofireImage
 import MapKit
 
 final class ShowDetailsViewController: UIViewController, SingleButtonDialogPresenter {
-    let viewModel: ShowDetailsViewModelV2
+    let viewModel: ShowDetailsViewModel
     let disposeBag = DisposeBag()
 
     // MARK: View lifecycle
     
-    init(viewModel: ShowDetailsViewModelV2) {
+    init(viewModel: ShowDetailsViewModel) {
         self.viewModel = viewModel
         let nibName = String(describing: ShowDetailsViewController.self)
         super.init(nibName: nibName, bundle: nil)

@@ -15,7 +15,7 @@ final class ShowDetailsConfigurator: ShowDetailsFactoryProtocol {
             api: dependencies.api
         )
         let router = ShowDetailsRouter()
-        let viewModel = ShowDetailsViewModelV2(
+        let viewModel = ShowDetailsViewModel(
             detailAPI: detailAPI,
             router: router,
             event: eventItem

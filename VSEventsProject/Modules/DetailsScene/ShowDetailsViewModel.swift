@@ -1,7 +1,7 @@
 import RxSwift
 import RxCocoa
 
-final class ShowDetailsViewModelV2 {
+final class ShowDetailsViewModel {
     struct Input {
         let viewDidLoad: Observable<Void>
 //        let refresh: Observable<Void>
@@ -85,7 +85,7 @@ final class ShowDetailsViewModelV2 {
 
 // MARK: - fetchEventDetail
 
-private extension ShowDetailsViewModelV2 {
+private extension ShowDetailsViewModel {
     func fetchEventDetail(_ input: Input) {
         input.viewDidLoad
             .flatMapLatest { [detailAPI, /*isLoadingSubject,*/ event] in
@@ -139,7 +139,7 @@ private extension ShowDetailsAPIProtocol {
 
 // MARK: - validateUserInput
 
-private extension ShowDetailsViewModelV2 {
+private extension ShowDetailsViewModel {
     func validateUserInput(_ userResultStream: Observable<Result<User, SingleButtonAlert>>) {
         userResultStream
             .compactMap { result -> SingleButtonAlert? in
@@ -177,7 +177,7 @@ private extension ShowDetailsAPIProtocol {
 
 // MARK: - performCheckIn
 
-private extension ShowDetailsViewModelV2 {
+private extension ShowDetailsViewModel {
     func performCheckIn(_ userResultStream: Observable<Result<User, SingleButtonAlert>>) {
         userResultStream
             .compactMap { result -> User? in

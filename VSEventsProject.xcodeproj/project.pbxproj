@@ -100,6 +100,7 @@
 		187E334C21A083150010CCE1 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		187E334E21A089BF0010CCE1 /* UserControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserControllerFactory.swift; sourceTree = "<group>"; };
 		187E335021A08FAB0010CCE1 /* SharingControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingControllerFactory.swift; sourceTree = "<group>"; };
+		189304242DFEFA6200F49984 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		18A3256A2DFE275100430723 /* UserInputTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputTexts.swift; sourceTree = "<group>"; };
 		18A3256C2DFE276400430723 /* UserAlertStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAlertStrings.swift; sourceTree = "<group>"; };
 		18A3256F2DFE2DF700430723 /* ShowDetailsShareData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsShareData.swift; sourceTree = "<group>"; };
@@ -202,6 +203,14 @@
 				1801C6B421A04CB10066EC81 /* PersonCollectionViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		189304232DFEFA3800F49984 /* ExternalFiles */ = {
+			isa = PBXGroup;
+			children = (
+				189304242DFEFA6200F49984 /* README.md */,
+			);
+			path = ExternalFiles;
 			sourceTree = "<group>";
 		};
 		18A325692DFE274900430723 /* UserController */ = {
@@ -349,6 +358,7 @@
 		18D4026E219F75B8002A3BC2 /* VSEventsProject */ = {
 			isa = PBXGroup;
 			children = (
+				189304232DFEFA3800F49984 /* ExternalFiles */,
 				18A325752DFEEBBD00430723 /* Dependencies */,
 				18D402E721A02BC3002A3BC2 /* Extension */,
 				18D402C6219F9A60002A3BC2 /* Models */,
