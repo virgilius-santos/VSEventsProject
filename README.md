@@ -43,6 +43,7 @@ A navegação entre as telas é realizada exclusivamente por **routers** dedicad
 - **RxAlamofire**: Wrappers RxSwift para Alamofire.
 - **RxDataSources**: Para lidar com DataSources de TableViews e CollectionViews de forma reativa.
 - **RxSwiftExt**: Coleção de operadores úteis para RxSwift.
+- **RxMapKit**: Utilizado a partir de um fork proprietário (https://github.com/virgilius-santos/RxMapKit.git) para atualizar o suporte ao RxSwift, já que o repositório original deixou de ser mantido.
 - Outras dependências de suporte do RxSwift (RxRelay, RxBlocking, RxTest) e Differentiator.
 
 ## Lista de Tarefas (Original do Desafio)
