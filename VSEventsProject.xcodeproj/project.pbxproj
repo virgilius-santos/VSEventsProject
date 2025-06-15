@@ -72,6 +72,7 @@
 		18D402E621A01D90002A3BC2 /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D402E421A01D90002A3BC2 /* EventTableViewCell.xib */; };
 		18D402E921A02BD4002A3BC2 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402E821A02BD4002A3BC2 /* UIViewExtensions.swift */; };
 		18D7C4812DFF053300232156 /* ShowEventsViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D7C47F2DFF050B00232156 /* ShowEventsViewModelSpec.swift */; };
+		18D7C4832DFF0A0000232156 /* ShowEventsRoutingLogicMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D7C4822DFF0A0000232156 /* ShowEventsRoutingLogicMock.swift */; };
 		7AFCCB58F0B3DD4CCE5C72E8 /* Pods_VSEventsProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC0B7EF7FB9A96023F9A0CD /* Pods_VSEventsProject.framework */; };
 		9EDB95B74FB13B6AC1AD5F61 /* Pods_VSEventsProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63243E7E1BCE3DADAF7585D2 /* Pods_VSEventsProjectTests.framework */; };
 /* End PBXBuildFile section */
@@ -159,6 +160,7 @@
 		18D402E421A01D90002A3BC2 /* EventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventTableViewCell.xib; sourceTree = "<group>"; };
 		18D402E821A02BD4002A3BC2 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		18D7C47F2DFF050B00232156 /* ShowEventsViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsViewModelSpec.swift; sourceTree = "<group>"; };
+		18D7C4822DFF0A0000232156 /* ShowEventsRoutingLogicMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsRoutingLogicMock.swift; sourceTree = "<group>"; };
 		2FB437FFF4C253CA159A836D /* Pods-VSEventsProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VSEventsProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-VSEventsProjectTests/Pods-VSEventsProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		34F6B1467EF6847260AEC357 /* Pods-VSEventsProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VSEventsProjectTests.release.xcconfig"; path = "Target Support Files/Pods-VSEventsProjectTests/Pods-VSEventsProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		63243E7E1BCE3DADAF7585D2 /* Pods_VSEventsProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VSEventsProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -307,6 +309,7 @@
 			children = (
 				18C7C1A42DFDA1C100E7AB61 /* EventAPIProtocolMock.swift */,
 				18C7C1A82DFDAB9F00E7AB61 /* ShowEventsPresentationLogicMock.swift */,
+				18D7C4822DFF0A0000232156 /* ShowEventsRoutingLogicMock.swift */,
 			);
 			path = Doubles;
 			sourceTree = "<group>";
@@ -733,6 +736,7 @@
 			files = (
 				18C7C1B92DFDB29500E7AB61 /* MockError.swift in Sources */,
 				1832E72621A3DBF000746AF2 /* ShowDetailsInteractorTests.swift in Sources */,
+				18D7C4832DFF0A0000232156 /* ShowEventsRoutingLogicMock.swift in Sources */,
 				18C7C1B52DFDB16500E7AB61 /* ShowDetailsPresentationLogicMock.swift in Sources */,
 				1832E72421A3DA4200746AF2 /* EmailMatchTest.swift in Sources */,
 				18C7C1AD2DFDAE3A00E7AB61 /* EventListApiResponseMock.swift in Sources */,

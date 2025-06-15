@@ -1,7 +1,7 @@
 import UIKit
 
 protocol ShowEventsRoutingLogic {
-    func routeToDetail(_ viewModel: EventCellViewModel)
+    func routeToDetail(_ eventItem: Event)
 }
 
 final class ShowEventsRouter {
@@ -23,8 +23,8 @@ final class ShowEventsRouter {
 }
 
 extension ShowEventsRouter: ShowEventsRoutingLogic {
-    func routeToDetail(_ viewModel: EventCellViewModel) {
-        let detailVC = dependencies.showDetailsFactory.make(eventItem: viewModel.eventItem)
+    func routeToDetail(_ eventItem: Event) {
+        let detailVC = dependencies.showDetailsFactory.make(eventItem: eventItem)
         navigateToDetails(source: viewController, destination: detailVC)
     }
 }
