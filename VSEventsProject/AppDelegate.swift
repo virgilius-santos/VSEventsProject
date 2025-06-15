@@ -14,13 +14,18 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
         
-        let appCoordinator = ShowEventsConfigurator(dependencies: dependencies)
-        let viewController = appCoordinator.make()
-        
-        let nav = UINavigationController(rootViewController: viewController)
+        let nav = makeRootViewController()
         window.rootViewController = nav
         window.makeKeyAndVisible()
         
         return true
+    }
+}
+
+extension AppDelegate {
+    func makeRootViewController() -> UIViewController {
+        let controller = dependencies.showEventsFactory.make()
+        let nav = UINavigationController(rootViewController: controller)
+        return nav
     }
 }

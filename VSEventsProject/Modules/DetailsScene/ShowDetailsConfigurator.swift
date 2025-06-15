@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-final class ShowDetailsConfigurator {
+final class ShowDetailsConfigurator: ShowDetailsFactoryProtocol {
     typealias Dependencies = HasApi
     
     let dependencies: Dependencies

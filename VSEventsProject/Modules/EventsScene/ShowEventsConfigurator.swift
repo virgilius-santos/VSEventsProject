@@ -1,6 +1,6 @@
 import UIKit
 
-final class ShowEventsConfigurator {
+final class ShowEventsConfigurator: ShowEventsFactoryProtocol {
     typealias Dependencies = HasShowDetailsFactoryProtocol & HasApi
     
     let dependencies: Dependencies

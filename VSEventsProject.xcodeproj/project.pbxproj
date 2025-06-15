@@ -25,10 +25,11 @@
 		18A325722DFE489D00430723 /* ShowEventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A325712DFE489D00430723 /* ShowEventsViewModel.swift */; };
 		18A325742DFE6FBF00430723 /* ShowDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A325732DFE6FBF00430723 /* ShowDetailsViewModel.swift */; };
 		18A325772DFEEBC700430723 /* DependenciesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A325762DFEEBC700430723 /* DependenciesContainer.swift */; };
-		18A3257A2DFEEC1A00430723 /* ShowDetailsAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A325792DFEEC1A00430723 /* ShowDetailsAdapter.swift */; };
 		18A3257F2DFEECD000430723 /* HasShowDetailsFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A3257E2DFEECD000430723 /* HasShowDetailsFactoryProtocol.swift */; };
 		18A325812DFEED0E00430723 /* ShowDetailsFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A325802DFEED0E00430723 /* ShowDetailsFactoryProtocol.swift */; };
 		18A325842DFEED7800430723 /* APIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A325832DFEED7800430723 /* APIProtocol.swift */; };
+		18A325872DFEEFB300430723 /* ShowEventsFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A325862DFEEFB300430723 /* ShowEventsFactoryProtocol.swift */; };
+		18A325892DFEEFE700430723 /* HasShowEventsFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A325882DFEEFE700430723 /* HasShowEventsFactoryProtocol.swift */; };
 		18C7C1A52DFDA1C100E7AB61 /* EventAPIProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7C1A42DFDA1C100E7AB61 /* EventAPIProtocolMock.swift */; };
 		18C7C1A72DFDA2BA00E7AB61 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7C1A62DFDA2B700E7AB61 /* ArrayExtensions.swift */; };
 		18C7C1A92DFDAB9F00E7AB61 /* ShowEventsPresentationLogicMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7C1A82DFDAB9F00E7AB61 /* ShowEventsPresentationLogicMock.swift */; };
@@ -105,10 +106,11 @@
 		18A325712DFE489D00430723 /* ShowEventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsViewModel.swift; sourceTree = "<group>"; };
 		18A325732DFE6FBF00430723 /* ShowDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsViewModel.swift; sourceTree = "<group>"; };
 		18A325762DFEEBC700430723 /* DependenciesContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependenciesContainer.swift; sourceTree = "<group>"; };
-		18A325792DFEEC1A00430723 /* ShowDetailsAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsAdapter.swift; sourceTree = "<group>"; };
 		18A3257E2DFEECD000430723 /* HasShowDetailsFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasShowDetailsFactoryProtocol.swift; sourceTree = "<group>"; };
 		18A325802DFEED0E00430723 /* ShowDetailsFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsFactoryProtocol.swift; sourceTree = "<group>"; };
 		18A325832DFEED7800430723 /* APIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProtocol.swift; sourceTree = "<group>"; };
+		18A325862DFEEFB300430723 /* ShowEventsFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsFactoryProtocol.swift; sourceTree = "<group>"; };
+		18A325882DFEEFE700430723 /* HasShowEventsFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasShowEventsFactoryProtocol.swift; sourceTree = "<group>"; };
 		18C7C1A42DFDA1C100E7AB61 /* EventAPIProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAPIProtocolMock.swift; sourceTree = "<group>"; };
 		18C7C1A62DFDA2B700E7AB61 /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		18C7C1A82DFDAB9F00E7AB61 /* ShowEventsPresentationLogicMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsPresentationLogicMock.swift; sourceTree = "<group>"; };
@@ -225,17 +227,8 @@
 			isa = PBXGroup;
 			children = (
 				18A325762DFEEBC700430723 /* DependenciesContainer.swift */,
-				18A325782DFEEC1100430723 /* Adapters */,
 			);
 			path = Dependencies;
-			sourceTree = "<group>";
-		};
-		18A325782DFEEC1100430723 /* Adapters */ = {
-			isa = PBXGroup;
-			children = (
-				18A325792DFEEC1A00430723 /* ShowDetailsAdapter.swift */,
-			);
-			path = Adapters;
 			sourceTree = "<group>";
 		};
 		18A3257B2DFEEC9E00430723 /* Modules */ = {
@@ -261,6 +254,8 @@
 		18A3257D2DFEECB800430723 /* EventsSceneInterface */ = {
 			isa = PBXGroup;
 			children = (
+				18A325862DFEEFB300430723 /* ShowEventsFactoryProtocol.swift */,
+				18A325882DFEEFE700430723 /* HasShowEventsFactoryProtocol.swift */,
 			);
 			path = EventsSceneInterface;
 			sourceTree = "<group>";
@@ -689,6 +684,7 @@
 				18C7C1C82DFDDCCF00E7AB61 /* ShowDetailsService.swift in Sources */,
 				18D402E521A01D90002A3BC2 /* EventTableViewCell.swift in Sources */,
 				18D402DA219FBB4A002A3BC2 /* ShowEventsViewController.swift in Sources */,
+				18A325892DFEEFE700430723 /* HasShowEventsFactoryProtocol.swift in Sources */,
 				18A3257F2DFEECD000430723 /* HasShowDetailsFactoryProtocol.swift in Sources */,
 				18A3256D2DFE276400430723 /* UserAlertStrings.swift in Sources */,
 				18D402E921A02BD4002A3BC2 /* UIViewExtensions.swift in Sources */,
@@ -702,7 +698,7 @@
 				1832E71D21A3B24E00746AF2 /* CodableExtensions.swift in Sources */,
 				187E334F21A089BF0010CCE1 /* UserControllerFactory.swift in Sources */,
 				18D40270219F75B8002A3BC2 /* AppDelegate.swift in Sources */,
-				18A3257A2DFEEC1A00430723 /* ShowDetailsAdapter.swift in Sources */,
+				18A325872DFEEFB300430723 /* ShowEventsFactoryProtocol.swift in Sources */,
 				18A325722DFE489D00430723 /* ShowEventsViewModel.swift in Sources */,
 				18C7C1BB2DFDB76500E7AB61 /* EquatableExtensions.swift in Sources */,
 				18D402DC219FE12A002A3BC2 /* ShowEventsModels.swift in Sources */,
