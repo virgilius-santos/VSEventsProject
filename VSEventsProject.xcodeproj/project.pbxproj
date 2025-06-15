@@ -23,6 +23,7 @@
 		18A3256D2DFE276400430723 /* UserAlertStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A3256C2DFE276400430723 /* UserAlertStrings.swift */; };
 		18A325702DFE2DF700430723 /* ShowDetailsShareData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A3256F2DFE2DF700430723 /* ShowDetailsShareData.swift */; };
 		18A325722DFE489D00430723 /* ShowEventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A325712DFE489D00430723 /* ShowEventsViewModel.swift */; };
+		18A325742DFE6FBF00430723 /* ShowDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A325732DFE6FBF00430723 /* ShowDetailsViewModel.swift */; };
 		18C7C1A52DFDA1C100E7AB61 /* EventAPIProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7C1A42DFDA1C100E7AB61 /* EventAPIProtocolMock.swift */; };
 		18C7C1A72DFDA2BA00E7AB61 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7C1A62DFDA2B700E7AB61 /* ArrayExtensions.swift */; };
 		18C7C1A92DFDAB9F00E7AB61 /* ShowEventsPresentationLogicMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7C1A82DFDAB9F00E7AB61 /* ShowEventsPresentationLogicMock.swift */; };
@@ -98,6 +99,7 @@
 		18A3256C2DFE276400430723 /* UserAlertStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAlertStrings.swift; sourceTree = "<group>"; };
 		18A3256F2DFE2DF700430723 /* ShowDetailsShareData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsShareData.swift; sourceTree = "<group>"; };
 		18A325712DFE489D00430723 /* ShowEventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsViewModel.swift; sourceTree = "<group>"; };
+		18A325732DFE6FBF00430723 /* ShowDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsViewModel.swift; sourceTree = "<group>"; };
 		18C7C1A42DFDA1C100E7AB61 /* EventAPIProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAPIProtocolMock.swift; sourceTree = "<group>"; };
 		18C7C1A62DFDA2B700E7AB61 /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		18C7C1A82DFDAB9F00E7AB61 /* ShowEventsPresentationLogicMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsPresentationLogicMock.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 				18D402E121A000D8002A3BC2 /* ShowDetailsConfigurator.swift */,
 				1801C6B321A04C870066EC81 /* View */,
 				18D402BA219F7F96002A3BC2 /* ShowDetailsModels.swift */,
+				18A325732DFE6FBF00430723 /* ShowDetailsViewModel.swift */,
 				18D402BC219F7F96002A3BC2 /* ShowDetailsInteractor.swift */,
 				18C7C1C72DFDDCCD00E7AB61 /* ShowDetailsService.swift */,
 				18D402B7219F7F96002A3BC2 /* ShowDetailsPresenter.swift */,
@@ -631,6 +634,7 @@
 				18D402C1219F7F96002A3BC2 /* ShowDetailsViewController.swift in Sources */,
 				18C7C1CA2DFDE23400E7AB61 /* CheckIn.swift in Sources */,
 				18D402BD219F7F96002A3BC2 /* ShowDetailsPresenter.swift in Sources */,
+				18A325742DFE6FBF00430723 /* ShowDetailsViewModel.swift in Sources */,
 				18D402DE219FE638002A3BC2 /* SingleButtonAlert.swift in Sources */,
 				18D402C0219F7F96002A3BC2 /* ShowDetailsModels.swift in Sources */,
 				1832E71D21A3B24E00746AF2 /* CodableExtensions.swift in Sources */,

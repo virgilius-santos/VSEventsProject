@@ -7,7 +7,7 @@ import AlamofireImage
 import MapKit
 
 protocol ShowDetailsDisplayLogic: class {
-    var viewModel: DetailViewModel { get }
+    var viewModel: ShowDetailsViewModel { get }
 }
 
 final class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic, SingleButtonDialogPresenter {
@@ -16,7 +16,7 @@ final class ShowDetailsViewController: UIViewController, ShowDetailsDisplayLogic
 
     var router: ShowDetailsRoutingLogic?
 
-    var viewModel = DetailViewModel()
+    var viewModel = ShowDetailsViewModel()
 
     var disposeBag = DisposeBag()
 
