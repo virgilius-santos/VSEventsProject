@@ -8,6 +8,7 @@ protocol ShowEventsBusinessLogic {
     func fetchEvents()
 }
 
+@available(*, deprecated, message: "decontinuado, usar a viewModel")
 final class ShowEventsInteractor {
     let presenter: ShowEventsPresentationLogic
     let eventAPI: EventAPIProtocol
@@ -18,6 +19,7 @@ final class ShowEventsInteractor {
     }
 }
 
+@available(*, deprecated, message: "decontinuado, usar a viewModel")
 extension ShowEventsInteractor: ShowEventsBusinessLogic {
     func fetchEvents() {
         eventAPI.fetchEvents { [weak self] (result: Result<[Event], Error>) in

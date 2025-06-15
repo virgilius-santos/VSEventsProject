@@ -4,6 +4,7 @@ import RxCocoa
 final class ShowEventsViewModel {
     struct Input {
         let viewDidLoad: Observable<Void>
+        let refresh: Observable<Void>
         let itemSelected: Observable<EventCellViewModel>
     }
     
@@ -26,7 +27,14 @@ final class ShowEventsViewModel {
     }
     
     func transform(input: Input) -> Output {
-        input.viewDidLoad
+        let loadRequest = Observable
+            .merge(
+                input.viewDidLoad,
+                input.refresh
+            )
+            .share()
+        
+        loadRequest
             .flatMap { [eventAPI] in
                 eventAPI.fetchEvents()
             }

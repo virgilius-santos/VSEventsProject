@@ -1,6 +1,7 @@
 import UIKit
 import RxSwift
 import RxSwiftExt
+import RxCocoa
 
 final class ShowEventsViewController: UIViewController, SingleButtonDialogPresenter {
     var viewModel: ShowEventsViewModel?
@@ -23,10 +24,11 @@ final class ShowEventsViewController: UIViewController, SingleButtonDialogPresen
 
     func bindViewModel() {
         guard let viewModel else { return }
-        
+        let refresh = PublishRelay<Void>()
         let output = viewModel.transform(
             input: .init(
                 viewDidLoad: .just(()),
+                refresh: refresh.asObservable(),
                 itemSelected: tableView.rx
                     .modelSelected(EventCellViewModel.self)
                     .asObservable()
@@ -43,7 +45,9 @@ final class ShowEventsViewController: UIViewController, SingleButtonDialogPresen
             .disposed(by: disposeBag)
         
         output.showError
-            .emit(to: rx.alertMessage)
+            .emit(to: rx.showAlertMessage(completion: {
+                refresh.accept(())
+            }))
             .disposed(by: disposeBag)
     }
 }
