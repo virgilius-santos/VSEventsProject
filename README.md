@@ -25,7 +25,7 @@ A comunicação com a API é abstraída pela `APIProtocol.swift` e implementada 
 
 ### Navegação
 
-A navegação entre as telas é realizada exclusivamente por **routers** dedicados, que centralizam a lógica de transição e apresentação de telas. Os routers são integrados ao padrão MVVM, recebendo comandos dos ViewModels ou ViewControllers para realizar navegações, como push, modal ou apresentação de fluxos específicos. Isso garante uma separação clara entre lógica de navegação e regras de negócio/interface.
+A navegação entre as telas é realizada exclusivamente por **routers** dedicados, que centralizam a lógica de transição e apresentação de telas. Os routers são integrados ao padrão MVVM, recebendo comandos dos ViewModels para realizar navegações, como push, modal ou apresentação de fluxos específicos. Isso garante uma separação clara entre lógica de navegação e regras de negócio/interface.
 
 ## Tecnologias e Dependências
 
@@ -34,15 +34,15 @@ A navegação entre as telas é realizada exclusivamente por **routers** dedicad
 
 ### CocoaPods Utilizados:
 
-- **RxSwift** (5.1.3): Para programação reativa.
-- **RxCocoa** (5.1.3): Bindings de RxSwift para Cocoa e CocoaTouch.
-- **Alamofire** (4.9.1): Para requisições de rede HTTP.
-- **AlamofireImage** (3.6.0): Para download e cache de imagens.
-- **Quick** (5.0.1): Framework de testes BDD para Swift.
-- **Nimble** (10.0.0): Matcher framework para Quick.
-- **RxAlamofire** (5.1.0): Wrappers RxSwift para Alamofire.
-- **RxDataSources** (4.0.1): Para lidar com DataSources de TableViews e CollectionViews de forma reativa.
-- **RxSwiftExt** (5.2.0): Coleção de operadores úteis para RxSwift.
+- **RxSwift**: Para programação reativa.
+- **RxCocoa**: Bindings de RxSwift para Cocoa e CocoaTouch.
+- **Alamofire**: Para requisições de rede HTTP.
+- **AlamofireImage**: Para download e cache de imagens.
+- **Quick**: Framework de testes BDD para Swift.
+- **Nimble**: Matcher framework para Quick.
+- **RxAlamofire**: Wrappers RxSwift para Alamofire.
+- **RxDataSources**: Para lidar com DataSources de TableViews e CollectionViews de forma reativa.
+- **RxSwiftExt**: Coleção de operadores úteis para RxSwift.
 - Outras dependências de suporte do RxSwift (RxRelay, RxBlocking, RxTest) e Differentiator.
 
 ## Lista de Tarefas (Original do Desafio)
