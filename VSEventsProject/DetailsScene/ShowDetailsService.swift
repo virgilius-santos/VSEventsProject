@@ -1,6 +1,6 @@
 import Foundation
 
-protocol DetailAPIProtocol {
+protocol ShowDetailsAPIProtocol: AnyObject {
     func fetchEvent(_ event: Event, completion: @escaping (Swift.Result<Event, Error>) -> Void)
     func checkIn(user: User, completion: @escaping (Result<CheckIn, Error>) -> Void)
 }
@@ -22,7 +22,7 @@ extension Endpoint {
     }
 }
 
-final class ShowDetailsService: DetailAPIProtocol {
+final class ShowDetailsService: ShowDetailsAPIProtocol {
     let api: APIProtocol
     
     init(api: APIProtocol = API()) {

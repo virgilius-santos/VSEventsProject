@@ -1,7 +1,7 @@
 import Foundation
 @testable import VSEventsProject
 
-final class DetailAPIProtocolMock: DetailAPIProtocol {
+final class DetailAPIProtocolMock: ShowDetailsAPIProtocol {
     enum Message: Equatable {
         case fetch(_ source: Event)
         case checkIn(_ source: User)

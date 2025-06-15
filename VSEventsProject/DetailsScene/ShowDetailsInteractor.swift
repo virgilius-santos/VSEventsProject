@@ -7,10 +7,10 @@ protocol ShowDetailsBusinessLogic {
 
 final class ShowDetailsInteractor {
     let presenter: ShowDetailsPresentationLogic
-    let eventAPI: DetailAPIProtocol
+    let eventAPI: ShowDetailsAPIProtocol
     let event: Event
     
-    init(presenter: ShowDetailsPresentationLogic, eventAPI: DetailAPIProtocol, event: Event) {
+    init(presenter: ShowDetailsPresentationLogic, eventAPI: ShowDetailsAPIProtocol, event: Event) {
         self.presenter = presenter
         self.eventAPI = eventAPI
         self.event = event
