@@ -6,15 +6,13 @@ final class ShowEventsConfigurator {
 
     func make() -> UIViewController {
         let viewController = ShowEventsViewController(nibName: nibName, bundle: nil)
-        let presenter = ShowEventsPresenter(viewController: viewController)
         let eventAPI = ShowEventsEventService()
-        let interactor = ShowEventsInteractor(
-            presenter: presenter,
-            eventAPI: eventAPI
-        )
         let router = ShowEventsRouter()
-        viewController.interactor = interactor
-        viewController.router = router
+        let viewModel = ShowEventsViewModel(
+            eventAPI: eventAPI,
+            router: router
+        )
+        viewController.viewModel = viewModel
         router.viewController = viewController
         return viewController
     }

@@ -5,11 +5,11 @@ protocol ShowEventsRoutingLogic {
 }
 
 final class ShowEventsRouter {
-    weak var viewController: ShowEventsViewController?
+    weak var viewController: UIViewController?
 
     // MARK: Navigation
 
-    func navigateToDetails(source: ShowEventsViewController?, destination: UIViewController) {
+    func navigateToDetails(source: UIViewController?, destination: UIViewController) {
         source?.show(destination, sender: nil)
     }
 }

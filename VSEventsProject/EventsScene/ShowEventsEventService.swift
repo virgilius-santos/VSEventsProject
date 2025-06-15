@@ -1,6 +1,6 @@
 import Foundation
 
-protocol EventAPIProtocol {
+protocol EventAPIProtocol: AnyObject {
     func fetchEvents(completion: @escaping (Result<[Event], Error>) -> Void)
 }
 

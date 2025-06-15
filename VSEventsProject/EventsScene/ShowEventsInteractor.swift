@@ -1,5 +1,9 @@
 import Foundation
 
+protocol ShowEventsPresentationLogic {
+    func displayEvents(result: Swift.Result<[Event], SingleButtonAlert>)
+}
+
 protocol ShowEventsBusinessLogic {
     func fetchEvents()
 }

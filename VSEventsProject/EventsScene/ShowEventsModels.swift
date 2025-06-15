@@ -17,16 +17,3 @@ extension Event: EventCellViewModel {
         return self
     }
 }
-
-final class EventsTableViewViewModel {
-
-    var eventCells: Observable<[EventCellViewModel]> {
-        return cells.asObservable()
-    }
-    let cells = BehaviorRelay<[EventCellViewModel]>(value: [])
-
-    let onShowError = PublishSubject<SingleButtonAlert>()
-    
-    let disposeBag = DisposeBag()
-
-}

@@ -2,59 +2,48 @@ import UIKit
 import RxSwift
 import RxSwiftExt
 
-protocol ShowEventsDisplayLogic: class {
-    var title: String? { get set }
-    var viewModel: EventsTableViewViewModel { get }
-}
-
-final class ShowEventsViewController: UIViewController, ShowEventsDisplayLogic, SingleButtonDialogPresenter {
-    var viewModel = EventsTableViewViewModel()
-
-    var interactor: ShowEventsBusinessLogic?
-    var router: ShowEventsRoutingLogic?
-
+final class ShowEventsViewController: UIViewController, SingleButtonDialogPresenter {
+    var viewModel: ShowEventsViewModel?
     var disposeBag = DisposeBag()
 
     // MARK: View lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         bindViewModel()
-        setupTableView()
-        fetchEvents()
     }
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            let nib = UINib(nibName: EventTableViewCell.cellIdentifier, bundle: nil)
+            tableView.register(nib, forCellReuseIdentifier: EventTableViewCell.cellIdentifier)
+        }
+    }
 
     func bindViewModel() {
-        viewModel.eventCells
-            .bind(to: tableView.rx.items(
+        guard let viewModel else { return }
+        
+        let output = viewModel.transform(
+            input: .init(
+                viewDidLoad: .just(()),
+                itemSelected: tableView.rx
+                    .modelSelected(EventCellViewModel.self)
+                    .asObservable()
+            )
+        )
+        
+        output.cells
+            .drive(tableView.rx.items(
                 cellIdentifier: EventTableViewCell.cellIdentifier,
                 cellType: EventTableViewCell.self
             )) { (_, element, cell) in
                 cell.viewModel = element
             }
             .disposed(by: disposeBag)
-
-        viewModel.onShowError
-            .bind(to: rx.alertMessage)
+        
+        output.showError
+            .emit(to: rx.alertMessage)
             .disposed(by: disposeBag)
-    }
-
-    func setupTableView() {
-        let nib = UINib(nibName: EventTableViewCell.cellIdentifier, bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: EventTableViewCell.cellIdentifier)
-
-        tableView.rx
-            .modelSelected(EventCellViewModel.self)
-            .subscribe(onNext: { [weak self] value in
-                self?.router?.routeToDetail(value)
-            })
-            .disposed(by: disposeBag)
-    }
-
-    func fetchEvents() {
-        interactor?.fetchEvents()
     }
 }

@@ -22,6 +22,7 @@
 		18A3256B2DFE275100430723 /* UserInputTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A3256A2DFE275100430723 /* UserInputTexts.swift */; };
 		18A3256D2DFE276400430723 /* UserAlertStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A3256C2DFE276400430723 /* UserAlertStrings.swift */; };
 		18A325702DFE2DF700430723 /* ShowDetailsShareData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A3256F2DFE2DF700430723 /* ShowDetailsShareData.swift */; };
+		18A325722DFE489D00430723 /* ShowEventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A325712DFE489D00430723 /* ShowEventsViewModel.swift */; };
 		18C7C1A52DFDA1C100E7AB61 /* EventAPIProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7C1A42DFDA1C100E7AB61 /* EventAPIProtocolMock.swift */; };
 		18C7C1A72DFDA2BA00E7AB61 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7C1A62DFDA2B700E7AB61 /* ArrayExtensions.swift */; };
 		18C7C1A92DFDAB9F00E7AB61 /* ShowEventsPresentationLogicMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7C1A82DFDAB9F00E7AB61 /* ShowEventsPresentationLogicMock.swift */; };
@@ -42,7 +43,6 @@
 		18D40270219F75B8002A3BC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D4026F219F75B8002A3BC2 /* AppDelegate.swift */; };
 		18D40277219F75BB002A3BC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D40276219F75BB002A3BC2 /* Assets.xcassets */; };
 		18D4027A219F75BB002A3BC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D40278219F75BB002A3BC2 /* LaunchScreen.storyboard */; };
-		18D402B0219F7ED5002A3BC2 /* ShowEventsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402AA219F7ED5002A3BC2 /* ShowEventsPresenter.swift */; };
 		18D402B2219F7ED5002A3BC2 /* ShowEventsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402AC219F7ED5002A3BC2 /* ShowEventsRouter.swift */; };
 		18D402B5219F7ED5002A3BC2 /* ShowEventsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402AF219F7ED5002A3BC2 /* ShowEventsInteractor.swift */; };
 		18D402BD219F7F96002A3BC2 /* ShowDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402B7219F7F96002A3BC2 /* ShowDetailsPresenter.swift */; };
@@ -97,6 +97,7 @@
 		18A3256A2DFE275100430723 /* UserInputTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputTexts.swift; sourceTree = "<group>"; };
 		18A3256C2DFE276400430723 /* UserAlertStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAlertStrings.swift; sourceTree = "<group>"; };
 		18A3256F2DFE2DF700430723 /* ShowDetailsShareData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsShareData.swift; sourceTree = "<group>"; };
+		18A325712DFE489D00430723 /* ShowEventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsViewModel.swift; sourceTree = "<group>"; };
 		18C7C1A42DFDA1C100E7AB61 /* EventAPIProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAPIProtocolMock.swift; sourceTree = "<group>"; };
 		18C7C1A62DFDA2B700E7AB61 /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		18C7C1A82DFDAB9F00E7AB61 /* ShowEventsPresentationLogicMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsPresentationLogicMock.swift; sourceTree = "<group>"; };
@@ -121,7 +122,6 @@
 		18D4027B219F75BB002A3BC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18D40280219F75BC002A3BC2 /* VSEventsProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VSEventsProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D40286219F75BC002A3BC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		18D402AA219F7ED5002A3BC2 /* ShowEventsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsPresenter.swift; sourceTree = "<group>"; };
 		18D402AC219F7ED5002A3BC2 /* ShowEventsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsRouter.swift; sourceTree = "<group>"; };
 		18D402AF219F7ED5002A3BC2 /* ShowEventsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsInteractor.swift; sourceTree = "<group>"; };
 		18D402B7219F7F96002A3BC2 /* ShowDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsPresenter.swift; sourceTree = "<group>"; };
@@ -334,8 +334,8 @@
 				1801C6B221A04C700066EC81 /* View */,
 				18D402DB219FE12A002A3BC2 /* ShowEventsModels.swift */,
 				18C7C1C52DFDD73300E7AB61 /* ShowEventsEventService.swift */,
+				18A325712DFE489D00430723 /* ShowEventsViewModel.swift */,
 				18D402AF219F7ED5002A3BC2 /* ShowEventsInteractor.swift */,
-				18D402AA219F7ED5002A3BC2 /* ShowEventsPresenter.swift */,
 				18D402AC219F7ED5002A3BC2 /* ShowEventsRouter.swift */,
 			);
 			path = EventsScene;
@@ -618,7 +618,6 @@
 				18C7C1C62DFDD73300E7AB61 /* ShowEventsEventService.swift in Sources */,
 				1801C6B621A04CB10066EC81 /* PersonCollectionViewCell.swift in Sources */,
 				187E334D21A083150010CCE1 /* UIViewControllerExtensions.swift in Sources */,
-				18D402B0219F7ED5002A3BC2 /* ShowEventsPresenter.swift in Sources */,
 				18D402CE219FA89D002A3BC2 /* UIImageViewExtensions.swift in Sources */,
 				18D402BF219F7F96002A3BC2 /* ShowDetailsRouter.swift in Sources */,
 				18D402E221A000D8002A3BC2 /* ShowDetailsConfigurator.swift in Sources */,
@@ -637,6 +636,7 @@
 				1832E71D21A3B24E00746AF2 /* CodableExtensions.swift in Sources */,
 				187E334F21A089BF0010CCE1 /* UserControllerFactory.swift in Sources */,
 				18D40270219F75B8002A3BC2 /* AppDelegate.swift in Sources */,
+				18A325722DFE489D00430723 /* ShowEventsViewModel.swift in Sources */,
 				18C7C1BB2DFDB76500E7AB61 /* EquatableExtensions.swift in Sources */,
 				18D402DC219FE12A002A3BC2 /* ShowEventsModels.swift in Sources */,
 				18D402B5219F7ED5002A3BC2 /* ShowEventsInteractor.swift in Sources */,
