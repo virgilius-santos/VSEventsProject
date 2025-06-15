@@ -1,18 +1,24 @@
 import UIKit
 
 final class ShowEventsConfigurator {
-
-    private let nibName = String(describing: ShowEventsViewController.self)
-
-    func make() -> UIViewController {
-        let viewController = ShowEventsViewController(nibName: nibName, bundle: nil)
+    typealias Dependencies = HasShowDetailsFactoryProtocol
+    
+    let dependencies: Dependencies
+    
+    init(dependencies: Dependencies) {
+        self.dependencies = dependencies
+    }
+    
+    func make() -> UIViewController {        
         let eventAPI = ShowEventsEventService()
-        let router = ShowEventsRouter()
+        let router = ShowEventsRouter(
+            dependencies: dependencies
+        )
         let viewModel = ShowEventsViewModel(
             eventAPI: eventAPI,
             router: router
         )
-        viewController.viewModel = viewModel
+        let viewController = ShowEventsViewController(viewModel: viewModel)
         router.viewController = viewController
         return viewController
     }

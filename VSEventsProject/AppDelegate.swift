@@ -3,8 +3,8 @@ import UIKit
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    var appCoordinator: ShowEventsConfigurator?
-
+    let dependencies: Dependencies = DependenciesContainer()
+    
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
@@ -14,10 +14,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
         
-        let appCoordinator = ShowEventsConfigurator()
-        self.appCoordinator = appCoordinator
-        
+        let appCoordinator = ShowEventsConfigurator(dependencies: dependencies)
         let viewController = appCoordinator.make()
+        
         let nav = UINavigationController(rootViewController: viewController)
         window.rootViewController = nav
         window.makeKeyAndVisible()
@@ -25,3 +24,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
+
+typealias Dependencies = HasShowDetailsFactoryProtocol
+final class DependenciesContainer: Dependencies {
+    lazy var showDetailsFactory: ShowDetailsFactoryProtocol = ShowDetailsConfigurator()
+    
+}
+
+extension ShowDetailsConfigurator: ShowDetailsFactoryProtocol {}

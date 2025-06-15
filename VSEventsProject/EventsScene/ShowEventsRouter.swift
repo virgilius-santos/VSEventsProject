@@ -1,12 +1,28 @@
 import UIKit
 
+protocol HasShowDetailsFactoryProtocol {
+    var showDetailsFactory: ShowDetailsFactoryProtocol { get }
+}
+
+protocol ShowDetailsFactoryProtocol {
+    func make(eventItem: Event) -> UIViewController
+}
+
 protocol ShowEventsRoutingLogic {
     func routeToDetail(_ viewModel: EventCellViewModel)
 }
 
 final class ShowEventsRouter {
+    typealias Dependencies = HasShowDetailsFactoryProtocol
+    
+    let dependencies: Dependencies
+    
     weak var viewController: UIViewController?
-
+    
+    init(dependencies: Dependencies) {
+        self.dependencies = dependencies
+    }
+    
     // MARK: Navigation
 
     func navigateToDetails(source: UIViewController?, destination: UIViewController) {
@@ -16,8 +32,7 @@ final class ShowEventsRouter {
 
 extension ShowEventsRouter: ShowEventsRoutingLogic {
     func routeToDetail(_ viewModel: EventCellViewModel) {
-        let detailsConf = ShowDetailsConfigurator(eventItem: viewModel.eventItem)
-        let detailVC = detailsConf.make()
+        let detailVC = dependencies.showDetailsFactory.make(eventItem: viewModel.eventItem)
         navigateToDetails(source: viewController, destination: detailVC)
     }
 }

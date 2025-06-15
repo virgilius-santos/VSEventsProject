@@ -3,14 +3,8 @@ import UIKit
 
 final class ShowDetailsConfigurator {
     private let nibName = String(describing: ShowDetailsViewController.self)
-
-    let eventItem: Event
-
-    init(eventItem: Event) {
-        self.eventItem = eventItem
-    }
     
-    func make() -> UIViewController {
+    func make(eventItem: Event) -> UIViewController {
         let viewController = ShowDetailsViewController(nibName: nibName, bundle: nil)
         let detailAPI = ShowDetailsService()
         let router = ShowDetailsRouter()

@@ -330,8 +330,8 @@
 		18D4029D219F7E73002A3BC2 /* EventsScene */ = {
 			isa = PBXGroup;
 			children = (
-				18D402D1219FB34B002A3BC2 /* ShowEventsConfigurator.swift */,
 				1801C6B221A04C700066EC81 /* View */,
+				18D402D1219FB34B002A3BC2 /* ShowEventsConfigurator.swift */,
 				18D402DB219FE12A002A3BC2 /* ShowEventsModels.swift */,
 				18C7C1C52DFDD73300E7AB61 /* ShowEventsEventService.swift */,
 				18A325712DFE489D00430723 /* ShowEventsViewModel.swift */,
@@ -344,8 +344,8 @@
 		18D402B6219F7F76002A3BC2 /* DetailsScene */ = {
 			isa = PBXGroup;
 			children = (
-				18D402E121A000D8002A3BC2 /* ShowDetailsConfigurator.swift */,
 				1801C6B321A04C870066EC81 /* View */,
+				18D402E121A000D8002A3BC2 /* ShowDetailsConfigurator.swift */,
 				18D402BA219F7F96002A3BC2 /* ShowDetailsModels.swift */,
 				18A325732DFE6FBF00430723 /* ShowDetailsViewModel.swift */,
 				18D402BC219F7F96002A3BC2 /* ShowDetailsInteractor.swift */,

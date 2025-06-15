@@ -4,11 +4,22 @@ import RxSwiftExt
 import RxCocoa
 
 final class ShowEventsViewController: UIViewController, SingleButtonDialogPresenter {
-    var viewModel: ShowEventsViewModel?
-    var disposeBag = DisposeBag()
+    let viewModel: ShowEventsViewModel
+    let disposeBag = DisposeBag()
 
     // MARK: View lifecycle
-
+    
+    init(viewModel: ShowEventsViewModel) {
+        self.viewModel = viewModel
+        let nibName = String(describing: ShowEventsViewController.self)
+        super.init(nibName: nibName, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,7 +53,6 @@ final class ShowEventsViewController: UIViewController, SingleButtonDialogPresen
     }()
 
     func bindViewModel() {
-        guard let viewModel else { return }
         let refresh = PublishRelay<Void>()
         let load = BehaviorRelay(value: ())
         let output = viewModel.transform(
