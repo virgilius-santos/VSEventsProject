@@ -12,7 +12,7 @@ final class ShowEventsViewModel {
         let title: Driver<String>
         let cells: Driver<[EventCellViewModel]>
         let showError: Signal<SingleButtonAlert>
-        let isLoading: Signal<Bool>
+        let isLoading: Driver<Bool>
         let isRefreshing: Signal<Bool>
     }
     
@@ -20,7 +20,7 @@ final class ShowEventsViewModel {
     let router: ShowEventsRoutingLogic
     
     let cells = BehaviorRelay<[EventCellViewModel]>(value: [])
-    let loading = PublishRelay<Bool>()
+    let loading = BehaviorRelay<Bool>(value: true)
     let refreshing = PublishRelay<Bool>()
     let onShowError = PublishRelay<SingleButtonAlert>()
     let disposeBag = DisposeBag()
@@ -69,7 +69,7 @@ final class ShowEventsViewModel {
             title: .just("Lista de Eventos"),
             cells: cells.asDriver(),
             showError: onShowError.asSignal(),
-            isLoading: loading.asSignal(),
+            isLoading: loading.asDriver(),
             isRefreshing: refreshing.asSignal()
         )
     }
@@ -93,54 +93,11 @@ final class ShowEventsViewModel {
 
 extension EventAPIProtocol {
     func fetchEvents() -> Single<Result<[Event], Error>> {
-//        return .just(.failure(NSError(domain: "da", code: -1)))
-//            .delaySubscription(.seconds(2), scheduler: MainScheduler.instance)
-        return .just(.success([
-            Event(
-                id: "1",
-                title: "Evento Teste 1",
-                price: 100.0,
-                latitude: -23.55,
-                longitude: -46.63,
-                image: URL(string: "https://via.placeholder.com/300.png/09f/fff?text=Evento1")!,
-                description: "Descrição do evento teste 1.",
-                date: Date(),
-                people: [
-                    Person(id: "p1", eventId: "1", name: "Participante 1", picture: "https://via.placeholder.com/50.png/09f/fff?text=P1")
-                ],
-                cupons: [
-                    Cupom(id: "c1", eventId: "1", discount: 10)
-                ]
-            ),
-            Event(
-                id: "2",
-                title: "Evento Teste 2",
-                price: 150.0,
-                latitude: -22.90,
-                longitude: -43.20,
-                image: URL(string: "https://via.placeholder.com/300.png/09f/fff?text=Evento2")!,
-                description: "Descrição do evento teste 2.",
-                date: Date().addingTimeInterval(86400),
-                people: [
-                    Person(id: "p2", eventId: "2", name: "Participante 2", picture: "https://via.placeholder.com/50.png/09f/fff?text=P2")
-                ],
-                cupons: [
-                    Cupom(id: "c2", eventId: "2", discount: 15)
-                ]
-            )
-        ]))
-        .delaySubscription(.seconds(2), scheduler: MainScheduler.instance)
-            
-//        Single.create { [weak self] single in
-//            self?.fetchEvents { result in
-//                switch result {
-//                case .success(let events):
-//                    single(.success(events))
-//                case .failure(let error):
-//                    single(.error(error))
-//                }
-//            }
-//            return Disposables.create(with: {})
-//        }
+        Single.create { [weak self] single in
+            self?.fetchEvents { result in
+                single(.success(result))
+            }
+            return Disposables.create(with: {})
+        }
     }
 }

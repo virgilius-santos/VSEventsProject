@@ -29,13 +29,25 @@ final class ShowEventsViewController: UIViewController, SingleButtonDialogPresen
         rc.attributedTitle = NSAttributedString(string: "Atualizando...")
         return rc
     }()
+    
+    lazy var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        view.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        return activityIndicator
+    }()
 
     func bindViewModel() {
         guard let viewModel else { return }
         let refresh = PublishRelay<Void>()
+        let load = BehaviorRelay(value: ())
         let output = viewModel.transform(
             input: .init(
-                viewDidLoad: .just(()),
+                viewDidLoad: load.asObservable(),
                 refresh: refresh.asObservable(),
                 itemSelected: tableView.rx
                     .modelSelected(EventCellViewModel.self)
@@ -53,18 +65,33 @@ final class ShowEventsViewController: UIViewController, SingleButtonDialogPresen
         
         output.showError
             .emit(to: rx.showAlertMessage {
-                refresh.accept(())
+                load.accept(())
             })
+            .disposed(by: disposeBag)
+
+        output.isLoading
+            .drive(rx.isLoading)
             .disposed(by: disposeBag)
         
         output.isRefreshing
             .emit(to: refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
         
-        refreshControl.rx.controlEvent(.valueChanged).asObservable()
-            .subscribe(onNext: {
-                refresh.accept(())
-            })
+        refreshControl.rx.controlEvent(.valueChanged)
+            .asSignal()
+            .emit(to: refresh)
             .disposed(by: disposeBag)
+    }
+}
+
+extension Reactive where Base: ShowEventsViewController {
+    var isLoading: Binder<Bool> {
+        .init(base.activityIndicator) { activityIndicator, isLoading in
+            if isLoading {
+                activityIndicator.startAnimating()
+            } else {
+                activityIndicator.stopAnimating()
+            }
+        }
     }
 }
