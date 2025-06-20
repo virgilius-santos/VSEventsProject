@@ -25,7 +25,9 @@ final class ShowDetailsViewController: UIViewController, SingleButtonDialogPrese
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindViewModel()
+        //bindViewModel()
+        setupCollectionView()
+        bindPeopleCells(mockPeople()) // para os testes
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -50,6 +52,19 @@ final class ShowDetailsViewController: UIViewController, SingleButtonDialogPrese
     @IBOutlet weak var shareButton: UIButton!
 
     @IBOutlet weak var mapView: MKMapView!
+    
+    private let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width - 32, height: 100)
+        layout.minimumLineSpacing = 16
+
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.backgroundColor = .clear
+        cv.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
+        return cv
+    }()
 
     func bindViewModel() {
 //        let refresh = PublishRelay<Void>()
@@ -81,6 +96,16 @@ final class ShowDetailsViewController: UIViewController, SingleButtonDialogPrese
         output.showMessage
             .emit(to: rx.showAlertMessage())
             .disposed(by: disposeBag)
+        
+        output.peopleCells
+            .drive(collectionView.rx.items(
+                cellIdentifier: "PersonCollectionViewCell",
+                cellType: PersonCollectionViewCell.self
+            )) { _, viewModel, cell in
+                cell.configure(with: viewModel as! MockPersonCellViewModel)
+            }
+            .disposed(by: disposeBag)
+
     }
     
     func bindEventDetails(_ eventDetail: Signal<any DetailInfo>) {
@@ -133,6 +158,20 @@ final class ShowDetailsViewController: UIViewController, SingleButtonDialogPrese
             }
             .disposed(by: disposeBag)
     }
+    
+    private func setupCollectionView() {
+        view.addSubview(collectionView)
+
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+        ])
+
+        collectionView.register(PersonCollectionViewCell.self, forCellWithReuseIdentifier: "PersonCollectionViewCell")
+    }
+
 }
 
 extension ShowDetailsViewController {
@@ -165,3 +204,33 @@ extension Reactive where Base: ShowDetailsViewController {
 //        }
 //    }
 }
+
+extension ShowDetailsViewController {
+    func mockPeople() -> Driver<[any PersonCellViewModel]> {
+        let mock: [MockPersonCellViewModel] = [
+            .init(
+                eventItem: Person(id: "1", eventId: "a", name: "Alice", picture: "https://picsum.photos/200/100?1"),
+                title: "Evento de Tecnologia 1",
+                imageUrl: URL(string: "https://picsum.photos/200/100?1")
+            ),
+            .init(
+                eventItem: Person(id: "2", eventId: "b", name: "Bruno", picture: ""),
+                title: "Conferência de Marketing Digital 2",
+                imageUrl: nil
+            ),
+            .init(
+                eventItem: Person(id: "3", eventId: "c", name: "Carla", picture: "https://picsum.photos/200/100?3"),
+                title: "Workshop de Fotografia 3",
+                imageUrl: URL(string: "https://picsum.photos/200/100?3")
+            ),
+            .init(
+                eventItem: Person(id: "4", eventId: "d", name: "Daniela", picture: "https://picsum.photos/200/100?4"),
+                title: "Festival de Música Indie 4",
+                imageUrl: URL(string: "https://picsum.photos/200/100?4")
+            )
+        ]
+
+        return Driver.just(mock)
+    }
+}
+

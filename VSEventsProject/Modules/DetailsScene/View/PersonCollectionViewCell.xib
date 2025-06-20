@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,6 +31,8 @@
                     </imageView>
                 </subviews>
             </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" red="0.6550433819" green="0.58099729870000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Eii-vH-OtW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="7jt-xe-HKy"/>
                 <constraint firstItem="Eii-vH-OtW" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="8lk-Wf-adp"/>
@@ -42,12 +42,7 @@
                 <constraint firstItem="PRi-9T-RGG" firstAttribute="top" secondItem="Eii-vH-OtW" secondAttribute="bottom" constant="8" id="pG8-r8-e9I"/>
                 <constraint firstItem="PRi-9T-RGG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="z4u-kF-MeS"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="139" height="173"/>
-            <connections>
-                <outlet property="nameLabel" destination="PRi-9T-RGG" id="OzE-q0-YL2"/>
-                <outlet property="photoImageView" destination="Eii-vH-OtW" id="Fzi-fa-F4Y"/>
-            </connections>
             <point key="canvasLocation" x="146.40000000000001" y="216.34182908545728"/>
         </collectionViewCell>
     </objects>
