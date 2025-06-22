@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1801C6B121A04AD70066EC81 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1801C6B021A04AD70066EC81 /* DateExtensions.swift */; };
 		1801C6B621A04CB10066EC81 /* PersonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1801C6B421A04CB10066EC81 /* PersonCollectionViewCell.swift */; };
-		1801C6B721A04CB10066EC81 /* PersonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1801C6B521A04CB10066EC81 /* PersonCollectionViewCell.xib */; };
 		1832E71D21A3B24E00746AF2 /* CodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832E71C21A3B24E00746AF2 /* CodableExtensions.swift */; };
 		1832E71F21A3BBD200746AF2 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832E71E21A3BBD200746AF2 /* StringExtensions.swift */; };
 		1832E72221A3C49E00746AF2 /* ShowEventsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832E72121A3C49E00746AF2 /* ShowEventsInteractorTests.swift */; };
@@ -62,14 +61,11 @@
 		18D402CC219FA700002A3BC2 /* Cupom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402CB219FA700002A3BC2 /* Cupom.swift */; };
 		18D402CE219FA89D002A3BC2 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402CD219FA89D002A3BC2 /* UIImageViewExtensions.swift */; };
 		18D402D2219FB34B002A3BC2 /* ShowEventsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402D1219FB34B002A3BC2 /* ShowEventsConfigurator.swift */; };
-		18D402D9219FBB4A002A3BC2 /* ShowEventsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D402D7219FBB4A002A3BC2 /* ShowEventsViewController.xib */; };
 		18D402DA219FBB4A002A3BC2 /* ShowEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402D8219FBB4A002A3BC2 /* ShowEventsViewController.swift */; };
 		18D402DC219FE12A002A3BC2 /* ShowEventsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402DB219FE12A002A3BC2 /* ShowEventsModels.swift */; };
 		18D402DE219FE638002A3BC2 /* SingleButtonAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402DD219FE638002A3BC2 /* SingleButtonAlert.swift */; };
-		18D402E0219FFFFA002A3BC2 /* ShowDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D402DF219FFFFA002A3BC2 /* ShowDetailsViewController.xib */; };
 		18D402E221A000D8002A3BC2 /* ShowDetailsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402E121A000D8002A3BC2 /* ShowDetailsConfigurator.swift */; };
 		18D402E521A01D90002A3BC2 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402E321A01D90002A3BC2 /* EventTableViewCell.swift */; };
-		18D402E621A01D90002A3BC2 /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D402E421A01D90002A3BC2 /* EventTableViewCell.xib */; };
 		18D402E921A02BD4002A3BC2 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402E821A02BD4002A3BC2 /* UIViewExtensions.swift */; };
 		18D7C4812DFF053300232156 /* ShowEventsViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D7C47F2DFF050B00232156 /* ShowEventsViewModelSpec.swift */; };
 		18D7C4832DFF0A0000232156 /* ShowEventsRoutingLogicMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D7C4822DFF0A0000232156 /* ShowEventsRoutingLogicMock.swift */; };
@@ -93,7 +89,6 @@
 		0F554918A8C926FEE112E8E7 /* Pods-VSEventsProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VSEventsProject.release.xcconfig"; path = "Target Support Files/Pods-VSEventsProject/Pods-VSEventsProject.release.xcconfig"; sourceTree = "<group>"; };
 		1801C6B021A04AD70066EC81 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		1801C6B421A04CB10066EC81 /* PersonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCollectionViewCell.swift; sourceTree = "<group>"; };
-		1801C6B521A04CB10066EC81 /* PersonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonCollectionViewCell.xib; sourceTree = "<group>"; };
 		1832E71C21A3B24E00746AF2 /* CodableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableExtensions.swift; sourceTree = "<group>"; };
 		1832E71E21A3BBD200746AF2 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		1832E72121A3C49E00746AF2 /* ShowEventsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsInteractorTests.swift; sourceTree = "<group>"; };
@@ -151,14 +146,11 @@
 		18D402CB219FA700002A3BC2 /* Cupom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cupom.swift; sourceTree = "<group>"; };
 		18D402CD219FA89D002A3BC2 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		18D402D1219FB34B002A3BC2 /* ShowEventsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsConfigurator.swift; sourceTree = "<group>"; };
-		18D402D7219FBB4A002A3BC2 /* ShowEventsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowEventsViewController.xib; sourceTree = "<group>"; };
 		18D402D8219FBB4A002A3BC2 /* ShowEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowEventsViewController.swift; sourceTree = "<group>"; };
 		18D402DB219FE12A002A3BC2 /* ShowEventsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsModels.swift; sourceTree = "<group>"; };
 		18D402DD219FE638002A3BC2 /* SingleButtonAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleButtonAlert.swift; sourceTree = "<group>"; };
-		18D402DF219FFFFA002A3BC2 /* ShowDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowDetailsViewController.xib; sourceTree = "<group>"; };
 		18D402E121A000D8002A3BC2 /* ShowDetailsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsConfigurator.swift; sourceTree = "<group>"; };
 		18D402E321A01D90002A3BC2 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
-		18D402E421A01D90002A3BC2 /* EventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventTableViewCell.xib; sourceTree = "<group>"; };
 		18D402E821A02BD4002A3BC2 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		18D7C47F2DFF050B00232156 /* ShowEventsViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsViewModelSpec.swift; sourceTree = "<group>"; };
 		18D7C4822DFF0A0000232156 /* ShowEventsRoutingLogicMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsRoutingLogicMock.swift; sourceTree = "<group>"; };
@@ -192,9 +184,7 @@
 		1801C6B221A04C700066EC81 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				18D402D7219FBB4A002A3BC2 /* ShowEventsViewController.xib */,
 				18D402D8219FBB4A002A3BC2 /* ShowEventsViewController.swift */,
-				18D402E421A01D90002A3BC2 /* EventTableViewCell.xib */,
 				18D402E321A01D90002A3BC2 /* EventTableViewCell.swift */,
 			);
 			path = View;
@@ -203,9 +193,7 @@
 		1801C6B321A04C870066EC81 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				18D402DF219FFFFA002A3BC2 /* ShowDetailsViewController.xib */,
 				18D402BB219F7F96002A3BC2 /* ShowDetailsViewController.swift */,
-				1801C6B521A04CB10066EC81 /* PersonCollectionViewCell.xib */,
 				1801C6B421A04CB10066EC81 /* PersonCollectionViewCell.swift */,
 				A15A82A22E0371D3005872BC /* MockPersonCellViewModel.swift */,
 			);
@@ -574,11 +562,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18D402E621A01D90002A3BC2 /* EventTableViewCell.xib in Resources */,
-				1801C6B721A04CB10066EC81 /* PersonCollectionViewCell.xib in Resources */,
-				18D402E0219FFFFA002A3BC2 /* ShowDetailsViewController.xib in Resources */,
 				18D4027A219F75BB002A3BC2 /* LaunchScreen.storyboard in Resources */,
-				18D402D9219FBB4A002A3BC2 /* ShowEventsViewController.xib in Resources */,
 				18D40277219F75BB002A3BC2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

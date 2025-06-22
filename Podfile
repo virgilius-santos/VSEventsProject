@@ -4,6 +4,7 @@ use_frameworks!
 def rx_pods
     pod 'RxSwift', '~> 5.0', :inhibit_warnings => true
     pod 'RxCocoa', '~> 5.0', :inhibit_warnings => true
+    pod 'RxAlamofire', '~> 5.0', :inhibit_warnings => true
     pod 'RxDataSources', :inhibit_warnings => true
     pod 'RxSwiftExt', :inhibit_warnings => true
     pod 'RxMapKit', :git => 'https://github.com/virgilius-santos/RxMapKit.git'
