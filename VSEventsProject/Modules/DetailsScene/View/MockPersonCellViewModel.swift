@@ -1,4 +1,6 @@
 import Foundation
+import RxSwift
+import RxCocoa
 
 struct MockPersonCellViewModel: PersonCellViewModel {
     var eventItem: Person
