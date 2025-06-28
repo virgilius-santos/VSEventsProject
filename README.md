@@ -4,9 +4,14 @@ Este projeto é um aplicativo iOS para visualização de eventos, desenvolvido c
 
 ## Setup
 
-#### Instale as dependências
+#### Instale as dependências na pasta do seu projeto
 ```bash
 $ pod install
+```
+
+#### Abra o projeto .xcworkspace
+```bash
+$ open VSEventsProject.xcworkspace
 ```
 
 ## Arquitetura e Padrões

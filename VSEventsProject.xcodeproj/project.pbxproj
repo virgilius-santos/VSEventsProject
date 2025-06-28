@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1801C6B121A04AD70066EC81 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1801C6B021A04AD70066EC81 /* DateExtensions.swift */; };
 		1801C6B621A04CB10066EC81 /* PersonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1801C6B421A04CB10066EC81 /* PersonCollectionViewCell.swift */; };
-		1801C6B721A04CB10066EC81 /* PersonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1801C6B521A04CB10066EC81 /* PersonCollectionViewCell.xib */; };
 		1832E71D21A3B24E00746AF2 /* CodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832E71C21A3B24E00746AF2 /* CodableExtensions.swift */; };
 		1832E71F21A3BBD200746AF2 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832E71E21A3BBD200746AF2 /* StringExtensions.swift */; };
 		1832E72221A3C49E00746AF2 /* ShowEventsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832E72121A3C49E00746AF2 /* ShowEventsInteractorTests.swift */; };
@@ -62,19 +61,18 @@
 		18D402CC219FA700002A3BC2 /* Cupom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402CB219FA700002A3BC2 /* Cupom.swift */; };
 		18D402CE219FA89D002A3BC2 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402CD219FA89D002A3BC2 /* UIImageViewExtensions.swift */; };
 		18D402D2219FB34B002A3BC2 /* ShowEventsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402D1219FB34B002A3BC2 /* ShowEventsConfigurator.swift */; };
-		18D402D9219FBB4A002A3BC2 /* ShowEventsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D402D7219FBB4A002A3BC2 /* ShowEventsViewController.xib */; };
 		18D402DA219FBB4A002A3BC2 /* ShowEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402D8219FBB4A002A3BC2 /* ShowEventsViewController.swift */; };
 		18D402DC219FE12A002A3BC2 /* ShowEventsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402DB219FE12A002A3BC2 /* ShowEventsModels.swift */; };
 		18D402DE219FE638002A3BC2 /* SingleButtonAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402DD219FE638002A3BC2 /* SingleButtonAlert.swift */; };
-		18D402E0219FFFFA002A3BC2 /* ShowDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D402DF219FFFFA002A3BC2 /* ShowDetailsViewController.xib */; };
 		18D402E221A000D8002A3BC2 /* ShowDetailsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402E121A000D8002A3BC2 /* ShowDetailsConfigurator.swift */; };
 		18D402E521A01D90002A3BC2 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402E321A01D90002A3BC2 /* EventTableViewCell.swift */; };
-		18D402E621A01D90002A3BC2 /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D402E421A01D90002A3BC2 /* EventTableViewCell.xib */; };
 		18D402E921A02BD4002A3BC2 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D402E821A02BD4002A3BC2 /* UIViewExtensions.swift */; };
 		18D7C4812DFF053300232156 /* ShowEventsViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D7C47F2DFF050B00232156 /* ShowEventsViewModelSpec.swift */; };
 		18D7C4832DFF0A0000232156 /* ShowEventsRoutingLogicMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D7C4822DFF0A0000232156 /* ShowEventsRoutingLogicMock.swift */; };
 		7AFCCB58F0B3DD4CCE5C72E8 /* Pods_VSEventsProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC0B7EF7FB9A96023F9A0CD /* Pods_VSEventsProject.framework */; };
 		9EDB95B74FB13B6AC1AD5F61 /* Pods_VSEventsProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63243E7E1BCE3DADAF7585D2 /* Pods_VSEventsProjectTests.framework */; };
+		A15A82A32E0371D3005872BC /* MockPersonCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15A82A22E0371D3005872BC /* MockPersonCellViewModel.swift */; };
+		A15CEE562E0DCEDF0036053F /* EventDetailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15CEE552E0DCED30036053F /* EventDetailInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,7 +90,6 @@
 		0F554918A8C926FEE112E8E7 /* Pods-VSEventsProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VSEventsProject.release.xcconfig"; path = "Target Support Files/Pods-VSEventsProject/Pods-VSEventsProject.release.xcconfig"; sourceTree = "<group>"; };
 		1801C6B021A04AD70066EC81 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		1801C6B421A04CB10066EC81 /* PersonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCollectionViewCell.swift; sourceTree = "<group>"; };
-		1801C6B521A04CB10066EC81 /* PersonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonCollectionViewCell.xib; sourceTree = "<group>"; };
 		1832E71C21A3B24E00746AF2 /* CodableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableExtensions.swift; sourceTree = "<group>"; };
 		1832E71E21A3BBD200746AF2 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		1832E72121A3C49E00746AF2 /* ShowEventsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsInteractorTests.swift; sourceTree = "<group>"; };
@@ -150,20 +147,19 @@
 		18D402CB219FA700002A3BC2 /* Cupom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cupom.swift; sourceTree = "<group>"; };
 		18D402CD219FA89D002A3BC2 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		18D402D1219FB34B002A3BC2 /* ShowEventsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsConfigurator.swift; sourceTree = "<group>"; };
-		18D402D7219FBB4A002A3BC2 /* ShowEventsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowEventsViewController.xib; sourceTree = "<group>"; };
 		18D402D8219FBB4A002A3BC2 /* ShowEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowEventsViewController.swift; sourceTree = "<group>"; };
 		18D402DB219FE12A002A3BC2 /* ShowEventsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsModels.swift; sourceTree = "<group>"; };
 		18D402DD219FE638002A3BC2 /* SingleButtonAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleButtonAlert.swift; sourceTree = "<group>"; };
-		18D402DF219FFFFA002A3BC2 /* ShowDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowDetailsViewController.xib; sourceTree = "<group>"; };
 		18D402E121A000D8002A3BC2 /* ShowDetailsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsConfigurator.swift; sourceTree = "<group>"; };
 		18D402E321A01D90002A3BC2 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
-		18D402E421A01D90002A3BC2 /* EventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventTableViewCell.xib; sourceTree = "<group>"; };
 		18D402E821A02BD4002A3BC2 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		18D7C47F2DFF050B00232156 /* ShowEventsViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsViewModelSpec.swift; sourceTree = "<group>"; };
 		18D7C4822DFF0A0000232156 /* ShowEventsRoutingLogicMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventsRoutingLogicMock.swift; sourceTree = "<group>"; };
 		2FB437FFF4C253CA159A836D /* Pods-VSEventsProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VSEventsProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-VSEventsProjectTests/Pods-VSEventsProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		34F6B1467EF6847260AEC357 /* Pods-VSEventsProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VSEventsProjectTests.release.xcconfig"; path = "Target Support Files/Pods-VSEventsProjectTests/Pods-VSEventsProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		63243E7E1BCE3DADAF7585D2 /* Pods_VSEventsProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VSEventsProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A15A82A22E0371D3005872BC /* MockPersonCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPersonCellViewModel.swift; sourceTree = "<group>"; };
+		A15CEE552E0DCED30036053F /* EventDetailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailInfo.swift; sourceTree = "<group>"; };
 		BCC0B7EF7FB9A96023F9A0CD /* Pods_VSEventsProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VSEventsProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -190,9 +186,7 @@
 		1801C6B221A04C700066EC81 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				18D402D7219FBB4A002A3BC2 /* ShowEventsViewController.xib */,
 				18D402D8219FBB4A002A3BC2 /* ShowEventsViewController.swift */,
-				18D402E421A01D90002A3BC2 /* EventTableViewCell.xib */,
 				18D402E321A01D90002A3BC2 /* EventTableViewCell.swift */,
 			);
 			path = View;
@@ -201,10 +195,10 @@
 		1801C6B321A04C870066EC81 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				18D402DF219FFFFA002A3BC2 /* ShowDetailsViewController.xib */,
+				A15CEE552E0DCED30036053F /* EventDetailInfo.swift */,
 				18D402BB219F7F96002A3BC2 /* ShowDetailsViewController.swift */,
-				1801C6B521A04CB10066EC81 /* PersonCollectionViewCell.xib */,
 				1801C6B421A04CB10066EC81 /* PersonCollectionViewCell.swift */,
+				A15A82A22E0371D3005872BC /* MockPersonCellViewModel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -534,8 +528,9 @@
 		18D40264219F75B8002A3BC2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1640;
 				ORGANIZATIONNAME = "Virgilius Santos";
 				TargetAttributes = {
 					18D4026B219F75B8002A3BC2 = {
@@ -571,11 +566,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18D402E621A01D90002A3BC2 /* EventTableViewCell.xib in Resources */,
-				1801C6B721A04CB10066EC81 /* PersonCollectionViewCell.xib in Resources */,
-				18D402E0219FFFFA002A3BC2 /* ShowDetailsViewController.xib in Resources */,
 				18D4027A219F75BB002A3BC2 /* LaunchScreen.storyboard in Resources */,
-				18D402D9219FBB4A002A3BC2 /* ShowEventsViewController.xib in Resources */,
 				18D40277219F75BB002A3BC2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -700,6 +691,7 @@
 				18C7C1C82DFDDCCF00E7AB61 /* ShowDetailsService.swift in Sources */,
 				18D402E521A01D90002A3BC2 /* EventTableViewCell.swift in Sources */,
 				18D402DA219FBB4A002A3BC2 /* ShowEventsViewController.swift in Sources */,
+				A15CEE562E0DCEDF0036053F /* EventDetailInfo.swift in Sources */,
 				18A325892DFEEFE700430723 /* HasShowEventsFactoryProtocol.swift in Sources */,
 				18A3257F2DFEECD000430723 /* HasShowDetailsFactoryProtocol.swift in Sources */,
 				18A3256D2DFE276400430723 /* UserAlertStrings.swift in Sources */,
@@ -723,6 +715,7 @@
 				18A3256B2DFE275100430723 /* UserInputTexts.swift in Sources */,
 				1801C6B121A04AD70066EC81 /* DateExtensions.swift in Sources */,
 				18A325772DFEEBC700430723 /* DependenciesContainer.swift in Sources */,
+				A15A82A32E0371D3005872BC /* MockPersonCellViewModel.swift in Sources */,
 				18D402CA219FA6E8002A3BC2 /* Person.swift in Sources */,
 				18D402C2219F7F96002A3BC2 /* ShowDetailsInteractor.swift in Sources */,
 				187E335121A08FAB0010CCE1 /* SharingControllerFactory.swift in Sources */,
@@ -801,6 +794,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -810,8 +804,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = KR99UBUHUT;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -863,6 +859,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -872,8 +869,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = KR99UBUHUT;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -899,7 +898,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KR99UBUHUT;
 				INFOPLIST_FILE = VSEventsProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -918,7 +916,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KR99UBUHUT;
 				INFOPLIST_FILE = VSEventsProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -937,7 +934,6 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KR99UBUHUT;
 				INFOPLIST_FILE = VSEventsProjectTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -958,7 +954,6 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KR99UBUHUT;
 				INFOPLIST_FILE = VSEventsProjectTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
